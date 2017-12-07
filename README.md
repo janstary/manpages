@@ -128,8 +128,8 @@ People use all kind of stuff.
 	huge
 
 * **poppler**, **poppler-utils**
-	api in html
-	REWRITE, SEND
+	* offered pdfunite.1 and pdfseparate.1
+	* api in html
 
 * **pstree**
 	upstream uses uses the old one with
