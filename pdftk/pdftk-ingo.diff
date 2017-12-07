@@ -1,0 +1,336 @@
+--- pdftk.stary.1	Thu Jul 18 15:20:28 2013
++++ pdftk.1	Fri Jul 19 12:58:23 2013
+@@ -1,49 +1,46 @@
+-.Dd $Mdocdate: July 20 2013$
++.Dd July 20, 2013
+ .Dt PDFTK 1
+ .Os
+ .Sh NAME
+ .Nm pdftk
+-.Nd a tool for manipulating PDF files
++.Nd manipulate PDF files
+ .Sh SYNOPSIS
+ .Nm pdftk
+-.Fl h
+-.\".Nm pdftk
+-.\".Fl -help
++.Oo Ar handle Ns = Oc Ns Ar pdf_input_file ... | Cm - | PROMPT
++.Op Ic input_pw Oo Ar handle Ns = Oc Ns Ar password ... | Cm PROMPT
++.br
++.Oo
++.Ic cat |
++.Ic shuffle |
++.Ic burst |
++.Ic generate_fdf |
++.Ic fill_form |
++.Ic background |
++.Ic multibackground |
++.Ic stamp |
++.Ic multistamp |
++.Ic dump_data |
++.Ic dump_data_utf8 |
++.Ic dump_data_fields |
++.Ic dump_data_fields_utf8 |
++.Ic update_info |
++.Ic update_info_utf8 |
++.Ic attach_files |
++.Ic unpack_files
++.Ar arguments
++.Oc
++.Op Ic output Ar filename | Cm - | PROMPT
++.Op Ic encrypt_40bit | encrypt_128bit
++.Op Ic allow Ar permissions
++.Op Ic owner_pw Ar password | Cm PROMPT
++.Op Ic user_pw Ar password | Cm PROMPT
++.Op Ic flatten
++.Op Ic compress | uncompress
++.Op Ic keep_first_id | keep_final_id | drop_xfa
++.Op Ic dont_ask | do_ask
++.Op Ic verbose
+ .Nm pdftk
+-.Aq Ar input PDF files | - | PROMPT
+-.D1 Op Ic input_pw Aq Ar passwords | PROMPT
+-.D1 Op Ic operation Aq Ar arguments
+-.D1 Op Ic output Aq Ar filename | - | PROMPT
+-.D1 Op Ic encrypt_40bit | encrypt_128bit
+-.D1 Op Ic allow Aq Ar permissions
+-.D1 Op Ic owner_pw Aq Ar password | PROMPT
+-.D1 Op Ic user_pw Aq Ar password | PROMPT
+-.D1 Op Ic flatten
+-.D1 Op Ic compress | uncompress
+-.D1 Op Ic keep_first_id | keep_final_id | drop_xfa
+-.D1 Op Ic dont_ask | do_ask
+-.D1 Op Ic verbose
+-.Pp
+-The
+-.Ic operation ,
+-if present, can be any of
+-.Ic cat ,
+-.Ic shuffle ,
+-.Ic burst ,
+-.Ic generate_fdf ,
+-.Ic fill_form ,
+-.Ic background ,
+-.Ic multibackground ,
+-.Ic stamp ,
+-.Ic multistamp ,
+-.Ic dump_data ,
+-.Ic dump_data_utf8 ,
+-.Ic dump_data_fields ,
+-.Ic dump_data_fields_utf8 ,
+-.Ic update_info ,
+-.Ic update_info_utf8 ,
+-.Ic attach_files ,
+-.Ic unpack_files .
++.Fl h | -help
+ .Sh DESCRIPTION
+ If PDF is electronic paper, then
+ .Nm
+@@ -51,7 +48,7 @@
+ secret-decoder-ring, and X-Ray glasses.
+ It is a simple tool that can be used to
+ .Pp
+-.Bl -bullet -compact -offset 1
++.Bl -bullet -compact -offset 2n
+ .It
+ merge PDF documents or collate PDF page scans
+ .It
+@@ -84,34 +81,30 @@
+ repair corrupted PDF (where possible)
+ .El
+ .Ss Input Arguments
+-.Bl -ohang
+-.It Aq Ar input PDF files | - | PROMPT
+-A list of the input PDF files.
++.Bl -tag -width Ds
++.It Oo Ar handle Ns = Oc Ns Ar pdf_input_file ... | Cm - | PROMPT
++A list of the PDF input files.
+ If you plan to combine these PDFs (without using handles)
+ then list the files in the order you want them combined.
+ Use
+-.Ar -
++.Cm -
+ to pass a single PDF into pdftk via stdin.
+ .Pp
+ Every input can be associated with a
+-.Em handle
+-- a single upper-case letter, in the form
+-.Ar handle Ns = Ns Ar input ,
+-e.g.
+-.Ar A Ns = Ns Pa input1.pdf Ar B Ns = Ns Pa input2.pdf .
++.Em handle ,
++a single upper-case letter, e.g.
++.Pp
++.Dl A=input1.pdf B=input2.pdf
++.Pp
+ Handles are often omitted.
+ They are useful when specifying PDF passwords
+ or page ranges (see below).
+-.It Ic input_pw Aq Ar password | PROMPT
++.It Ic input_pw Oo Ar handle Ns = Oc Ns Ar password ... | Cm PROMPT
+ Input PDF owner passwords, if necessary,
+-are associated with files by using their handles,
+-in the form
+-.Ar handle Ns = Ns Ar password ,
+-e.g.
+-.Bd -ragged -offset center -compact
+-.Ar A Ns = Ns Pa input1.pdf Ar B Ns = Ns Pa input2.pdf
+-.Ic input_pw Ar A Ns = Ns Ar foo Ar B Ns = Ns Ar bar
+-.Ed
++are associated with files by using their handles, e.g.
++.Pp
++.Dl A=input1.pdf B=input2.pdf input_pw A=foo B=bar
++.Pp
+ Without handles, passwords are associated
+ with input files by order.
+ .Pp
+@@ -129,15 +122,6 @@
+ if the supplied password is incorrect or none was given.
+ .El
+ .Ss Operations
+-If the optional
+-.Ic operation Aq Ar arguments
+-is omitted, then
+-.Nm
+-runs in
+-.Sq filter
+-mode. Filter mode takes only one PDF input and creates a new PDF after
+-applying all of the output options, like encryption and compression.
+-.Pp
+ Available operations are:
+ .Ic cat ,
+ .Ic shuffle ,
+@@ -157,19 +141,25 @@
+ .Ic attach_files ,
+ .Ic unpack_files .
+ Some operations take additional arguments, as described below.
+-.Bl -ohang
+-.It Ic cat Op Ar range
+-Conatenates pages from input PDFs to create a new PDF.
+-Page order in the new PDF is specified
+-by the order of the given page ranges.
+-Page ranges are described like this:
+-.\".Bd -ragged -offset center -compact
++.Pp
++When no operation is specified, then
++.Nm
++runs in
++.Sq filter
++mode. Filter mode takes only one PDF input and creates a new PDF after
++applying all of the output options, like encryption and compression.
++.Bl -tag -width Ds
++.It Ic cat Xo
+ .Sm off
+ .Op Ar handle
+ .Op Ar begin - Op Ar end Op Ar qualifier
+-.Op Ar rotation .
++.Op Ar rotation
+ .Sm on
+-.\".Ed
++.Ar ...
++.Xc
++Conatenates pages from input PDFs to create a new PDF.
++Page order in the new PDF is specified
++by the order of the given page ranges.
+ .Pp
+ The
+ .Ar handle
+@@ -182,7 +172,7 @@
+ .Ar end
+ page numbers are one-based references
+ to pages in the corresponding input PDF.
+-A single page cen be referenced
++A single page can be referenced
+ by specifying a single number as the
+ .Ar begin
+ argument and omitting the
+@@ -191,9 +181,9 @@
+ .Cm end
+ may be used to reference the final page.
+ The handle may be used alone to represent the entire document; e.g.,
+-.Cm B
++.Dq B
+ is the same as
+-.Cm B1-end .
++.Dq B1-end .
+ The
+ .Ar end
+ specifier may be less than
+@@ -307,7 +297,14 @@
+ and
+ .Pa in2.pdf
+ .El
+-.It Ic shuffle Op Ar range
++.It Ic shuffle Xo
++.Sm off
++.Op Ar handle
++.Op Ar begin - Op Ar end Op Ar qualifier
++.Op Ar rotation
++.Sm on
++.Ar ...
++.Xc
+ Collates pages from input PDFs to create a new PDF.
+ Works like the
+ .Ic cat
+@@ -358,7 +355,7 @@
+ .\"FIXME: neni to pravda, rekne si o PROMPT
+ .\" tyto chyby musime Sidovi hanlasit!
+ .\" a vubec vsechny fakticke zmeny, ktere jsme provedli!
+-.It Ic fill_form Aq Ar FDF data filename | XFDF data filename | - | PROMPT
++.It Ic fill_form Aq Ar FDF data filename | XFDF data filename | Cm - | PROMPT
+ Fills the single input PDF's form fields
+ with the data from an FDF file, a XFDF file or stdin.
+ .\" FIXME: co kdyz je tech inputu vic, ignoruje druhy a dalsi?
+@@ -392,7 +389,7 @@
+ If you flatten this form before Acrobat has a chance
+ to create (and save) new field appearances,
+ then the plain text field data is what you'll see.
+-.It Ic background Aq Ar background PDF filename | - | PROMPT
++.It Ic background Aq Ar background PDF filename | Cm - | PROMPT
+ Applies a PDF watermark to the background of a single input PDF.
+ .\" EXAMPLE
+ .\"Pass the background PDF's filename like so:
+@@ -409,20 +406,20 @@
+ Use the
+ .Ic stamp
+ operation instead.
+-.It Ic multibackground Aq Ar background | - | PROMPT
++.It Ic multibackground Aq Ar background | Cm - | PROMPT
+ Same as the
+ .Ic background operation, but applies each page of the background PDF
+ to the corresponding page of the input PDF. If the input PDF has more pages
+ than the stamp PDF, then the final stamp page is repeated
+ across these remaining pages in the input PDF.
+-.It Ic stamp Aq Ar stamp | - | PROMPT
++.It Ic stamp Aq Ar stamp | Cm - | PROMPT
+ This behaves just like the
+ .Ic background
+ operation except it overlays the stamp PDF page
+ .Em on top
+ of the input PDF document's pages.
+ This works best if the stamp PDF page has a transparent background.
+-.It Ic multistamp Aq Ar stamp | - | PROMPT
++.It Ic multistamp Aq Ar stamp | Cm - | PROMPT
+ Same as the
+ .Ic stamp
+ operation, but applies each page of the background PDF
+@@ -449,7 +446,7 @@
+ Same as
+ .Ic dump_data_fields
+ excepct that the output is encoded as UTF-8.
+-.It Ic update_info Aq Ar info | - | PROMPT
++.It Ic update_info Aq Ar info | Cm - | PROMPT
+ Changes the metadata stored in a single PDF file's Info dictionary
+ to match the input data file. The input data file uses the same syntax
+ as the output from
+@@ -458,11 +455,11 @@
+ This does not change the metadata stored in the PDF's XMP stream,
+ if it has one. For example:
+ .Dl Nm Pa in.pdf Ic update_info Pa in.info Ic output Pa out.pdf
+-.It Ic update_info_utf8 Aq Ar info | - | PROMPT
++.It Ic update_info_utf8 Aq Ar info | Cm - | PROMPT
+ Same as
+ .Ic update_info
+ except that the input is encoded as UTF-8.
+-.It Ic attach_files Ao Ar attachments | PROMPT Ac Op Cm to_page Aq number | PROMPT
++.It Ic attach_files Ao Ar attachments | Cm PROMPT Ac Op Cm to_page Aq number | Cm PROMPT
+ Packs arbitrary files into a PDF using PDF's file attachment features.
+ More than one attachment may be listed after
+ .Ic attach_files .
+@@ -483,7 +480,7 @@
+ .El
+ .Ss Output Options
+ .Bl -ohang
+-.It Ic output Aq Ar filename | - | PROMPT
++.It Ic output Aq Ar filename | Cm - | PROMPT
+ Sets the filename of the output PDF file.
+ The output filename may not be the same as an input filename.
+ Use
+@@ -531,7 +528,7 @@
+ .Cm FillIn
+ .Cm AllFeatures
+ (allows the user to perform all of the above, and top quality printing).
+-.It Ic owner_pw Ao Ar password | PROMPT Ac | Ic user_pw Aq Ar password | PROMPT
++.It Ic owner_pw Ao Ar password | Cm PROMPT Ac | Ic user_pw Aq Ar password | Cm PROMPT
+ If an encryption strength is given but no passwords are supplied, then
+ the owner and user passwords remain empty, which means that the resulting
+ PDF may be opened and its security parameters altered by anybody.
+@@ -675,12 +672,12 @@
+ .Dl Nm Pa in.pdf Ic cat CM 1-endS Ic output Pa out.pdf
+ .Sh SEE ALSO
+ .Lk http://www.pdftk.com "PDFtk's homepage"
+-.\".Rs
+-.\".%A Sid Steward
+-.\".%B PDF Hacks
+-.\".%I O'Reilly
+-.\".%D 2004
+-.\".Re
++.Rs
++.%A Sid Steward
++.%B PDF Hacks
++.%I O'Reilly
++.%D 2004
++.Re
+ .\".Sh HISTORY
+ .Sh AUTHOR
+ .An Sid Steward Aq Mt sid.steward@pdflabs.com

@@ -1,0 +1,795 @@
+.TH "PDFTK" "1" "October 15, 2014" "OpenBSD 5.6" "General Commands Manual"
+.nh
+.if n .ad l
+.SH "NAME"
+\fBpdftk\fR
+\- manipulate PDF files
+.SH "SYNOPSIS"
+.HP 6n
+\fBpdftk\fR
+\fB\-h\fR\ |\ \fB\--help\fR
+.PD 0
+.HP 6n
+\fBpdftk\fR
+[\fIhandle\fR=]\fIpdf_input_file\ ...\fR\ |\ \fB-\fR\ |\ \fBPROMPT\fR
+[\fBinput_pw\fR\ [\fIhandle\fR=]\fIpassword\ ...\fR\ |\ \fBPROMPT\fR]
+.br
+[\fBcat\fR\ |
+\fBshuffle\fR\ |
+\fBburst\fR\ |
+\fBgenerate_fdf\fR\ |
+\fBfill_form\fR\ |
+\fBbackground\fR\ |
+\fBmultibackground\fR\ |
+\fBstamp\fR\ |
+\fBmultistamp\fR\ |
+\fBdump_data\fR\ |
+\fBdump_data_utf8\fR\ |
+\fBdump_data_fields\fR\ |
+\fBdump_data_fields_utf8\fR\ |
+\fBupdate_info\fR\ |
+\fBupdate_info_utf8\fR\ |
+\fBattach_files\fR\ |
+\fBunpack_files\fR
+\fIarguments\fR]
+[\fBoutput\fR\ \fIfilename\fR\ |\ \fB-\fR\ |\ \fBPROMPT\fR]
+[\fBencrypt_40bit\fR\ |\ \fBencrypt_128bit\fR]
+[\fBallow\fR\ \fIpermissions\fR]
+[\fBowner_pw\fR\ \fIpassword\fR\ |\ \fBPROMPT\fR]
+[\fBuser_pw\fR\ \fIpassword\fR\ |\ \fBPROMPT\fR]
+[\fBflatten\fR]
+[\fBcompress\fR\ |\ \fBuncompress\fR]
+[\fBkeep_first_id\fR\ |\ \fBkeep_final_id\fR\ |\ \fBdrop_xfa\fR]
+[\fBdont_ask\fR\ |\ \fBdo_ask\fR]
+[\fBverbose\fR]
+.PD
+.SH "DESCRIPTION"
+If PDF is electronic paper, then
+\fBpdftk\fR
+is an electronic staple-remover, hole-punch, binder,
+secret-decoder-ring, and X-Ray glasses.
+It is a simple tool that can be used to
+.PP
+.RS 2n
+.PD 0
+.TP 4n
+\fBo\fR
+merge PDF documents or collate PDF page scans
+.TP 4n
+\fBo\fR
+split PDF pages into a new document
+.TP 4n
+\fBo\fR
+rotate PDF documents or pages
+.TP 4n
+\fBo\fR
+decrypt input as necessary (password required)
+.TP 4n
+\fBo\fR
+encrypt output as desired
+.TP 4n
+\fBo\fR
+fill PDF forms with X/FDF data and/or flatten forms
+.TP 4n
+\fBo\fR
+generate FDF data stencils from PDF forms
+.TP 4n
+\fBo\fR
+apply a background watermark or a foreground stamp
+.TP 4n
+\fBo\fR
+report PDF metrics such as metadata and bookmarks
+.TP 4n
+\fBo\fR
+update PDF metadata
+.TP 4n
+\fBo\fR
+attach files to PDF pages or the PDF document
+.TP 4n
+\fBo\fR
+unpack PDF attachments
+.TP 4n
+\fBo\fR
+burst a PDF document into single pages
+.TP 4n
+\fBo\fR
+uncompress and re-compress page streams
+.TP 4n
+\fBo\fR
+repair corrupted PDF (where possible)
+.RE
+.PD
+.SS "Input Arguments"
+.TP 8n
+[\fIhandle\fR=]\fIpdf_input_file ...\fR | \fB-\fR | \fBPROMPT\fR
+A list of the PDF input files.
+If you plan to combine these PDFs (without using handles)
+then list the files in the order you want them combined.
+Use
+\fB-\fR
+to pass a single PDF into pdftk via stdin.
+Use
+\fBPROMPT\fR
+to make
+\fBpdftk\fR
+ask the user interactively for an input file name.
+.sp
+Every input can be associated with a
+\fIhandle\fR,
+a single upper-case letter, e.g.
+.sp
+.RS 14n
+A=input1.pdf B=input2.pdf
+.RE
+.RS 8n
+.sp
+Handles are often omitted.
+They are useful when specifying PDF passwords
+or page ranges (see below).
+.RE
+.TP 8n
+\fBinput_pw\fR [\fIhandle\fR=]\fIpassword ...\fR | \fBPROMPT\fR
+Input PDF owner passwords, if necessary,
+are associated with files by using their handles, e.g.
+.sp
+.RS 14n
+A=input1.pdf B=input2.pdf input_pw A=foo B=bar
+.RE
+.RS 8n
+.sp
+Without handles, passwords are associated
+with input files by order.
+.sp
+Most pdftk features require that
+encrypted input PDF are accompanied by the
+\fIowner\fR
+password. If the input PDF has no owner password,
+then the user password must be given, instead.
+.sp
+When running in
+\fBdo_ask\fR
+mode (see below),
+\fBpdftk\fR
+will prompt you for a password
+if the supplied password is incorrect or none was given.
+Use
+\fBPROMPT\fR
+to explicitly make
+\fBpdftk\fR
+interactively ask the user for a password.
+.RE
+.SS "Operations"
+Available operations are:
+\fBcat\fR,
+\fBshuffle\fR,
+\fBburst\fR,
+\fBgenerate_fdf\fR,
+\fBfill_form\fR,
+\fBbackground\fR,
+\fBmultibackground\fR,
+\fBstamp\fR,
+\fBmultistamp\fR,
+\fBdump_data\fR,
+\fBdump_data_utf8\fR,
+\fBdump_data_fields\fR,
+\fBdump_data_fields_utf8\fR,
+\fBupdate_info\fR,
+\fBupdate_info_utf8\fR,
+\fBattach_files\fR,
+\fBunpack_files\fR.
+Some operations take additional arguments, as described below.
+.PP
+When no operation is specified, then
+\fBpdftk\fR
+runs in
+\(lqfilter\(rq
+mode. Filter mode takes only one PDF input and creates a new PDF after
+applying all of the output options, like encryption and compression.
+.TP 8n
+\fBcat\fR
+[\fIhandle\fR][\fIbegin-\fR[\fIend\fR[\fIqualifier\fR]]][\fIrotation\fR]
+\fI...\fR
+Conatenates pages from input PDFs to create a new PDF.
+Page order in the new PDF is specified
+by the order of the given page ranges.
+.sp
+The
+\fIhandle\fR
+identifies one of the input PDF files.
+If the handle is omitted from the page range,
+then the pages are taken from the first input PDF.
+The
+\fIbegin\fR
+and
+\fIend\fR
+page numbers are one-based references
+to pages in the corresponding input PDF.
+A single page can be referenced
+by specifying a single number as the
+\fIbegin\fR
+argument and omitting the
+\fIend\fR.
+The keyword
+\fBend\fR
+may be used to reference the final page.
+The handle may be used alone to represent the entire document; e.g.,
+\(lqB\(rq
+is the same as
+\(lqB1-end\(rq.
+The
+\fIend\fR
+specifier may be less than
+\fIbegin\fR,
+e.g.
+\fB1-3\fR
+yields pages 1, 2 and 3, in that order, and
+\fB3-1\fR
+yields pages 3, 2 and 1, in that order.
+The
+\fIqualifier\fR
+can be
+\fBeven\fR
+or
+\fBodd\fR.
+The
+\fBeven\fR
+qualifier causes
+\fBpdftk\fR
+to use only the even-numbered PDF pages, so
+\fB6-1even\fR
+yields pages 6, 4 and 2.
+The
+\fBodd\fR
+qualifier works similarly.
+The
+\fIrotation\fR
+can be
+\fBN\fR,
+\fBS\fR,
+\fBE\fR,
+\fBW\fR,
+\fBL\fR,
+\fBR\fR
+or
+\fBD\fR.
+The page rotation setting causes
+\fBpdftk\fR
+to rotate pages and documents as follows (in degrees):
+\fBN:\ 0\fR,
+\fBE:\ 90\fR,
+\fBS:\ 180\fR,
+\fBW:\ 270\fR,
+\fBL:\ -90\fR,
+\fBR:\ +90\fR,
+\fBD:\ +180\fR.
+The
+\fBL\fR,
+\fBR\fR,
+and
+\fBD\fR
+make relative adjustments to a page's rotation.
+If no arguments are passed to
+\fBcat\fR,
+then
+\fBpdftk\fR
+combines all input PDFs in the order
+they were given to create the output.
+.sp
+Examples without handles:
+.PD 0
+.PP
+.RS 8n
+.TP 10n
+\fB6-1\fR
+reverse pages in range
+.TP 10n
+\fB5 1 20\fR
+take single pages
+.TP 10n
+\fB1-endE\fR
+rotate entire document 90 degrees
+.TP 10n
+\fB5-25oddW\fR
+take odd pages in range, rotate 90 degrees
+.PD
+.PP
+Examples with handles; say
+\fIA=Pa in1.pdf\fR \fIB=Pa in2.pdf\fR,
+then:
+.PD 0
+.TP 17n
+\fBB\fR
+use all of
+\fIin2.pdf\fR
+.TP 17n
+\fBAW\fR
+rotate entire
+\fIin1.pdf\fR
+document 90 degrees
+.TP 17n
+\fBA72\fR
+take a single page from
+\fIin1.pdf\fR
+.TP 17n
+\fBA A\fR
+concatenate
+\fIin1.pdf\fR
+with
+\fIin1.pdf\fR
+.TP 17n
+\fBA1-21\fR
+take a range from
+\fIin1.pdf\fR
+.TP 17n
+\fBAW BW BD\fR
+concatenate rotated documents
+.TP 17n
+\fBBend-1odd\fR
+take all odd pages from
+\fIin2.pdf\fR
+in reverse order
+.TP 17n
+\fBA2-30evenL\fR
+take even pages from range, rotate 90 degrees left
+.TP 17n
+\fBAevenW AoddE\fR
+rotate even pages of
+\fIin1.pdf\fR
+west and odd pages east
+.TP 17n
+\fBA1-21 Beven A72\fR
+assemble pages from both
+\fIin1.pdf\fR
+and
+\fIin2.pdf\fR
+.PP
+.RE
+.PD
+.TP 8n
+\fBshuffle\fR
+.br
+[\fIhandle\fR][\fIbegin-\fR[\fIend\fR[\fIqualifier\fR]]][\fIrotation\fR]
+\fI...\fR
+Collates pages from input PDFs to create a new PDF.
+Works like the
+\fBcat\fR
+operation except that it takes one page at a time
+from each page range to assemble the output PDF.
+If one range runs out of pages,
+it continues with the remaining ranges.
+Ranges can use all of the features described above for
+\fBcat\fR,
+like reverse page ranges, multiple ranges from a single PDF,
+and page rotation. This feature was designed to help
+collate PDF pages after scanning paper documents.
+.TP 8n
+\fBburst\fR
+Splits a single input PDF document into individual pages.
+Also creates a report named
+\fIdoc_data.txt\fR
+which is the same as the output from
+\fBdump_data\fR.
+If the
+\fBoutput\fR
+section (see below) is omitted, then the individual pages are named as
+\fIpg_%04d.pdf\fR,
+e.g.
+\fIpg_0001.pdf\fR,
+\fIpg_0002.pdf\fR,
+etc. To name these pages yourself,
+supply a
+printf(3)
+format string in the
+\fBoutput\fR
+section. For example, specify
+\fBoutput\fR \fBpage_%02d.pdf\fR
+if you want the pages to be named
+\fIpage_01.pdf\fR,
+\fIpage_02.pdf\fR,
+etc.
+.TP 8n
+\fBgenerate_fdf\fR
+Reads a single input PDF file and generates an FDF file
+out of it, suitable for
+\fBfill_form\fR.
+If no output file name is specified,
+\fBpdftk\fR
+asks for one interactively.
+.TP 8n
+\fBfill_form\fR \fIFDF_data_filename\fR | \fIXFDF_data_filename\fR | \fB-\fR | \fBPROMPT\fR
+Fills the single input PDF's form fields
+with the data from an FDF file, a XFDF file or stdin.
+Enter the data filename after
+\fIfill_form\fR,
+or use
+\fB-\fR
+to pass the data via stdin; for example
+.sp
+.RS 14n
+pdftk form.pdf fill_form data.fdf output filled.pdf
+.RE
+.RS 8n
+.sp
+After filling a form, the form fields remain interactive
+unless you also use the
+\fBflatten\fR
+output option, which merges the form fields with the PDF pages.
+You can use
+\fBflatten\fR
+alone, too, but only on a single PDF, e.g.
+.sp
+.RS 14n
+pdftk form.pdf fill_form data.fdf output out.pdf flatten
+.RE
+.RS 14n
+pdftk filled.pdf output out.pdf flatten
+.RE
+\&.
+.sp
+If the input FDF file includes Rich Text formatted data
+in addition to plain text, then the Rich Text data
+is packed into the form fields
+\fIas well as\fR
+the plain text.
+\fBpdftk\fR
+also sets a flag that cues Acrobat/Reader to generate
+new field appearances based on the Rich Text data.
+That way, when the user opens the PDF,
+the viewer will create the Rich Text fields on the spot.
+If the user's PDF viewer does not support Rich Text,
+then the user will see the plain text data instead.
+If you flatten this form before Acrobat has a chance
+to create (and save) new field appearances,
+then the plain text field data is what you'll see.
+.RE
+.TP 8n
+\fBbackground\fR \fIbackground_PDF_filename\fR | \fB-\fR | \fBPROMPT\fR
+Applies a PDF watermark to the background of a single input PDF.
+Pdftk only uses the first page from the background PDF
+and applies it to every page of the input PDF.
+This page is scaled and rotated as needed to fit the input page.
+You can use
+\fB-\fR
+to pass a background PDF into pdftk via stdin.
+If the input PDF does not have a transparent background
+(such as a PDF created from page scans)
+then the resulting background won't be visible.
+Use the
+\fBstamp\fR
+operation instead.
+.TP 8n
+\fBmultibackground\fR \fIbackground\fR | \fB-\fR | \fBPROMPT\fR
+Same as the
+\fBbackground operation, but applies each page of the background PDF\fR
+to the corresponding page of the input PDF. If the input PDF has more pages
+than the stamp PDF, then the final stamp page is repeated
+across these remaining pages in the input PDF.
+.TP 8n
+\fBstamp\fR \fIstamp\fR | \fB-\fR | \fBPROMPT\fR
+This behaves just like the
+\fBbackground\fR
+operation except it overlays the stamp PDF page
+\fIon top\fR
+of the input PDF document's pages.
+This works best if the stamp PDF page has a transparent background.
+.TP 8n
+\fBmultistamp\fR \fIstamp\fR | \fB-\fR | \fBPROMPT\fR
+Same as the
+\fBstamp\fR
+operation, but applies each page of the background PDF
+to the corresponding page of the input PDF.
+If the input PDF has more pages than the stamp PDF,
+then the final stamp page is repeated
+across these remaining pages in the input PDF.
+.TP 8n
+\fBdump_data\fR
+Reads a single input PDF file and reports various statistics,
+metadata, bookmarks (a.k.a outlines), and page labels
+to the given output filename or (if no output is given) to stdout.
+Non-ASCII characters are encoded as XML numerical entities.
+Does not create a new PDF file.
+.TP 8n
+\fBdump_data_utf8\fR
+Same as
+\fBdump_data\fR
+excepct that the output is encoded as UTF-8.
+.TP 8n
+\fBdump_data_fields\fR
+Reads a single input PDF file and reports form field statistics
+to the given output filename or (if no output is given) to stdout.
+Non-ASCII characters are encoded as XML numerical entities.
+Does not create a new PDF file.
+.TP 8n
+\fBdump_data_fields_utf8\fR
+Same as
+\fBdump_data_fields\fR
+excepct that the output is encoded as UTF-8.
+.TP 8n
+\fBupdate_info\fR \fIinfo\fR | \fB-\fR | \fBPROMPT\fR
+Changes the metadata stored in a single PDF file's Info dictionary
+to match the input data file. The input data file uses the same syntax
+as the output from
+\fBdump_data\fR.
+Non-ASCII characters should be encoded as XML numerical entities.
+This does not change the metadata stored in the PDF's XMP stream,
+if it has one. For example:
+.sp
+.RS 14n
+pdftk in.pdf update_info in.info output out.pdf
+.RE
+.TP 8n
+\fBupdate_info_utf8\fR \fIinfo\fR | \fB-\fR | \fBPROMPT\fR
+Same as
+\fBupdate_info\fR
+except that the input is encoded as UTF-8.
+.TP 8n
+\fBattach_files\fR \fIattachments\fR | \fBPROMPT\fR [\fIto_page_number\fR | \fBPROMPT\fR]
+Packs arbitrary files into a PDF using PDF's file attachment features.
+More than one attachment may be listed after
+\fBattach_files\fR.
+Attachments are added at the document level unless the optional
+\fBto_page\fR
+option is given, in which case the files are attached to
+the given page number. The first page is 1, the final page is
+\fBend\fR.
+For example:
+.sp
+.RS 14n
+pdftk in.pdf attach_files tab.html img.jpg to_page 6 output out.pdf
+.RE
+.TP 8n
+\fBunpack_files\fR
+Copies all of the attachments from the input PDF into the current folder
+or to an output directory given in
+\fBoutput\fR
+For example:
+.sp
+.RS 14n
+pdftk report.pdf unpack_files output ~/atts/
+.RE
+.SS "Output Options"
+.TP 8n
+\fBoutput\fR \fIfilename\fR | \fB-\fR | \fBPROMPT\fR
+Sets the filename of the output PDF file.
+The output filename may not be the same as an input filename.
+Use
+\fB-\fR
+to output to stdout. When using the
+\fBdump_data\fR
+operation, use
+\fBoutput\fR
+to set the name of the output data file. When using the
+\fBunpack_files\fR
+operation, use
+\fBoutput\fR
+to set the name of an output directory. When using the
+\fBburst\fR
+operation, you can use
+\fBoutput\fR
+to control the resulting PDF page filenames (see above).
+.TP 8n
+\fBencrypt_40bit\fR | \fBencrypt_128bit\fR
+If an output PDF user or owner password is given,
+output PDF encryption strength defaults to 128 bits.
+This can be overridden by specifying
+\fBencrypt_40bit\fR.
+.TP 8n
+\fBallow\fR \fIpermissions\fR
+Permissions are applied to the output PDF file
+only if an encryption strength is specified
+or an owner or user password is given.
+If permissions are not specified, they default to
+\(lqnone\(rq,
+which means all of the following features are disabled.
+The
+\fIpermissions\fR
+section may include one or more of the following features:
+\fBPrinting\fR
+(top quality printing),
+\fBDegradedPrinting\fR
+(lower quality printing),
+\fBModifyContents\fR
+(also allows Assembly),
+\fBAssembly\fR
+\fBCopyContents\fR
+(also allows ScreenReaders),
+\fBScreenReaders\fR
+\fBModifyAnnotations\fR
+(also allows FillIn),
+\fBFillIn\fR
+\fBAllFeatures\fR
+(allows the user to perform all of the above, and top quality printing).
+.TP 8n
+\fBowner_pw\fR \fIpassword\fR | \fBPROMPT\fR
+.TP 8n
+\fBuser_pw\fR \fIpassword\fR | \fBPROMPT\fR
+If an encryption strength is given but no passwords are supplied, then
+the owner and user passwords remain empty, which means that the resulting
+PDF may be opened and its security parameters altered by anybody.
+.TP 8n
+\fBcompress\fR | \fBuncompress\fR
+These are only useful when you want to edit PDF code in a text editor.
+Remove PDF page stream compression by applying the
+\fBuncompress\fR
+filter. Use the
+\fBcompress\fR
+filter to restore compression.
+.TP 8n
+\fBflatten\fR
+.br
+Use this option to merge an input PDF's interactive form fields
+(and their data) with the PDF's pages. Only one input PDF may be given.
+Sometimes used with the
+\fBfill_form\fR
+operation.
+.TP 8n
+\fBkeep_first_id\fR | \fBkeep_final_id\fR
+When combining pages from multiple PDFs, use one of these options
+to copy the document ID from either the first or final input document
+into the new output PDF. Otherwise
+\fBpdftk\fR
+creates a new document ID for the output PDF.
+When no operation is given,
+\fBpdftk\fR
+always uses the ID from the (single) input PDF.
+.TP 8n
+\fBdrop_xfa\fR
+If the input PDF is a form created using Acrobat 7 or Adobe Designer,
+then it probably has XFA data. Filling such a form using
+\fBpdftk\fR
+yields a PDF with data that fails to display in Acrobat 7 (and 6?).
+The workaround is to remove the form's XFA data,
+either before you fill the form using
+\fBpdftk\fR
+or at the time you fill the form. Using this option causes
+\fBpdftk\fR
+to omit the XFA data from the output PDF form.
+.sp
+This option is only useful when running
+\fBpdftk\fR
+on a single input PDF. When assembling a PDF from multiple inputs,
+any XFA data in the input is automatically omitted.
+.TP 8n
+\fBdont_ask\fR | \fBdo_ask\fR
+Depending on compile-time settings,
+\fBpdftk\fR
+might prompt you for further input when it encounters a problem,
+such as a bad password. Override this default behavior by adding
+\fBdont_ask\fR
+or
+\fBdo_ask\fR.
+When running in
+\fBdont_ask\fR
+mode,
+\fBpdftk\fR
+will overwrite output files without notice.
+.TP 8n
+\fBverbose\fR
+.br
+By default, pdftk runs quietly. Append
+\fBverbose\fR
+to the end and it will speak up.
+.SH "EXAMPLES"
+Collate scanned pages
+.RS 6n
+pdftk A=even.pdf B=odd.pdf shuffle A B output collated.pdf
+.RE
+.PP
+or if
+\fIodd.pdf\fR
+is in reverse order:
+.RS 6n
+pdftk A=even.pdf B=odd.pdf shuffle A Bend-1 output collated.pdf
+.RE
+.PP
+Decrypt a PDF:
+.RS 6n
+pdftk secured.pdf input_pw foopass output unsecured.pdf
+.RE
+.PP
+Encrypt a PDF using 128-bit strength, withhold all permissions:
+.RS 6n
+pdftk in.pdf output out.pdf owner_pw foopass
+.RE
+.PP
+Same as above, except a user password
+is also used in the output PDF:
+.RS 6n
+pdftk in.pdf output out.pdf owner_pw foo user_pw baz
+.RE
+.PP
+Same as above, except printing is allowed (once the PDF is open):
+.RS 6n
+pdftk in.pdf output out.pdf owner_pw foo user_pw baz allow Printing
+.RE
+.PP
+Join
+\fIin1.pdf\fR
+and
+\fIin2.pdf\fR
+into
+\fIout.pdf\fR:
+.RS 6n
+pdftk in1.pdf in2.pdf cat output out.pdf
+.RE
+or (using handles):
+.RS 6n
+pdftk A=in1.pdf B=in2.pdf cat A B output out.pdf
+.RE
+or (using wildcards):
+.RS 6n
+pdftk in?.pdf cat output out.pdf
+.RE
+.PP
+Remove page 13 from
+\fIin.pdf\fR
+to create
+\fIout.pdf\fR:
+.RS 6n
+pdftk in.pdf cat 1-12 14-end output out.pdf
+.RE
+.PP
+Apply 40-bit encryption to output, revoking all permissions (the default).
+Set the owner password to
+\(lqfoo\(rq:
+.RS 6n
+pdftk 1.pdf 2.pdf cat output out.pdf encrypt_40bit owner_pw foo
+.RE
+.PP
+Join two files, one of which requires the password
+\(lqfoopass\(rq.
+The output is not encrypted.
+.RS 6n
+pdftk A=secured.pdf other.pdf input_pw A=foopass cat output out.pdf
+.RE
+.PP
+Uncompress PDF page streams for editing the PDF in a text editor:
+.RS 6n
+pdftk doc.pdf output uncompressed.pdf uncompress
+.RE
+.PP
+Repair a PDF's corrupted XREF table and stream lengths, if possible:
+.RS 6n
+pdf broken.pdf output fixed.pdf
+.RE
+.PP
+Burst a single PDF document into pages and dump its data to
+\fIdoc_data.txt\fR:
+.RS 6n
+pdftk in.pdf burst
+.RE
+.PP
+Burst a single PDF document into encrypted pages. Allow low-quality printing:
+.RS 6n
+pdftk in.pdf burst owner_pw foopass allow DegradedPrinting
+.RE
+.PP
+Write a report on PDF document metadata and bookmarks to
+\fIreport.txt\fR:
+.RS 6n
+pdftk in.pdf dump_data output report.txt
+.RE
+.PP
+Rotate the first PDF page 90 degrees clockwise
+.RS 6n
+pdftk in.pdf cat 1E 2-end output out.pdf
+.RE
+.PP
+Rotate an entire PDF document 180 degrees
+.RS 6n
+pdftk in.pdf cat 1-endS output out.pdf
+.RE
+.SH "SEE ALSO"
+\fIPDFtk's homepage:\fR \fBhttp://www.pdftk.com\fR
+.PP
+Sid Steward,
+\fIPDF Hacks\fR,
+\fIO'Reilly\fR,
+2004.
+.SH "AUTHOR"
+Sid Steward <\fIsid.steward@pdflabs.com\fR>
+maintains
+\fBpdftk\fR.
+Please email him with questions or bug reports.
+Include pdftk in the subject line to ensure successful delivery.
+Thank you.

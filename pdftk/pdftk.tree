@@ -1,0 +1,1604 @@
+root (root) 0:0
+	Sh (block) *15:1-17
+		Sh (block-head) 15:1
+			NAME (text) 15:4
+		Sh (block-body) 15:1-17
+			Nm (elem) *16:1
+				pdftk (text) 16:4
+			Nd (block) *17:1
+				Nd (block-head) 17:1
+				Nd (block-body) 17:1
+					manipulate PDF files (text) 17:4
+	Sh (block) *18:1-54
+		Sh (block-head) 18:1
+			SYNOPSIS (text) 18:4
+		Sh (block-body) 18:1-54
+			Nm (block) *19:1-20
+				Nm (block-head) 19:1
+					pdftk (text) 19:4
+				Nm (block-body) 19:1-20
+					Fl (elem) *20:1
+						h (text) 20:4
+					| (text) 20:6
+					Fl (elem) 20:1
+						-help (text) 20:8
+			Nm (block) *21:1-54
+				Nm (block-head) 21:1
+					pdftk (text) 21:4
+				Nm (block-body) 21:1-54
+					Oo (block) *22:1
+						Oo (block-head) 22:1
+						Oo (block-body) 22:1
+							Ar (elem) 22:4
+								handle (text) 22:7
+							Ns (elem) 22:17
+							= (text) 22:17
+					Ns (elem) 22:25
+					Ar (elem) 22:25
+						pdf_input_file (text) 22:28
+						... (text) 22:43
+					| (text) 22:47
+					Cm (elem) 22:49
+						- (text) 22:52
+					| (text) 22:54
+					Cm (elem) 22:56
+						PROMPT (text) 22:59
+					Op (block) *23:1
+						Op (block-head) 23:1
+						Op (block-body) 23:1
+							Ic (elem) 23:4
+								input_pw (text) 23:7
+							Oo (block) 23:16
+								Oo (block-head) 23:16
+								Oo (block-body) 23:16
+									Ar (elem) 23:19
+										handle (text) 23:22
+									Ns (elem) 23:32
+									= (text) 23:32
+							Ns (elem) 23:40
+							Ar (elem) 23:40
+								password (text) 23:43
+								... (text) 23:52
+							| (text) 23:56
+							Cm (elem) 23:58
+								PROMPT (text) 23:61
+					br (elem) *24:1
+					Oo (block) *25:1-44
+						Oo (block-head) 25:1
+						Oo (block-body) 25:1-43
+							Ic (elem) *26:1
+								cat (text) 26:4
+							| (text) 26:8
+							Ic (elem) *27:1
+								shuffle (text) 27:4
+							| (text) 27:12
+							Ic (elem) *28:1
+								burst (text) 28:4
+							| (text) 28:10
+							Ic (elem) *29:1
+								generate_fdf (text) 29:4
+							| (text) 29:17
+							Ic (elem) *30:1
+								fill_form (text) 30:4
+							| (text) 30:14
+							Ic (elem) *31:1
+								background (text) 31:4
+							| (text) 31:15
+							Ic (elem) *32:1
+								multibackground (text) 32:4
+							| (text) 32:20
+							Ic (elem) *33:1
+								stamp (text) 33:4
+							| (text) 33:10
+							Ic (elem) *34:1
+								multistamp (text) 34:4
+							| (text) 34:15
+							Ic (elem) *35:1
+								dump_data (text) 35:4
+							| (text) 35:14
+							Ic (elem) *36:1
+								dump_data_utf8 (text) 36:4
+							| (text) 36:19
+							Ic (elem) *37:1
+								dump_data_fields (text) 37:4
+							| (text) 37:21
+							Ic (elem) *38:1
+								dump_data_fields_utf8 (text) 38:4
+							| (text) 38:26
+							Ic (elem) *39:1
+								update_info (text) 39:4
+							| (text) 39:16
+							Ic (elem) *40:1
+								update_info_utf8 (text) 40:4
+							| (text) 40:21
+							Ic (elem) *41:1
+								attach_files (text) 41:4
+							| (text) 41:17
+							Ic (elem) *42:1
+								unpack_files (text) 42:4
+							Ar (elem) *43:1
+								arguments (text) 43:4
+					Op (block) *45:1
+						Op (block-head) 45:1
+						Op (block-body) 45:1
+							Ic (elem) 45:4
+								output (text) 45:7
+							Ar (elem) 45:14
+								filename (text) 45:17
+							| (text) 45:26
+							Cm (elem) 45:28
+								- (text) 45:31
+							| (text) 45:33
+							Cm (elem) 45:35
+								PROMPT (text) 45:38
+					Op (block) *46:1
+						Op (block-head) 46:1
+						Op (block-body) 46:1
+							Ic (elem) 46:4
+								encrypt_40bit (text) 46:7
+							| (text) 46:21
+							Ic (elem) 46:4
+								encrypt_128bit (text) 46:23
+					Op (block) *47:1
+						Op (block-head) 47:1
+						Op (block-body) 47:1
+							Ic (elem) 47:4
+								allow (text) 47:7
+							Ar (elem) 47:13
+								permissions (text) 47:16
+					Op (block) *48:1
+						Op (block-head) 48:1
+						Op (block-body) 48:1
+							Ic (elem) 48:4
+								owner_pw (text) 48:7
+							Ar (elem) 48:16
+								password (text) 48:19
+							| (text) 48:28
+							Cm (elem) 48:30
+								PROMPT (text) 48:33
+					Op (block) *49:1
+						Op (block-head) 49:1
+						Op (block-body) 49:1
+							Ic (elem) 49:4
+								user_pw (text) 49:7
+							Ar (elem) 49:15
+								password (text) 49:18
+							| (text) 49:27
+							Cm (elem) 49:29
+								PROMPT (text) 49:32
+					Op (block) *50:1
+						Op (block-head) 50:1
+						Op (block-body) 50:1
+							Ic (elem) 50:4
+								flatten (text) 50:7
+					Op (block) *51:1
+						Op (block-head) 51:1
+						Op (block-body) 51:1
+							Ic (elem) 51:4
+								compress (text) 51:7
+							| (text) 51:16
+							Ic (elem) 51:4
+								uncompress (text) 51:18
+					Op (block) *52:1
+						Op (block-head) 52:1
+						Op (block-body) 52:1
+							Ic (elem) 52:4
+								keep_first_id (text) 52:7
+							| (text) 52:21
+							Ic (elem) 52:4
+								keep_final_id (text) 52:23
+							| (text) 52:37
+							Ic (elem) 52:4
+								drop_xfa (text) 52:39
+					Op (block) *53:1
+						Op (block-head) 53:1
+						Op (block-body) 53:1
+							Ic (elem) 53:4
+								dont_ask (text) 53:7
+							| (text) 53:16
+							Ic (elem) 53:4
+								do_ask (text) 53:18
+					Op (block) *54:1
+						Op (block-head) 54:1
+						Op (block-body) 54:1
+							Ic (elem) 54:4
+								verbose (text) 54:7
+	Sh (block) *55:1-620
+		Sh (block-head) 55:1
+			DESCRIPTION (text) 55:4
+		Sh (block-body) 55:1-620
+			If PDF is electronic paper, then (text) *56:0
+			Nm (elem) *57:1
+			is an electronic stapleremover, holepunch, binder, (text) *58:0
+			secretdecoderring, and XRay glasses. (text) *59:0
+			It is a simple tool that can be used to (text) *60:0
+			Pp (elem) *61:1
+			Bl (block) -bullet -compact -offset [ [2n] ] *62:1-93
+				Bl (block-head) 62:1
+				Bl (block-body) 62:1-92
+					It (block) *63:1-64
+						It (block-head) 63:1
+						It (block-body) 63:1-64
+							merge PDF documents or collate PDF page scans (text) *64:0
+					It (block) *65:1-66
+						It (block-head) 65:1
+						It (block-body) 65:1-66
+							split PDF pages into a new document (text) *66:0
+					It (block) *67:1-68
+						It (block-head) 67:1
+						It (block-body) 67:1-68
+							rotate PDF documents or pages (text) *68:0
+					It (block) *69:1-70
+						It (block-head) 69:1
+						It (block-body) 69:1-70
+							decrypt input as necessary (password required) (text) *70:0
+					It (block) *71:1-72
+						It (block-head) 71:1
+						It (block-body) 71:1-72
+							encrypt output as desired (text) *72:0
+					It (block) *73:1-74
+						It (block-head) 73:1
+						It (block-body) 73:1-74
+							fill PDF forms with X/FDF data and/or flatten forms (text) *74:0
+					It (block) *75:1-76
+						It (block-head) 75:1
+						It (block-body) 75:1-76
+							generate FDF data stencils from PDF forms (text) *76:0
+					It (block) *77:1-78
+						It (block-head) 77:1
+						It (block-body) 77:1-78
+							apply a background watermark or a foreground stamp (text) *78:0
+					It (block) *79:1-80
+						It (block-head) 79:1
+						It (block-body) 79:1-80
+							report PDF metrics such as metadata and bookmarks (text) *80:0
+					It (block) *81:1-82
+						It (block-head) 81:1
+						It (block-body) 81:1-82
+							update PDF metadata (text) *82:0
+					It (block) *83:1-84
+						It (block-head) 83:1
+						It (block-body) 83:1-84
+							attach files to PDF pages or the PDF document (text) *84:0
+					It (block) *85:1-86
+						It (block-head) 85:1
+						It (block-body) 85:1-86
+							unpack PDF attachments (text) *86:0
+					It (block) *87:1-88
+						It (block-head) 87:1
+						It (block-body) 87:1-88
+							burst a PDF document into single pages (text) *88:0
+					It (block) *89:1-90
+						It (block-head) 89:1
+						It (block-body) 89:1-90
+							uncompress and recompress page streams (text) *90:0
+					It (block) *91:1-92
+						It (block-head) 91:1
+						It (block-body) 91:1-92
+							repair corrupted PDF (where possible) (text) *92:0
+			Ss (block) *94:1-144
+				Ss (block-head) 94:1
+					Input Arguments (text) 94:4
+				Ss (block-body) 94:1-144
+					Bl (block) -tag -width [ [6n] ] *95:1-144
+						Bl (block-head) 95:1
+						Bl (block-body) 95:1-143
+							It (block) *96:1-117
+								It (block-head) 96:1
+									Oo (block) 96:4
+										Oo (block-head) 96:4
+										Oo (block-body) 96:4
+											Ar (elem) 96:7
+												handle (text) 96:10
+											Ns (elem) 96:20
+											= (text) 96:20
+									Ns (elem) 96:28
+									Ar (elem) 96:28
+										pdf_input_file (text) 96:31
+										... (text) 96:46
+									| (text) 96:50
+									Cm (elem) 96:52
+										- (text) 96:55
+									| (text) 96:57
+									Cm (elem) 96:59
+										PROMPT (text) 96:62
+								It (block-body) 96:1-117
+									A list of the PDF input files. (text) *97:0
+									If you plan to combine these PDFs (without using handles) (text) *98:0
+									then list the files in the order you want them combined. (text) *99:0
+									Use (text) *100:0
+									Cm (elem) *101:1
+										- (text) 101:4
+									to pass a single PDF into pdftk via stdin. (text) *102:0
+									Use (text) *103:0
+									Cm (elem) *104:1
+										PROMPT (text) 104:4
+									to make (text) *105:0
+									Nm (elem) *106:1
+									ask the user interactively for an input file name. (text) *107:0
+									Pp (elem) *108:1
+									Every input can be associated with a (text) *109:0
+									Em (elem) *110:1
+										handle (text) 110:4
+									, (text) 110:11
+									a single uppercase letter, e.g. (text) *111:0
+									Pp (elem) *112:1
+									Dl (block) *113:1
+										Dl (block-head) 113:1
+										Dl (block-body) 113:1
+											A=input1.pdf B=input2.pdf (text) 113:4
+									Pp (elem) *114:1
+									Handles are often omitted. (text) *115:0
+									They are useful when specifying PDF passwords (text) *116:0
+									or page ranges (see below). (text) *117:0
+							It (block) *118:1-143
+								It (block-head) 118:1
+									Ic (elem) 118:4
+										input_pw (text) 118:7
+									Oo (block) 118:16
+										Oo (block-head) 118:16
+										Oo (block-body) 118:16
+											Ar (elem) 118:19
+												handle (text) 118:22
+											Ns (elem) 118:32
+											= (text) 118:32
+									Ns (elem) 118:40
+									Ar (elem) 118:40
+										password (text) 118:43
+										... (text) 118:52
+									| (text) 118:56
+									Cm (elem) 118:58
+										PROMPT (text) 118:61
+								It (block-body) 118:1-143
+									Input PDF owner passwords, if necessary, (text) *119:0
+									are associated with files by using their handles, e.g. (text) *120:0
+									Pp (elem) *121:1
+									Dl (block) *122:1
+										Dl (block-head) 122:1
+										Dl (block-body) 122:1
+											A=input1.pdf B=input2.pdf input_pw A=foo B=bar (text) 122:4
+									Pp (elem) *123:1
+									Without handles, passwords are associated (text) *124:0
+									with input files by order. (text) *125:0
+									Pp (elem) *126:1
+									Most pdftk features require that (text) *127:0
+									encrypted input PDF are accompanied by the (text) *128:0
+									Em (elem) *129:1
+										owner (text) 129:4
+									password. If the input PDF has no owner password, (text) *130:0
+									then the user password must be given, instead. (text) *131:0
+									Pp (elem) *132:1
+									When running in (text) *133:0
+									Ic (elem) *134:1
+										do_ask (text) 134:4
+									mode (see below), (text) *135:0
+									Nm (elem) *136:1
+									will prompt you for a password (text) *137:0
+									if the supplied password is incorrect or none was given. (text) *138:0
+									Use (text) *139:0
+									Cm (elem) *140:1
+										PROMPT (text) 140:4
+									to explicitly make (text) *141:0
+									Nm (elem) *142:1
+									interactively ask the user for a password. (text) *143:0
+			Ss (block) *145:1-500
+				Ss (block-head) 145:1
+					Operations (text) 145:4
+				Ss (block-body) 145:1-500
+					Available operations are: (text) *146:0
+					Ic (elem) *147:1
+						cat (text) 147:4
+					, (text) 147:8
+					Ic (elem) *148:1
+						shuffle (text) 148:4
+					, (text) 148:12
+					Ic (elem) *149:1
+						burst (text) 149:4
+					, (text) 149:10
+					Ic (elem) *150:1
+						generate_fdf (text) 150:4
+					, (text) 150:17
+					Ic (elem) *151:1
+						fill_form (text) 151:4
+					, (text) 151:14
+					Ic (elem) *152:1
+						background (text) 152:4
+					, (text) 152:15
+					Ic (elem) *153:1
+						multibackground (text) 153:4
+					, (text) 153:20
+					Ic (elem) *154:1
+						stamp (text) 154:4
+					, (text) 154:10
+					Ic (elem) *155:1
+						multistamp (text) 155:4
+					, (text) 155:15
+					Ic (elem) *156:1
+						dump_data (text) 156:4
+					, (text) 156:14
+					Ic (elem) *157:1
+						dump_data_utf8 (text) 157:4
+					, (text) 157:19
+					Ic (elem) *158:1
+						dump_data_fields (text) 158:4
+					, (text) 158:21
+					Ic (elem) *159:1
+						dump_data_fields_utf8 (text) 159:4
+					, (text) 159:26
+					Ic (elem) *160:1
+						update_info (text) 160:4
+					, (text) 160:16
+					Ic (elem) *161:1
+						update_info_utf8 (text) 161:4
+					, (text) 161:21
+					Ic (elem) *162:1
+						attach_files (text) 162:4
+					, (text) 162:17
+					Ic (elem) *163:1
+						unpack_files (text) 163:4
+					. (text) 163:17
+					Some operations take additional arguments, as described below. (text) *164:0
+					Pp (elem) *165:1
+					When no operation is specified, then (text) *166:0
+					Nm (elem) *167:1
+					runs in (text) *168:0
+					Dq (block) *169:1
+						Dq (block-head) 169:1
+						Dq (block-body) 169:1
+							filter (text) 169:4
+					mode. Filter mode takes only one PDF input and creates a new PDF after (text) *170:0
+					applying all of the output options, like encryption and compression. (text) *171:0
+					Bl (block) -tag -width [ [6n] ] *172:1-500
+						Bl (block-head) 172:1
+						Bl (block-body) 172:1-499
+							It (block) *173:1-320
+								It (block-head) 173:1
+									Ic (elem) 173:4
+										cat (text) 173:7
+									Xo (block) 173:11-180
+										Xo (block-head) 173:11
+										Xo (block-body) 173:11-179
+											Sm (elem) *174:1
+												off (text) 174:4
+											Op (block) *175:1
+												Op (block-head) 175:1
+												Op (block-body) 175:1
+													Ar (elem) 175:4
+														handle (text) 175:7
+											Op (block) *176:1
+												Op (block-head) 176:1
+												Op (block-body) 176:1
+													Ar (elem) 176:4
+														begin (text) 176:7
+														- (text) 176:13
+													Op (block) 176:15
+														Op (block-head) 176:15
+														Op (block-body) 176:15
+															Ar (elem) 176:18
+																end (text) 176:21
+															Op (block) 176:25
+																Op (block-head) 176:25
+																Op (block-body) 176:25
+																	Ar (elem) 176:28
+																		qualifier (text) 176:31
+											Op (block) *177:1
+												Op (block-head) 177:1
+												Op (block-body) 177:1
+													Ar (elem) 177:4
+														rotation (text) 177:7
+											Sm (elem) *178:1
+												on (text) 178:4
+											Ar (elem) *179:1
+												... (text) 179:4
+								It (block-body) *173:1-320
+									Conatenates pages from input PDFs to create a new PDF. (text) *181:0
+									Page order in the new PDF is specified (text) *182:0
+									by the order of the given page ranges. (text) *183:0
+									Pp (elem) *184:1
+									The (text) *185:0
+									Ar (elem) *186:1
+										handle (text) 186:4
+									identifies one of the input PDF files. (text) *187:0
+									If the handle is omitted from the page range, (text) *188:0
+									then the pages are taken from the first input PDF. (text) *189:0
+									The (text) *190:0
+									Ar (elem) *191:1
+										begin (text) 191:4
+									and (text) *192:0
+									Ar (elem) *193:1
+										end (text) 193:4
+									page numbers are onebased references (text) *194:0
+									to pages in the corresponding input PDF. (text) *195:0
+									A single page can be referenced (text) *196:0
+									by specifying a single number as the (text) *197:0
+									Ar (elem) *198:1
+										begin (text) 198:4
+									argument and omitting the (text) *199:0
+									Ar (elem) *200:1
+										end (text) 200:4
+									. (text) 200:8
+									The keyword (text) *201:0
+									Cm (elem) *202:1
+										end (text) 202:4
+									may be used to reference the final page. (text) *203:0
+									The handle may be used alone to represent the entire document; e.g., (text) *204:0
+									Dq (block) *205:1
+										Dq (block-head) 205:1
+										Dq (block-body) 205:1
+											B (text) 205:4
+									is the same as (text) *206:0
+									Dq (block) *207:1
+										Dq (block-head) 207:1
+										Dq (block-body) 207:1
+											B1-end (text) 207:4
+										. (text) 207:11
+									The (text) *208:0
+									Ar (elem) *209:1
+										end (text) 209:4
+									specifier may be less than (text) *210:0
+									Ar (elem) *211:1
+										begin (text) 211:4
+									, (text) 211:10
+									e.g. (text) *212:0
+									Cm (elem) *213:1
+										1-3 (text) 213:4
+									yields pages 1, 2 and 3, in that order, and (text) *214:0
+									Cm (elem) *215:1
+										3-1 (text) 215:4
+									yields pages 3, 2 and 1, in that order. (text) *216:0
+									The (text) *217:0
+									Ar (elem) *218:1
+										qualifier (text) 218:4
+									can be (text) *219:0
+									Cm (elem) *220:1
+										even (text) 220:4
+									or (text) *221:0
+									Cm (elem) *222:1
+										odd (text) 222:4
+									. (text) 222:8
+									The (text) *223:0
+									Cm (elem) *224:1
+										even (text) 224:4
+									qualifier causes (text) *225:0
+									Nm (elem) *226:1
+									to use only the evennumbered PDF pages, so (text) *227:0
+									Cm (elem) *228:1
+										6-1even (text) 228:4
+									yields pages 6, 4 and 2. (text) *229:0
+									The (text) *230:0
+									Cm (elem) *231:1
+										odd (text) 231:4
+									qualifier works similarly. (text) *232:0
+									The (text) *233:0
+									Ar (elem) *234:1
+										rotation (text) 234:4
+									can be (text) *235:0
+									Cm (elem) *236:1
+										N (text) 236:4
+									, (text) 236:6
+									Cm (elem) *237:1
+										S (text) 237:4
+									, (text) 237:6
+									Cm (elem) *238:1
+										E (text) 238:4
+									, (text) 238:6
+									Cm (elem) *239:1
+										W (text) 239:4
+									, (text) 239:6
+									Cm (elem) *240:1
+										L (text) 240:4
+									, (text) 240:6
+									Cm (elem) *241:1
+										R (text) 241:4
+									or (text) *242:0
+									Cm (elem) *243:1
+										D (text) 243:4
+									. (text) 243:6
+									The page rotation setting causes (text) *244:0
+									Nm (elem) *245:1
+									to rotate pages and documents as follows (in degrees): (text) *246:0
+									Bk (block) *247:1-255
+										Bk (block-head) 247:1
+										Bk (block-body) 247:1-254
+											Cm (elem) *248:1
+												N: (text) 248:4
+												0 (text) 248:7
+											, (text) 248:9
+											Cm (elem) *249:1
+												E: (text) 249:4
+												90 (text) 249:7
+											, (text) 249:10
+											Cm (elem) *250:1
+												S: (text) 250:4
+												180 (text) 250:7
+											, (text) 250:11
+											Cm (elem) *251:1
+												W: (text) 251:4
+												270 (text) 251:7
+											, (text) 251:11
+											Cm (elem) *252:1
+												L: (text) 252:4
+												-90 (text) 252:7
+											, (text) 252:11
+											Cm (elem) *253:1
+												R: (text) 253:4
+												+90 (text) 253:7
+											, (text) 253:11
+											Cm (elem) *254:1
+												D: (text) 254:4
+												+180 (text) 254:7
+											. (text) 254:12
+									The (text) *256:0
+									Cm (elem) *257:1
+										L (text) 257:4
+									, (text) 257:6
+									Cm (elem) *258:1
+										R (text) 258:4
+									, (text) 258:6
+									and (text) *259:0
+									Cm (elem) *260:1
+										D (text) 260:4
+									make relative adjustments to a page's rotation. (text) *261:0
+									If no arguments are passed to (text) *262:0
+									Ic (elem) *263:1
+										cat (text) 263:4
+									, (text) 263:8
+									then (text) *264:0
+									Nm (elem) *265:1
+									combines all input PDFs in the order (text) *266:0
+									they were given to create the output. (text) *267:0
+									Pp (elem) *268:1
+									Examples without handles: (text) *269:0
+									Bl (block) -tag -width [ [5-25oddW] ] -compact *270:1-279
+										Bl (block-head) 270:1
+										Bl (block-body) 270:1-278
+											It (block) *271:1-272
+												It (block-head) 271:1
+													Cm (elem) 271:4
+														6-1 (text) 271:7
+												It (block-body) 271:1-272
+													reverse pages in range (text) *272:0
+											It (block) *273:1-274
+												It (block-head) 273:1
+													Cm (elem) 273:4
+														5 (text) 273:7
+														1 (text) 273:9
+														20 (text) 273:11
+												It (block-body) 273:1-274
+													take single pages (text) *274:0
+											It (block) *275:1-276
+												It (block-head) 275:1
+													Cm (elem) 275:4
+														1-endE (text) 275:7
+												It (block-body) 275:1-276
+													rotate entire document 90 degrees (text) *276:0
+											It (block) *277:1-278
+												It (block-head) 277:1
+													Cm (elem) 277:4
+														5-25oddW (text) 277:7
+												It (block-body) 277:1-278
+													take odd pages in range, rotate 90 degrees (text) *278:0
+									Pp (elem) *280:1
+									Examples with handles; say (text) *281:0
+									Ar (elem) *282:1
+										A=Pa (text) 282:4
+										in1.pdf (text) 282:9
+									Ar (elem) 282:17
+										B=Pa (text) 282:20
+										in2.pdf (text) 282:25
+									, (text) 282:33
+									then: (text) *283:0
+									Bl (block) -tag -width [ [A1-21 Beven A72] ] -compact *284:1-320
+										Bl (block-head) 284:1
+										Bl (block-body) 284:1-319
+											It (block) *285:1-287
+												It (block-head) 285:1
+													Cm (elem) 285:4
+														B (text) 285:7
+												It (block-body) 285:1-287
+													use all of (text) *286:0
+													Pa (elem) *287:1
+														in2.pdf (text) 287:4
+											It (block) *288:1-291
+												It (block-head) 288:1
+													Cm (elem) 288:4
+														AW (text) 288:7
+												It (block-body) 288:1-291
+													rotate entire (text) *289:0
+													Pa (elem) *290:1
+														in1.pdf (text) 290:4
+													document 90 degrees (text) *291:0
+											It (block) *292:1-294
+												It (block-head) 292:1
+													Cm (elem) 292:4
+														A72 (text) 292:7
+												It (block-body) 292:1-294
+													take a single page from (text) *293:0
+													Pa (elem) *294:1
+														in1.pdf (text) 294:4
+											It (block) *295:1-299
+												It (block-head) 295:1
+													Cm (elem) 295:4
+														A (text) 295:7
+														A (text) 295:9
+												It (block-body) 295:1-299
+													concatenate (text) *296:0
+													Pa (elem) *297:1
+														in1.pdf (text) 297:4
+													with (text) *298:0
+													Pa (elem) *299:1
+														in1.pdf (text) 299:4
+											It (block) *300:1-302
+												It (block-head) 300:1
+													Cm (elem) 300:4
+														A1-21 (text) 300:7
+												It (block-body) 300:1-302
+													take a range from (text) *301:0
+													Pa (elem) *302:1
+														in1.pdf (text) 302:4
+											It (block) *303:1-304
+												It (block-head) 303:1
+													Cm (elem) 303:4
+														AW (text) 303:7
+														BW (text) 303:10
+														BD (text) 303:13
+												It (block-body) 303:1-304
+													concatenate rotated documents (text) *304:0
+											It (block) *305:1-308
+												It (block-head) 305:1
+													Cm (elem) 305:4
+														Bend-1odd (text) 305:7
+												It (block-body) 305:1-308
+													take all odd pages from (text) *306:0
+													Pa (elem) *307:1
+														in2.pdf (text) 307:4
+													in reverse order (text) *308:0
+											It (block) *309:1-310
+												It (block-head) 309:1
+													Cm (elem) 309:4
+														A2-30evenL (text) 309:7
+												It (block-body) 309:1-310
+													take even pages from range, rotate 90 degrees left (text) *310:0
+											It (block) *311:1-314
+												It (block-head) 311:1
+													Cm (elem) 311:4
+														AevenW (text) 311:7
+														AoddE (text) 311:14
+												It (block-body) 311:1-314
+													rotate even pages of (text) *312:0
+													Pa (elem) *313:1
+														in1.pdf (text) 313:4
+													west and odd pages east (text) *314:0
+											It (block) *315:1-319
+												It (block-head) 315:1
+													Cm (elem) 315:4
+														A1-21 (text) 315:7
+														Beven (text) 315:13
+														A72 (text) 315:19
+												It (block-body) 315:1-319
+													assemble pages from both (text) *316:0
+													Pa (elem) *317:1
+														in1.pdf (text) 317:4
+													and (text) *318:0
+													Pa (elem) *319:1
+														in2.pdf (text) 319:4
+							It (block) *321:1-340
+								It (block-head) 321:1
+									Ic (elem) 321:4
+										shuffle (text) 321:7
+									Xo (block) 321:15-328
+										Xo (block-head) 321:15
+										Xo (block-body) 321:15-327
+											Sm (elem) *322:1
+												off (text) 322:4
+											Op (block) *323:1
+												Op (block-head) 323:1
+												Op (block-body) 323:1
+													Ar (elem) 323:4
+														handle (text) 323:7
+											Op (block) *324:1
+												Op (block-head) 324:1
+												Op (block-body) 324:1
+													Ar (elem) 324:4
+														begin (text) 324:7
+														- (text) 324:13
+													Op (block) 324:15
+														Op (block-head) 324:15
+														Op (block-body) 324:15
+															Ar (elem) 324:18
+																end (text) 324:21
+															Op (block) 324:25
+																Op (block-head) 324:25
+																Op (block-body) 324:25
+																	Ar (elem) 324:28
+																		qualifier (text) 324:31
+											Op (block) *325:1
+												Op (block-head) 325:1
+												Op (block-body) 325:1
+													Ar (elem) 325:4
+														rotation (text) 325:7
+											Sm (elem) *326:1
+												on (text) 326:4
+											Ar (elem) *327:1
+												... (text) 327:4
+								It (block-body) *321:1-340
+									Collates pages from input PDFs to create a new PDF. (text) *329:0
+									Works like the (text) *330:0
+									Ic (elem) *331:1
+										cat (text) 331:4
+									operation except that it takes one page at a time (text) *332:0
+									from each page range to assemble the output PDF. (text) *333:0
+									If one range runs out of pages, (text) *334:0
+									it continues with the remaining ranges. (text) *335:0
+									Ranges can use all of the features described above for (text) *336:0
+									Ic (elem) *337:1
+										cat (text) 337:4
+									, (text) 337:8
+									like reverse page ranges, multiple ranges from a single PDF, (text) *338:0
+									and page rotation. This feature was designed to help (text) *339:0
+									collate PDF pages after scanning paper documents. (text) *340:0
+							It (block) *341:1-364
+								It (block-head) 341:1
+									Ic (elem) 341:4
+										burst (text) 341:7
+								It (block-body) 341:1-364
+									Splits a single input PDF document into individual pages. (text) *342:0
+									Also creates a report named (text) *343:0
+									Pa (elem) *344:1
+										doc_data.txt (text) 344:4
+									which is the same as the output from (text) *345:0
+									Ic (elem) *346:1
+										dump_data (text) 346:4
+									. (text) 346:14
+									If the (text) *347:0
+									Ic (elem) *348:1
+										output (text) 348:4
+									section (see below) is omitted, then the individual pages are named as (text) *349:0
+									Pa (elem) *350:1
+										pg_%04d.pdf (text) 350:4
+									, (text) 350:16
+									e.g. (text) *351:0
+									Pa (elem) *352:1
+										pg_0001.pdf (text) 352:4
+									, (text) 352:16
+									Pa (elem) *353:1
+										pg_0002.pdf (text) 353:4
+									, (text) 353:16
+									etc. To name these pages yourself, (text) *354:0
+									supply a (text) *355:0
+									Xr (elem) *356:4
+										printf (text) 356:4
+										3 (text) 356:11
+									format string in the (text) *357:0
+									Ic (elem) *358:1
+										output (text) 358:4
+									section. For example, specify (text) *359:0
+									Ic (elem) *360:1
+										output (text) 360:4
+									Cm (elem) 360:11
+										page_%02d.pdf (text) 360:14
+									if you want the pages to be named (text) *361:0
+									Pa (elem) *362:1
+										page_01.pdf (text) 362:4
+									, (text) 362:16
+									Pa (elem) *363:1
+										page_02.pdf (text) 363:4
+									, (text) 363:16
+									etc. (text) *364:0
+							It (block) *365:1-371
+								It (block-head) 365:1
+									Ic (elem) 365:4
+										generate_fdf (text) 365:7
+								It (block-body) 365:1-371
+									Reads a single input PDF file and generates an FDF file (text) *366:0
+									out of it, suitable for (text) *367:0
+									Ic (elem) *368:1
+										fill_form (text) 368:4
+									. (text) 368:14
+									If no output file name is specified, (text) *369:0
+									Nm (elem) *370:1
+									asks for one interactively. (text) *371:0
+							It (block) *372:1-408
+								It (block-head) 372:1
+									Ic (elem) 372:4
+										fill_form (text) 372:7
+									Ar (elem) 372:17
+										FDF_data_filename (text) 372:20
+									| (text) 372:38
+									Ar (elem) 372:17
+										XFDF_data_filename (text) 372:40
+									| (text) 372:59
+									Cm (elem) 372:61
+										- (text) 372:64
+									| (text) 372:66
+									Cm (elem) 372:68
+										PROMPT (text) 372:71
+								It (block-body) 372:1-408
+									Fills the single input PDF's form fields (text) *373:0
+									with the data from an FDF file, a XFDF file or stdin. (text) *374:0
+									Enter the data filename after (text) *375:0
+									Ar (elem) *376:1
+										fill_form (text) 376:4
+									, (text) 376:14
+									or use (text) *377:0
+									Cm (elem) *378:1
+										- (text) 378:4
+									to pass the data via stdin; for example (text) *379:0
+									Pp (elem) *380:1
+									Dl (block) *381:1
+										Dl (block-head) 381:1
+										Dl (block-body) 381:1
+											pdftk form.pdf fill_form data.fdf output filled.pdf (text) 381:4
+									Pp (elem) *382:1
+									After filling a form, the form fields remain interactive (text) *383:0
+									unless you also use the (text) *384:0
+									Ic (elem) *385:1
+										flatten (text) 385:4
+									output option, which merges the form fields with the PDF pages. (text) *386:0
+									You can use (text) *387:0
+									Ic (elem) *388:1
+										flatten (text) 388:4
+									alone, too, but only on a single PDF, e.g. (text) *389:0
+									Pp (elem) *390:1
+									Dl (block) *391:1
+										Dl (block-head) 391:1
+										Dl (block-body) 391:1
+											pdftk form.pdf fill_form data.fdf output out.pdf flatten (text) 391:4
+									Dl (block) *392:1
+										Dl (block-head) 392:1
+										Dl (block-body) 392:1
+											pdftk filled.pdf output out.pdf flatten (text) 392:4
+										. (text) 392:44
+									Pp (elem) *393:1
+									If the input FDF file includes Rich Text formatted data (text) *394:0
+									in addition to plain text, then the Rich Text data (text) *395:0
+									is packed into the form fields (text) *396:0
+									Em (elem) *397:1
+										as well as (text) 397:4
+									the plain text. (text) *398:0
+									Nm (elem) *399:1
+									also sets a flag that cues Acrobat/Reader to generate (text) *400:0
+									new field appearances based on the Rich Text data. (text) *401:0
+									That way, when the user opens the PDF, (text) *402:0
+									the viewer will create the Rich Text fields on the spot. (text) *403:0
+									If the user's PDF viewer does not support Rich Text, (text) *404:0
+									then the user will see the plain text data instead. (text) *405:0
+									If you flatten this form before Acrobat has a chance (text) *406:0
+									to create (and save) new field appearances, (text) *407:0
+									then the plain text field data is what you'll see. (text) *408:0
+							It (block) *409:1-425
+								It (block-head) 409:1
+									Ic (elem) 409:4
+										background (text) 409:7
+									Ar (elem) 409:18
+										background_PDF_filename (text) 409:21
+									| (text) 409:45
+									Cm (elem) 409:47
+										- (text) 409:50
+									| (text) 409:52
+									Cm (elem) 409:54
+										PROMPT (text) 409:57
+								It (block-body) 409:1-425
+									Applies a PDF watermark to the background of a single input PDF. (text) *410:0
+									Pdftk only uses the first page from the background PDF (text) *414:0
+									and applies it to every page of the input PDF. (text) *415:0
+									This page is scaled and rotated as needed to fit the input page. (text) *416:0
+									You can use (text) *417:0
+									Cm (elem) *418:1
+										- (text) 418:4
+									to pass a background PDF into pdftk via stdin. (text) *419:0
+									If the input PDF does not have a transparent background (text) *420:0
+									(such as a PDF created from page scans) (text) *421:0
+									then the resulting background won't be visible. (text) *422:0
+									Use the (text) *423:0
+									Ic (elem) *424:1
+										stamp (text) 424:4
+									operation instead. (text) *425:0
+							It (block) *426:1-431
+								It (block-head) 426:1
+									Ic (elem) 426:4
+										multibackground (text) 426:7
+									Ar (elem) 426:23
+										background (text) 426:26
+									| (text) 426:37
+									Cm (elem) 426:39
+										- (text) 426:42
+									| (text) 426:44
+									Cm (elem) 426:46
+										PROMPT (text) 426:49
+								It (block-body) 426:1-431
+									Same as the (text) *427:0
+									Ic (elem) *428:1
+										background operation, but applies each page of the background PDF (text) 428:4
+									to the corresponding page of the input PDF. If the input PDF has more pages (text) *429:0
+									than the stamp PDF, then the final stamp page is repeated (text) *430:0
+									across these remaining pages in the input PDF. (text) *431:0
+							It (block) *432:1-438
+								It (block-head) 432:1
+									Ic (elem) 432:4
+										stamp (text) 432:7
+									Ar (elem) 432:13
+										stamp (text) 432:16
+									| (text) 432:22
+									Cm (elem) 432:24
+										- (text) 432:27
+									| (text) 432:29
+									Cm (elem) 432:31
+										PROMPT (text) 432:34
+								It (block-body) 432:1-438
+									This behaves just like the (text) *433:0
+									Ic (elem) *434:1
+										background (text) 434:4
+									operation except it overlays the stamp PDF page (text) *435:0
+									Em (elem) *436:1
+										on top (text) 436:4
+									of the input PDF document's pages. (text) *437:0
+									This works best if the stamp PDF page has a transparent background. (text) *438:0
+							It (block) *439:1-446
+								It (block-head) 439:1
+									Ic (elem) 439:4
+										multistamp (text) 439:7
+									Ar (elem) 439:18
+										stamp (text) 439:21
+									| (text) 439:27
+									Cm (elem) 439:29
+										- (text) 439:32
+									| (text) 439:34
+									Cm (elem) 439:36
+										PROMPT (text) 439:39
+								It (block-body) 439:1-446
+									Same as the (text) *440:0
+									Ic (elem) *441:1
+										stamp (text) 441:4
+									operation, but applies each page of the background PDF (text) *442:0
+									to the corresponding page of the input PDF. (text) *443:0
+									If the input PDF has more pages than the stamp PDF, (text) *444:0
+									then the final stamp page is repeated (text) *445:0
+									across these remaining pages in the input PDF. (text) *446:0
+							It (block) *447:1-452
+								It (block-head) 447:1
+									Ic (elem) 447:4
+										dump_data (text) 447:7
+								It (block-body) 447:1-452
+									Reads a single input PDF file and reports various statistics, (text) *448:0
+									metadata, bookmarks (a.k.a outlines), and page labels (text) *449:0
+									to the given output filename or (if no output is given) to stdout. (text) *450:0
+									NonASCII characters are encoded as XML numerical entities. (text) *451:0
+									Does not create a new PDF file. (text) *452:0
+							It (block) *453:1-456
+								It (block-head) 453:1
+									Ic (elem) 453:4
+										dump_data_utf8 (text) 453:7
+								It (block-body) 453:1-456
+									Same as (text) *454:0
+									Ic (elem) *455:1
+										dump_data (text) 455:4
+									excepct that the output is encoded as UTF-8. (text) *456:0
+							It (block) *457:1-461
+								It (block-head) 457:1
+									Ic (elem) 457:4
+										dump_data_fields (text) 457:7
+								It (block-body) 457:1-461
+									Reads a single input PDF file and reports form field statistics (text) *458:0
+									to the given output filename or (if no output is given) to stdout. (text) *459:0
+									NonASCII characters are encoded as XML numerical entities. (text) *460:0
+									Does not create a new PDF file. (text) *461:0
+							It (block) *462:1-465
+								It (block-head) 462:1
+									Ic (elem) 462:4
+										dump_data_fields_utf8 (text) 462:7
+								It (block-body) 462:1-465
+									Same as (text) *463:0
+									Ic (elem) *464:1
+										dump_data_fields (text) 464:4
+									excepct that the output is encoded as UTF-8. (text) *465:0
+							It (block) *466:1-475
+								It (block-head) 466:1
+									Ic (elem) 466:4
+										update_info (text) 466:7
+									Ar (elem) 466:19
+										info (text) 466:22
+									| (text) 466:27
+									Cm (elem) 466:29
+										- (text) 466:32
+									| (text) 466:34
+									Cm (elem) 466:36
+										PROMPT (text) 466:39
+								It (block-body) 466:1-475
+									Changes the metadata stored in a single PDF file's Info dictionary (text) *467:0
+									to match the input data file. The input data file uses the same syntax (text) *468:0
+									as the output from (text) *469:0
+									Ic (elem) *470:1
+										dump_data (text) 470:4
+									. (text) 470:14
+									NonASCII characters should be encoded as XML numerical entities. (text) *471:0
+									This does not change the metadata stored in the PDF's XMP stream, (text) *472:0
+									if it has one. For example: (text) *473:0
+									Pp (elem) *474:1
+									Dl (block) *475:1
+										Dl (block-head) 475:1
+										Dl (block-body) 475:1
+											pdftk in.pdf update_info in.info output out.pdf (text) 475:4
+							It (block) *476:1-479
+								It (block-head) 476:1
+									Ic (elem) 476:4
+										update_info_utf8 (text) 476:7
+									Ar (elem) 476:24
+										info (text) 476:27
+									| (text) 476:32
+									Cm (elem) 476:34
+										- (text) 476:37
+									| (text) 476:39
+									Cm (elem) 476:41
+										PROMPT (text) 476:44
+								It (block-body) 476:1-479
+									Same as (text) *477:0
+									Ic (elem) *478:1
+										update_info (text) 478:4
+									except that the input is encoded as UTF-8. (text) *479:0
+							It (block) *480:1-491
+								It (block-head) 480:1
+									Ic (elem) 480:4
+										attach_files (text) 480:7
+									Ar (elem) 480:20
+										attachments (text) 480:23
+									| (text) 480:35
+									Cm (elem) 480:37
+										PROMPT (text) 480:40
+									Op (block) 480:47
+										Op (block-head) 480:47
+										Op (block-body) 480:47
+											Ar (elem) 480:50
+												to_page_number (text) 480:53
+											| (text) 480:68
+											Cm (elem) 480:70
+												PROMPT (text) 480:73
+								It (block-body) 480:1-491
+									Packs arbitrary files into a PDF using PDF's file attachment features. (text) *481:0
+									More than one attachment may be listed after (text) *482:0
+									Ic (elem) *483:1
+										attach_files (text) 483:4
+									. (text) 483:17
+									Attachments are added at the document level unless the optional (text) *484:0
+									Cm (elem) *485:1
+										to_page (text) 485:4
+									option is given, in which case the files are attached to (text) *486:0
+									the given page number. The first page is 1, the final page is (text) *487:0
+									Cm (elem) *488:1
+										end (text) 488:4
+									. (text) 488:8
+									For example: (text) *489:0
+									Pp (elem) *490:1
+									Dl (block) *491:1
+										Dl (block-head) 491:1
+										Dl (block-body) 491:1
+											pdftk in.pdf attach_files tab.html img.jpg to_page 6 output out.pdf (text) 491:4
+							It (block) *492:1-499
+								It (block-head) 492:1
+									Ic (elem) 492:4
+										unpack_files (text) 492:7
+								It (block-body) 492:1-499
+									Copies all of the attachments from the input PDF into the current folder (text) *493:0
+									or to an output directory given in (text) *494:0
+									Ic (elem) *495:1
+										output (text) 495:4
+									For example: (text) *496:0
+									Pp (elem) *497:1
+									Dl (block) *498:1-499
+										Dl (block-head) 498:1
+										Dl (block-body) 498:1
+											pdftk report.pdf unpack_files output ~/atts/ (text) 498:4
+			Ss (block) *501:1-620
+				Ss (block-head) 501:1
+					Output Options (text) 501:4
+				Ss (block-body) 501:1-620
+					Bl (block) -tag -width [ [6n] ] *502:1-620
+						Bl (block-head) 502:1
+						Bl (block-body) 502:1-616
+							It (block) *503:1-520
+								It (block-head) 503:1
+									Ic (elem) 503:4
+										output (text) 503:7
+									Ar (elem) 503:14
+										filename (text) 503:17
+									| (text) 503:26
+									Cm (elem) 503:28
+										- (text) 503:31
+									| (text) 503:33
+									Cm (elem) 503:35
+										PROMPT (text) 503:38
+								It (block-body) 503:1-520
+									Sets the filename of the output PDF file. (text) *504:0
+									The output filename may not be the same as an input filename. (text) *505:0
+									Use (text) *506:0
+									Cm (elem) *507:1
+										- (text) 507:4
+									to output to stdout. When using the (text) *508:0
+									Ic (elem) *509:1
+										dump_data (text) 509:4
+									operation, use (text) *510:0
+									Ic (elem) *511:1
+										output (text) 511:4
+									to set the name of the output data file. When using the (text) *512:0
+									Ic (elem) *513:1
+										unpack_files (text) 513:4
+									operation, use (text) *514:0
+									Ic (elem) *515:1
+										output (text) 515:4
+									to set the name of an output directory. When using the (text) *516:0
+									Ic (elem) *517:1
+										burst (text) 517:4
+									operation, you can use (text) *518:0
+									Ic (elem) *519:1
+										output (text) 519:4
+									to control the resulting PDF page filenames (see above). (text) *520:0
+							It (block) *521:1-525
+								It (block-head) 521:1
+									Ic (elem) 521:4
+										encrypt_40bit (text) 521:7
+									| (text) 521:21
+									Ic (elem) 521:4
+										encrypt_128bit (text) 521:23
+								It (block-body) 521:1-525
+									If an output PDF user or owner password is given, (text) *522:0
+									output PDF encryption strength defaults to 128 bits. (text) *523:0
+									This can be overridden by specifying (text) *524:0
+									Ic (elem) *525:1
+										encrypt_40bit (text) 525:4
+									. (text) 525:18
+							It (block) *526:1-550
+								It (block-head) 526:1
+									Ic (elem) 526:4
+										allow (text) 526:7
+									Ar (elem) 526:13
+										permissions (text) 526:16
+								It (block-body) 526:1-550
+									Permissions are applied to the output PDF file (text) *527:0
+									only if an encryption strength is specified (text) *528:0
+									or an owner or user password is given. (text) *529:0
+									If permissions are not specified, they default to (text) *530:0
+									Dq (block) *531:1
+										Dq (block-head) 531:1
+										Dq (block-body) 531:1
+											none (text) 531:4
+										, (text) 531:9
+									which means all of the following features are disabled. (text) *532:0
+									The (text) *533:0
+									Ar (elem) *534:1
+										permissions (text) 534:4
+									section may include one or more of the following features: (text) *535:0
+									Cm (elem) *536:1
+										Printing (text) 536:4
+									(top quality printing), (text) *537:0
+									Cm (elem) *538:1
+										DegradedPrinting (text) 538:4
+									(lower quality printing), (text) *539:0
+									Cm (elem) *540:1
+										ModifyContents (text) 540:4
+									(also allows Assembly), (text) *541:0
+									Cm (elem) *542:1
+										Assembly (text) 542:4
+									Cm (elem) *543:1
+										CopyContents (text) 543:4
+									(also allows ScreenReaders), (text) *544:0
+									Cm (elem) *545:1
+										ScreenReaders (text) 545:4
+									Cm (elem) *546:1
+										ModifyAnnotations (text) 546:4
+									(also allows FillIn), (text) *547:0
+									Cm (elem) *548:1
+										FillIn (text) 548:4
+									Cm (elem) *549:1
+										AllFeatures (text) 549:4
+									(allows the user to perform all of the above, and top quality printing). (text) *550:0
+							It (block) *551:1
+								It (block-head) 551:1
+									Ic (elem) 551:4
+										owner_pw (text) 551:7
+									Ar (elem) 551:16
+										password (text) 551:19
+									| (text) 551:28
+									Cm (elem) 551:30
+										PROMPT (text) 551:33
+								It (block-body) 551:1
+							It (block) *552:1-555
+								It (block-head) 552:1
+									Ic (elem) 552:4
+										user_pw (text) 552:7
+									Ar (elem) 552:15
+										password (text) 552:18
+									| (text) 552:27
+									Cm (elem) 552:29
+										PROMPT (text) 552:32
+								It (block-body) 552:1-555
+									If an encryption strength is given but no passwords are supplied, then (text) *553:0
+									the owner and user passwords remain empty, which means that the resulting (text) *554:0
+									PDF may be opened and its security parameters altered by anybody. (text) *555:0
+							It (block) *556:1-562
+								It (block-head) 556:1
+									Ic (elem) 556:4
+										compress (text) 556:7
+									| (text) 556:16
+									Ic (elem) 556:18
+										uncompress (text) 556:21
+								It (block-body) 556:1-562
+									These are only useful when you want to edit PDF code in a text editor. (text) *557:0
+									Remove PDF page stream compression by applying the (text) *558:0
+									Ic (elem) *559:1
+										uncompress (text) 559:4
+									filter. Use the (text) *560:0
+									Ic (elem) *561:1
+										compress (text) 561:4
+									filter to restore compression. (text) *562:0
+							It (block) *563:1-568
+								It (block-head) 563:1
+									Ic (elem) 563:4
+										flatten (text) 563:7
+								It (block-body) 563:1-568
+									Use this option to merge an input PDF's interactive form fields (text) *564:0
+									(and their data) with the PDF's pages. Only one input PDF may be given. (text) *565:0
+									Sometimes used with the (text) *566:0
+									Ic (elem) *567:1
+										fill_form (text) 567:4
+									operation. (text) *568:0
+							It (block) *569:1-577
+								It (block-head) 569:1
+									Ic (elem) 569:4
+										keep_first_id (text) 569:7
+									| (text) 569:21
+									Ic (elem) 569:4
+										keep_final_id (text) 569:23
+								It (block-body) 569:1-577
+									When combining pages from multiple PDFs, use one of these options (text) *570:0
+									to copy the document ID from either the first or final input document (text) *571:0
+									into the new output PDF. Otherwise (text) *572:0
+									Nm (elem) *573:1
+									creates a new document ID for the output PDF. (text) *574:0
+									When no operation is given, (text) *575:0
+									Nm (elem) *576:1
+									always uses the ID from the (single) input PDF. (text) *577:0
+							It (block) *578:1-593
+								It (block-head) 578:1
+									Ic (elem) 578:4
+										drop_xfa (text) 578:7
+								It (block-body) 578:1-593
+									If the input PDF is a form created using Acrobat 7 or Adobe Designer, (text) *579:0
+									then it probably has XFA data. Filling such a form using (text) *580:0
+									Nm (elem) *581:1
+									yields a PDF with data that fails to display in Acrobat 7 (and 6?). (text) *582:0
+									The workaround is to remove the form's XFA data, (text) *583:0
+									either before you fill the form using (text) *584:0
+									Nm (elem) *585:1
+									or at the time you fill the form. Using this option causes (text) *586:0
+									Nm (elem) *587:1
+									to omit the XFA data from the output PDF form. (text) *588:0
+									Pp (elem) *589:1
+									This option is only useful when running (text) *590:0
+									Nm (elem) *591:1
+									on a single input PDF. When assembling a PDF from multiple inputs, (text) *592:0
+									any XFA data in the input is automatically omitted. (text) *593:0
+							It (block) *594:1-612
+								It (block-head) 594:1
+									Ic (elem) 594:4
+										dont_ask (text) 594:7
+									| (text) 594:16
+									Ic (elem) 594:4
+										do_ask (text) 594:18
+								It (block-body) 594:1-612
+									Depending on compiletime settings, (text) *595:0
+									Nm (elem) *602:1
+									might prompt you for further input when it encounters a problem, (text) *603:0
+									such as a bad password. Override this default behavior by adding (text) *604:0
+									Ic (elem) *605:1
+										dont_ask (text) 605:4
+									or (text) *606:0
+									Ic (elem) *607:1
+										do_ask (text) 607:4
+									. (text) 607:11
+									When running in (text) *608:0
+									Ic (elem) *609:1
+										dont_ask (text) 609:4
+									mode, (text) *610:0
+									Nm (elem) *611:1
+									will overwrite output files without notice. (text) *612:0
+							It (block) *613:1-616
+								It (block-head) 613:1
+									Ic (elem) 613:4
+										verbose (text) 613:7
+								It (block-body) 613:1-616
+									By default, pdftk runs quietly. Append (text) *614:0
+									Ic (elem) *615:1
+										verbose (text) 615:4
+									to the end and it will speak up. (text) *616:0
+	Sh (block) *621:1-693
+		Sh (block-head) 621:1
+			EXAMPLES (text) 621:4
+		Sh (block-body) 621:1-693
+			Collate scanned pages (text) *622:0
+			Dl (block) *623:1
+				Dl (block-head) 623:1
+				Dl (block-body) 623:1
+					pdftk A=even.pdf B=odd.pdf shuffle A B output collated.pdf (text) 623:4
+			Pp (elem) *624:1
+			or if (text) *625:0
+			Pa (elem) *626:1
+				odd.pdf (text) 626:4
+			is in reverse order: (text) *627:0
+			Dl (block) *628:1
+				Dl (block-head) 628:1
+				Dl (block-body) 628:1
+					pdftk A=even.pdf B=odd.pdf shuffle A Bend-1 output collated.pdf (text) 628:4
+			Pp (elem) *629:1
+			Decrypt a PDF: (text) *630:0
+			Dl (block) *631:1
+				Dl (block-head) 631:1
+				Dl (block-body) 631:1
+					pdftk secured.pdf input_pw foopass output unsecured.pdf (text) 631:4
+			Pp (elem) *632:1
+			Encrypt a PDF using 128-bit strength, withhold all permissions: (text) *633:0
+			Dl (block) *634:1
+				Dl (block-head) 634:1
+				Dl (block-body) 634:1
+					pdftk in.pdf output out.pdf owner_pw foopass (text) 634:4
+			Pp (elem) *635:1
+			Same as above, except a user password (text) *636:0
+			is also used in the output PDF: (text) *637:0
+			Dl (block) *638:1
+				Dl (block-head) 638:1
+				Dl (block-body) 638:1
+					pdftk in.pdf output out.pdf owner_pw foo user_pw baz (text) 638:4
+			Pp (elem) *639:1
+			Same as above, except printing is allowed (once the PDF is open): (text) *640:0
+			Dl (block) *641:1-642
+				Dl (block-head) 641:1
+				Dl (block-body) 641:1
+					pdftk in.pdf output out.pdf owner_pw foo user_pw baz allow Printing (text) 641:4
+			Pp (elem) *643:1
+			Join (text) *644:0
+			Pa (elem) *645:1
+				in1.pdf (text) 645:4
+			and (text) *646:0
+			Pa (elem) *647:1
+				in2.pdf (text) 647:4
+			into (text) *648:0
+			Pa (elem) *649:1
+				out.pdf (text) 649:4
+			: (text) 649:12
+			Dl (block) *650:1
+				Dl (block-head) 650:1
+				Dl (block-body) 650:1
+					pdftk in1.pdf in2.pdf cat output out.pdf (text) 650:4
+			or (using handles): (text) *651:0
+			Dl (block) *652:1
+				Dl (block-head) 652:1
+				Dl (block-body) 652:1
+					pdftk A=in1.pdf B=in2.pdf cat A B output out.pdf (text) 652:4
+			or (using wildcards): (text) *653:0
+			Dl (block) *654:1
+				Dl (block-head) 654:1
+				Dl (block-body) 654:1
+					pdftk in?.pdf cat output out.pdf (text) 654:4
+			Pp (elem) *655:1
+			Remove page 13 from (text) *656:0
+			Pa (elem) *657:1
+				in.pdf (text) 657:4
+			to create (text) *658:0
+			Pa (elem) *659:1
+				out.pdf (text) 659:4
+			Ns (elem) 659:15
+			: (text) 659:15
+			Dl (block) *660:1
+				Dl (block-head) 660:1
+				Dl (block-body) 660:1
+					pdftk in.pdf cat 1-12 14-end output out.pdf (text) 660:4
+			Pp (elem) *661:1
+			Apply 40-bit encryption to output, revoking all permissions (the default). (text) *662:0
+			Set the owner password to (text) *663:0
+			Dq (block) *664:1
+				Dq (block-head) 664:1
+				Dq (block-body) 664:1
+					foo (text) 664:4
+				: (text) 664:11
+			Ns (elem) 664:11
+			Dl (block) *665:1
+				Dl (block-head) 665:1
+				Dl (block-body) 665:1
+					pdftk 1.pdf 2.pdf cat output out.pdf encrypt_40bit owner_pw foo (text) 665:4
+			Pp (elem) *666:1
+			Join two files, one of which requires the password (text) *667:0
+			Dq (block) *668:1
+				Dq (block-head) 668:1
+				Dq (block-body) 668:1
+					foopass (text) 668:4
+				. (text) 668:12
+			The output is not encrypted. (text) *669:0
+			Dl (block) *670:1
+				Dl (block-head) 670:1
+				Dl (block-body) 670:1
+					pdftk A=secured.pdf other.pdf input_pw A=foopass cat output out.pdf (text) 670:4
+			Pp (elem) *671:1
+			Uncompress PDF page streams for editing the PDF in a text editor: (text) *672:0
+			Dl (block) *673:1
+				Dl (block-head) 673:1
+				Dl (block-body) 673:1
+					pdftk doc.pdf output uncompressed.pdf uncompress (text) 673:4
+			Pp (elem) *674:1
+			Repair a PDF's corrupted XREF table and stream lengths, if possible: (text) *675:0
+			Dl (block) *676:1
+				Dl (block-head) 676:1
+				Dl (block-body) 676:1
+					pdf broken.pdf output fixed.pdf (text) 676:4
+			Pp (elem) *677:1
+			Burst a single PDF document into pages and dump its data to (text) *678:0
+			Pa (elem) *679:1
+				doc_data.txt (text) 679:4
+			Ns (elem) 679:20
+			: (text) 679:20
+			Dl (block) *680:1
+				Dl (block-head) 680:1
+				Dl (block-body) 680:1
+					pdftk in.pdf burst (text) 680:4
+			Pp (elem) *681:1
+			Burst a single PDF document into encrypted pages. Allow lowquality printing: (text) *682:0
+			Dl (block) *683:1
+				Dl (block-head) 683:1
+				Dl (block-body) 683:1
+					pdftk in.pdf burst owner_pw foopass allow DegradedPrinting (text) 683:4
+			Pp (elem) *684:1
+			Write a report on PDF document metadata and bookmarks to (text) *685:0
+			Pa (elem) *686:1
+				report.txt (text) 686:4
+			Ns (elem) 686:18
+			: (text) 686:18
+			Dl (block) *687:1
+				Dl (block-head) 687:1
+				Dl (block-body) 687:1
+					pdftk in.pdf dump_data output report.txt (text) 687:4
+			Pp (elem) *688:1
+			Rotate the first PDF page 90 degrees clockwise (text) *689:0
+			Dl (block) *690:1
+				Dl (block-head) 690:1
+				Dl (block-body) 690:1
+					pdftk in.pdf cat 1E 2-end output out.pdf (text) 690:4
+			Pp (elem) *691:1
+			Rotate an entire PDF document 180 degrees (text) *692:0
+			Dl (block) *693:1
+				Dl (block-head) 693:1
+				Dl (block-body) 693:1
+					pdftk in.pdf cat 1-endS output out.pdf (text) 693:4
+	Sh (block) *694:1-702
+		Sh (block-head) 694:1
+			SEE ALSO (text) 694:4
+		Sh (block-body) 694:1-702
+			Lk (elem) *695:1
+				http://www.pdftk.com (text) 695:4
+				PDFtk's homepage (text) 695:25
+			Rs (block) *696:1-702
+				Rs (block-head) 696:1
+				Rs (block-body) 696:1-700
+					%A (elem) *697:1
+						Sid Steward (text) 697:4
+					%B (elem) *698:1
+						PDF Hacks (text) 698:4
+					%I (elem) *699:1
+						O'Reilly (text) 699:4
+					%D (elem) *700:1
+						2004 (text) 700:4
+	Sh (block) *703:1
+		Sh (block-head) 703:1
+			AUTHOR (text) 703:4
+		Sh (block-body) 703:1
+			An (elem) *704:1
+				Sid Steward (text) 704:4
+			Aq (block) 704:16
+				Aq (block-head) 704:16
+				Aq (block-body) 704:16
+					Mt (elem) 704:19
+						sid.steward@pdflabs.com (text) 704:22
+			maintains (text) *705:0
+			Nm (elem) *706:1
+				pdftk (text) 706:4
+			. (text) 706:10
+			Please email him with questions or bug reports. (text) *707:0
+			Include pdftk in the subject line to ensure successful delivery. (text) *708:0
+			Thank you. (text) *709:0

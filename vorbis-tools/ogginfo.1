@@ -1,0 +1,54 @@
+.Dd "June 20, 2014"
+.Dt OGGINFO 1
+.Os
+.Sh NAME
+.Nm ogginfo
+.Nd display information about Ogg files and check their validity
+.Sh SYNOPSIS
+.Nm
+.Op Fl q
+.Op Fl v
+.Op Fl h
+.Ar
+.Sh DESCRIPTION
+.Nm
+reads one or more Ogg files and prints information about stream contents
+(including chained and/or multiplexed streams) to standard output.
+It will detect (but not correct) a wide range of common defects,
+with many additional checks specifically for Ogg Vorbis streams.
+.Pp
+For all stream types,
+.Nm
+will print the filename being processed, the stream serial numbers,
+and various common error conditions.
+.Pp
+For
+.Em Vorbis
+streams, information including the version used for encoding,
+the sample rate and number of channels, the bitrate and playback length,
+and the contents of the comment header are printed.
+.Pp
+Similarly, for
+.Em Theora
+streams, basic information about the video is provided,
+including frame rate, aspect ratio, bitrate, length, and the comment header.
+.Pp
+The options are as follows:
+.Pp
+.Bl -tag -width XX -compact
+.It Fl h
+Show a help and usage message.
+.It Fl q
+Quiet mode.
+When specified once, it will remove the detailed informative messages;
+twice will remove warnings as well.
+.It Fl v
+Verbose mode. Currently, this does nothing.
+.El
+.Sh SEE ALSO
+.Xr vorbiscomment 1 ,
+.Xr ogg123 1 ,
+.Xr oggdec 1 ,
+.Xr oggenc 1 .
+.Sh AUTHORS
+.An Michael Smith Aq Mt msmith@xiph.org

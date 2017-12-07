@@ -1,0 +1,914 @@
+<!-- Creator     : groff version 1.22.3 -->
+<!-- CreationDate: Tue Oct 27 13:25:57 2015 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title></title>
+</head>
+<body>
+
+<hr>
+
+
+<p>DJVIEW4(1) General Commands Manual DJVIEW4(1)</p>
+
+<p style="margin-top: 1em"><b>NAME</b></p>
+
+<p style="margin-left:6%;"><b>djview4</b> &ndash;
+standalone DjVu viewer</p>
+
+<p style="margin-top: 1em"><b>SYNOPSIS</b></p>
+
+<p style="margin-left:17%;"><b>djview4</b> [options]
+[<i>file&nbsp;...</i>]</p>
+
+<p style="margin-top: 1em"><b>DESCRIPTION</b></p>
+
+<p style="margin-left:6%;"><b>djview4</b> is a standalone
+viewer for DjVu files. Features include navigating
+documents, zooming and panning page images, producing and
+displaying thumbnails, displaying document outlines,
+searching documents for particular words in the hidden text
+layer, copying hidden text to the clipboard, saving pages
+and documents as bundled or indirect multi-page files, and
+printing pages and documents. The viewer can simultaneously
+display several pages using a side-by-side or a continuous
+layout.</p>
+
+<p style="margin-left:6%; margin-top: 1em">This program can
+run as a standalone program or as a slave process for the
+DjVu browser plugin nsdejavu(1). When running as a
+standalone program, the command line argument can be:</p>
+
+<p style="margin-top: 1em"><b>&bull;</b></p>
+
+<p style="margin-left:12%;">a filename of a valid DjVu
+document</p>
+
+<p style="margin-top: 1em"><b>&bull;</b></p>
+
+<p style="margin-left:12%;">a URL of a local or remote DjVu
+document of the form</p>
+
+
+<p style="margin-left:19%;"><b>http://.../file.djvu?djvuopts&amp;keyword=value</b></p>
+
+<p style="margin-left:12%;">The optional
+&lsquo;&lsquo;djvuopts&rsquo;&rsquo; can specify various
+options using a syntax similar to that of CGI arguments.
+This is useful for a browser plugin as there are no command
+line arguments. In the case of a standalone viewer, the
+options can be specified as command line arguments. Browsing
+remote DjVu documents with the standalone viewer is less
+efficient than using the browser plugin: the standalone
+viewer does not benefit from the browser caching strategies
+and proxy settings. Proxy settings for the standalone viewer
+can be set independently with the preferences dialog.</p>
+
+<p style="margin-left:6%; margin-top: 1em">An extensive
+list of options are recognized and described in nsdejavu(1).
+Most options can be specified as command line arguments to
+the standalone viewer, starting with the customary dash
+character, or using the syntax of CGI arguments in the
+document URL. Some options however are only meaningful as
+command line arguments; other options are only recognized
+when running the X11 version of <b>djview4</b>.</p>
+
+<p style="margin-left:6%; margin-top: 1em">The command line
+options are as follows:</p>
+
+<p style="margin-top: 1em"><b>&minus;help</b></p>
+
+<p style="margin-left:17%; margin-top: 1em">Display a brief
+help message and exit.</p>
+
+<p style="margin-top: 1em"><b>&minus;verbose</b></p>
+
+<p style="margin-left:17%;">Prints informational messages
+on the console. This option is very useful because it
+displays messages about unrecognized constructs in the DjVu
+annotation and hyperlink layers.</p>
+
+<p style="margin-top: 1em"><b>&minus;fs</b>,
+<b>&minus;fullscreen</b></p>
+
+<p style="margin-left:17%;">Start <b>djview4</b> in full
+screen mode. Use the ESC key to exit the full screen
+mode.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;slideshow</b>[=<i>arg</i>]</p>
+
+<p style="margin-left:17%;">Start <b>djview4</b> in slide
+show mode. The optional numerical argument <i>arg</i>
+specifies the number of seconds before turning each page.
+Use the ESC key to exit the slide show mode.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;style</b>=<i>stylename</i></p>
+
+<p style="margin-left:17%;">Specify the graphical user
+interface style. The recognized values of <i>stylename</i>
+depend on the installed version of the Qt toolkit. Common
+style names include <b>cde</b>, <b>motif</b>,
+<b>plastique</b>, <b>platinum</b>, and <b>windows</b>.</p>
+
+<p style="margin-left:6%; margin-top: 1em">The following
+command line options are recognized by the X11 version of
+<b>djview4</b>. Unlike most <b>djview4</b> options, the X11
+options that demand an argument do not use the
+&lsquo;=&rsquo; character to introduce their argument.</p>
+
+<p style="margin-top: 1em"><b>&minus;display</b>
+<i>displayname</i></p>
+
+<p style="margin-left:17%;">Let <b>djview4</b> windows
+appear on the X11 display <i>displayname</i>.</p>
+
+<p style="margin-top: 1em"><b>&minus;geometry</b>
+<i>W</i>x<i>H</i>+<i>X</i>+<i>Y</i></p>
+
+<p style="margin-left:17%;">Specify the initial size and
+position of the first window using the traditional X11
+geometry specification syntax. The integer arguments
+<i>W</i> and <i>H</i> represent the initial window width and
+height. The numerical arguments <i>X</i> and <i>Y</i>
+indicate the window position relative to the top left corner
+of the screen.</p>
+
+<p style="margin-top: 1em"><b>&minus;name</b>
+<i>name</i></p>
+
+<p style="margin-left:17%;">Set the application name.</p>
+
+<p style="margin-top: 1em"><b>&minus;title</b>
+<i>title</i></p>
+
+<p style="margin-left:17%;">Set the title of the first
+window.</p>
+
+<p style="margin-top: 1em"><b>&minus;fn</b>
+<i>fontname</i>, <b>&minus;font</b> <i>fontname</i></p>
+
+<p style="margin-left:17%;">Specify the default font used
+for buttons and menus. The font should be specified using a
+X logical font description string.</p>
+
+<p style="margin-top: 1em"><b>&minus;bg</b> <i>color</i>,
+<b>&minus;background</b> <i>color</i></p>
+
+<p style="margin-left:17%;">Specify the default background
+color used for interface elements. The color should be given
+as a standard X11 color name.</p>
+
+<p style="margin-top: 1em"><b>&minus;fg</b> <i>color</i>,
+<b>&minus;foreground</b> <i>color</i></p>
+
+<p style="margin-left:17%;">Specify the default foreground
+color used for interface elements. The color should be given
+as a standard X11 color name.</p>
+
+<p style="margin-top: 1em"><b>&minus;btn</b>
+<i>color</i></p>
+
+<p style="margin-left:17%;">Specify the default button
+color. The color should be given as a standard X11 color
+name.</p>
+
+<p style="margin-top: 1em"><b>&minus;ncols</b>
+<i>count</i></p>
+
+<p style="margin-left:17%;">Limit the number of colors
+allocated on a 8 bit display. The default color cube
+contains 216 distinct colors.</p>
+
+<p style="margin-top: 1em"><b>&minus;cmap</b></p>
+
+<p style="margin-left:17%; margin-top: 1em">Force the
+allocation of a private color map on a 8-bit display. This
+might increase the color quality but cause flashing when the
+viewer window gets activated.</p>
+
+<p style="margin-left:6%; margin-top: 1em">The following
+options can be specified as command line options or can be
+passed by augmenting the document URL as described above.
+The keywords are derived from the option names by removing
+the initial dashes.</p>
+
+<p style="margin-top: 1em"><b>&minus;page</b>
+<i>pagename</i></p>
+
+<p style="margin-left:17%;">Display a specific document
+page. The viewer first searches a page whose identifier
+matches the argument <i>pagename</i>. Otherwise, if
+<i>pagename</i> is a number preceded by either
+&lsquo;+&rsquo; or &lsquo;-&rsquo;, the viewer performs a
+displacement relative to the current page. Otherwise,
+starting from the current page and wrapping around it
+searches for a page whose title matches <i>pagename</i>.
+Otherwise, if <i>pagename</i> is numerical, it is
+interpreted as an ordinal page number. Otherwise, and
+finally, the viewer searches a page whose name matches
+<i>pagename</i>.</p>
+
+<p style="margin-top: 1em"><b>&minus;pageno</b>
+<i>pagenumber</i></p>
+
+<p style="margin-left:17%;">The page searching algorithm
+for <b>&minus;page</b> can cause ambiguities when page
+titles can be interpreted as numbers. The <i>pagenumber</i>
+argument is always interpreted as an ordinal page number.
+This option is less portable than <b>&minus;page</b>,
+because it is not recognized by earlier versions of the djvu
+plugin. When using this option is necessary, it is advisable
+to use both the <b>&minus;page</b> and <b>&minus;pageno</b>
+options.</p>
+
+<p style="margin-top: 1em"><b>&minus;zoom</b>
+<i>zoomfactor</i></p>
+
+<p style="margin-left:17%;">Specify the initial zoom
+factor. Unless the toolbar, pop-up menu and keyboard are
+disabled, the user will be able to change the zoom factor.
+Legal values of <i>zoomfactor</i> are:</p>
+
+<p style="margin-top: 1em"><b>number</b></p>
+
+<p style="margin-left:28%;">Magnification factor in the
+range from 10% to 999%.</p>
+
+<p><b>one2one</b></p>
+
+<p style="margin-left:28%;">Select the
+&lsquo;&lsquo;one-to-one&rsquo;&rsquo; mode.</p>
+
+<p><b>width</b></p>
+
+<p style="margin-left:28%;">Select the &lsquo;&lsquo;fit
+width&rsquo;&rsquo; mode.</p>
+
+<p><b>page</b></p>
+
+<p style="margin-left:28%;">Select the &lsquo;&lsquo;fit
+page&rsquo;&rsquo; mode.</p>
+
+<p><b>stretch</b></p>
+
+<p style="margin-left:28%;">Stretch the image to the plugin
+window size.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;showposition</b>=<i>px</i>,<i>py</i></p>
+
+<p style="margin-left:17%;">Specify a point in the current
+page that should be as close as possible to the center of
+the window. The horizontal and vertical positions <i>px</i>
+and <i>py</i> in the current page are given as fractions in
+the range from 0 to 1. For instance,
+&lsquo;&lsquo;0,0&rsquo;&rsquo; designates the upper left
+corner of the page, &lsquo;&lsquo;0.5,0.5&rsquo;&rsquo; is
+the center, and &lsquo;&lsquo;1,1&rsquo;&rsquo; is the lower
+right corner.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;mode</b>=<i>modespec</i></p>
+
+<p style="margin-left:17%;">Specify the initial display
+mode. Unless the toolbar and pop-up menu are disabled, the
+user will be able to change it. Legal values of
+<i>modespec</i> are:</p>
+
+<p style="margin-top: 1em"><b>color</b></p>
+
+<p style="margin-left:26%;">Display the color image.</p>
+
+<p><b>bw</b></p>
+
+<p style="margin-left:26%;">Display the foreground mask
+only.</p>
+
+<p><b>fore</b></p>
+
+<p style="margin-left:26%;">Display the foreground
+only.</p>
+
+<p><b>back</b></p>
+
+<p style="margin-left:26%;">Display the background
+only.</p>
+
+<p><b>text</b></p>
+
+<p style="margin-left:26%;">Overlay the hidden text over
+the color image.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;hor_align</b>=<i>keyword</i>,
+<b>&minus;halign</b>=<i>keyword</i></p>
+
+<p style="margin-left:17%;">Specify the horizontal position
+of the page in the viewer window. This does not specify what
+part of the page will be shown, but rather how margins will
+be laid out around the page in the plugin window. Legal
+values of <i>keyword</i> are <b>left</b>, <b>center</b>, and
+<b>right</b>.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;ver_align</b>=<i>keyword</i>,
+<b>&minus;valign</b>=<i>keyword</i></p>
+
+<p style="margin-left:17%;">Specify the vertical position
+of the page in the viewer window. This does not specify what
+part of the page will be shown, but rather how margins will
+be laid out around the page in the plugin window. Legal
+values of <i>keyword</i> are <b>top</b>, <b>center</b>, and
+<b>bottom</b>.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;cache</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Enable or disable the caching
+of fully decoded pages of the document. Caching is on by
+default for documents whose URL contains a <i>djvu</i> or
+<i>djv</i> extension.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;continuous</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Enable or disable the
+continuous layout of multipage documents.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;sidebyside</b>=<b>yes</b>|<b>no</b>,
+<b>&minus;side_by_side</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Enable or disable the
+side-by-side layout of multipage documents.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;coverpage</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Specify whether the cover page
+must be displayed alone when multipage documents are shown
+in side-by-side layout.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;righttoleft</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Specify whether pages should be
+arranged right-to-left when multipage documents are shown in
+side-by-side layout.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;layout</b>=<i>keyword</i>[,<i>keyword</i>[,...]]</p>
+
+<p style="margin-left:17%;">Specify the layout settings
+using a single list of comma-separated keywords. The
+following keywords are recognized:</p>
+
+<p style="margin-top: 1em"><b>single</b></p>
+
+<p style="margin-left:38%;">Disable the side-by-side and
+continuous modes.</p>
+
+<p><b>double</b></p>
+
+<p style="margin-left:38%;">Enable the side-by-side
+mode.</p>
+
+<p><b>continuous</b></p>
+
+<p style="margin-left:38%;">Enable the continuous mode.</p>
+
+<p><b>cover</b>, <b>nocover</b></p>
+
+<p style="margin-left:38%;">First page treatment in
+side-by-side mode.</p>
+
+<p><b>ltor</b>, <b>rtol</b></p>
+
+<p style="margin-left:38%;">Layout direction for
+side-by-side mode.</p>
+
+<p><b>gap</b>, <b>nogap</b></p>
+
+<p style="margin-left:38%;">Specify whether there is a gap
+between pages.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;scrollbars</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Enable or disable the presence
+of scroll bars when the full image size exceeds the plugin
+window size. The default is yes.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;frame</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Enable or disable the display
+of a thin frame and shadow around the DjVu images. Frames
+are enabled by default.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;background</b>=<i>color</i></p>
+
+<p style="margin-left:17%;">Specify the <i>color</i> of the
+background border displayed around the document in
+hexadecimal as either <i>RRGGBB</i> or #<i>RRGGBB</i>.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;toolbar</b>=<i>keyword</i>[(,|+|-)<i>keyword</i>[...]]</p>
+
+<p style="margin-left:17%;">Controls the appearance and the
+contents of the toolbar. The argument is composed of a
+number of keywords separated by characters comma, plus or
+minus. The appearance of the toolbar is controlled by
+keywords placed before the first plus or minus. The
+following keywords are recognized in this context:</p>
+
+<p style="margin-top: 1em"><b>no</b></p>
+
+<p style="margin-left:27%;">Disable toolbar.</p>
+
+<p><b>always</b></p>
+
+<p style="margin-left:27%;">Displays the toolbar.</p>
+
+<p><b>auto</b></p>
+
+<p style="margin-left:27%;">Enable toolbar autohide mode
+(not implemented).</p>
+
+<p><b>top</b></p>
+
+<p style="margin-left:27%;">Place toolbar along the top
+edge.</p>
+
+<p><b>bottom</b></p>
+
+<p style="margin-left:27%;">Place toolbar along the bottom
+edge.</p>
+
+<p style="margin-left:17%; margin-top: 1em">The content of
+the toolbar is controlled by keywords placed after the first
+plus or minus. Each keyword adds (after a plus) or removes
+(after a minus) a particular toolbar button or group of
+buttons. The initial content of the toolbar is determined by
+the first plus or minus. When this is a plus, the toolbar is
+initially empty. When this is a minus, the toolbar initially
+contains the default selection of buttons. The following
+keywords are recognized:</p>
+
+<p style="margin-top: 1em"><b>modecombo</b></p>
+
+<p style="margin-left:31%;">the display mode selection
+tool.</p>
+
+<p><b>zoomcombo</b></p>
+
+<p style="margin-left:31%;">the zoom selection tool.</p>
+
+<p><b>zoom</b></p>
+
+<p style="margin-left:31%;">the zoom buttons.</p>
+
+<p><b>select</b></p>
+
+<p style="margin-left:31%;">the selection button.</p>
+
+<p><b>rotate</b></p>
+
+<p style="margin-left:31%;">the image rotation buttons.</p>
+
+<p><b>find</b></p>
+
+<p style="margin-left:31%;">the text search button.</p>
+
+<p><b>new</b></p>
+
+<p style="margin-left:31%;">the new window button.</p>
+
+<p><b>open</b></p>
+
+<p style="margin-left:31%;">the open new document
+button.</p>
+
+<p><b>save</b></p>
+
+<p style="margin-left:31%;">the save button.</p>
+
+<p><b>print</b></p>
+
+<p style="margin-left:31%;">the print button.</p>
+
+<p><b>layout</b></p>
+
+<p style="margin-left:31%;">the page layout buttons.</p>
+
+<p><b>pagecombo</b></p>
+
+<p style="margin-left:31%;">the page selection tool.</p>
+
+<p><b>firstlast</b></p>
+
+<p style="margin-left:31%;">the first-page and last-page
+buttons.</p>
+
+<p><b>prevnext</b></p>
+
+<p style="margin-left:31%;">the previous- and next-page
+buttons.</p>
+
+<p><b>backforw</b></p>
+
+<p style="margin-left:31%;">the back and forward
+buttons.</p>
+
+<p><b>help</b></p>
+
+<p style="margin-left:31%;">the contextual help button.</p>
+
+<p style="margin-left:17%; margin-top: 1em">For the sake of
+backward compatibility, the keywords <b>fore</b>,
+<b>fore_button</b>, <b>back</b>, <b>back_button</b>,
+<b>bw</b>, <b>bw_button</b>, <b>color</b>, and
+<b>color_button</b> are interpreted as <b>modecombo</b>; the
+keyword <b>rescombo</b> is a synonym of <b>zoomcombo</b>;
+the keywords <b>pan</b>, <b>zoomsel</b>, and <b>textsel</b>
+are interpreted as <b>select</b>; and the keyword
+<b>doublepage</b> is interpreted as <b>layout</b>. All other
+keywords are ignored.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;menubar</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Enable or disable the presence
+of the menu bar located on top of the window.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;statusbar</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Enable or disable the presence
+of the status bar located at the bottom of the window.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;sidebar</b>=<i>keyword</i>[,<i>keyword</i>[,<i>...</i>]]</p>
+
+<p style="margin-left:17%;">Control the dockable panels.
+The argument is a comma separated list of keywords. A first
+group of keywords selects which panels are affected.
+Omitting these keywords selects all panels.</p>
+
+<p style="margin-top: 1em"><b>thumbnails</b></p>
+
+<p style="margin-left:42%;">the thumbnail panel.</p>
+
+<p><b>outline</b>, <b>bookmarks</b></p>
+
+<p style="margin-left:42%;">the outline panel.</p>
+
+<p><b>search</b>, <b>find</b></p>
+
+<p style="margin-left:42%;">the search panel.</p>
+
+<p style="margin-left:17%; margin-top: 1em">A second group
+of keywords then controls the visibility and the position of
+the selected panels.</p>
+
+<p style="margin-top: 1em"><b>yes</b>, <b>true</b></p>
+
+<p style="margin-left:42%;">Show the specified panels
+(default).</p>
+
+<p><b>no</b>, <b>false</b></p>
+
+<p style="margin-left:42%;">Hide the specified panels.</p>
+
+<p><b>left</b></p>
+
+<p style="margin-left:42%;">Dock specified panels on the
+left side.</p>
+
+<p><b>right</b></p>
+
+<p style="margin-left:42%;">Dock specified panels on the
+right side.</p>
+
+<p><b>top</b></p>
+
+<p style="margin-left:42%;">Dock specified panels on the
+top side.</p>
+
+<p><b>bottom</b></p>
+
+<p style="margin-left:42%;">Dock specified panels on the
+bottom side.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;thumbnails</b>=<i>keyword</i>[,<i>keyword</i>[,...]]</p>
+
+<p style="margin-left:17%;">Compatibility alias for
+<b>&minus;sidebar</b>=<b>thumbnails</b></p>
+
+
+<p style="margin-top: 1em"><b>&minus;outline</b>=<i>keyword</i>[,<i>keyword</i>[,...]]</p>
+
+<p style="margin-left:17%;">Compatibility alias for
+<b>&minus;sidebar</b>=<b>outline</b></p>
+
+
+<p style="margin-top: 1em"><b>&minus;menu</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Enable or disable the pop-up
+menu.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;keyboard</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Enable or disable the DjVu
+plugin keyboard shortcuts. The default is <b>yes</b>
+(enabled). Note that disabling the keyboard handling does
+not disable the shortcuts associated with active menus,
+visible toolbars and sidebars; see <b>&minus;menu</b>,
+<b>&minus;menubar</b>, <b>&minus;toolbar</b>, and
+<b>&minus;sidebar</b>.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;mouse</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Enable or disable mouse
+interaction for panning and selecting. The default is
+<b>yes</b> (enabled).</p>
+
+
+<p style="margin-top: 1em"><b>&minus;links</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Enable or disable hyper-links
+in the DjVu image. Hyper-links are enabled by default.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;highlight</b>=<i>x</i>,<i>y</i>,<i>w</i>,<i>h</i>[,<i>color</i>]</p>
+
+<p style="margin-left:17%;">Display a highlighted rectangle
+at the specified coordinates in the current page and with
+the specified color. The coordinates <i>x</i>, <i>y</i>,
+<i>w</i> and <i>h</i> are measured in document image
+coordinates (not screen coordinates). The origin is set at
+the bottom left corner of the image. Specify the
+<i>color</i> in hexadecimal as either <i>RRGGBB</i> or
+#<i>RRGGBB</i>. Multiple highlighted zones can be specified
+and can be interspersed with multiple <b>&minus;page</b>
+options.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;find</b>=<i>string</i></p>
+
+<p style="margin-left:17%;">Highlight occurrences of the
+given <i>string</i>. This option works when the document
+contains a hidden text layer. It can be used in conjunction
+with <b>&minus;sidebar</b>=<b>find</b> to display the text
+searching interface. The <i>string</i> can be terminated by
+a slash (&lsquo;/&rsquo;) followed by letters specifying
+search options. The following letters are recognized:</p>
+
+<p style="margin-top: 1em"><b>c</b></p>
+
+<p style="margin-left:22%;">Case-sensitive search.</p>
+
+<p><b>C</b></p>
+
+<p style="margin-left:22%;">Case-insensitive search
+(default).</p>
+
+<p><b>w</b></p>
+
+<p style="margin-left:22%;">Search hits start on word
+boundaries (default).</p>
+
+<p><b>W</b></p>
+
+<p style="margin-left:22%;">Ignore word boundaries.</p>
+
+<p><b>r</b></p>
+
+<p style="margin-left:22%;">Regular expression search.</p>
+
+<p><b>R</b></p>
+
+<p style="margin-left:22%;">String search (default).</p>
+
+
+<p style="margin-top: 1em"><b>&minus;rotate</b>=<b>0</b>|<b>90</b>|<b>180</b>|<b>270</b></p>
+
+<p style="margin-left:17%;">Rotate the image
+counter-clockwise by the specified angle.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;print</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Enable or disable printing the
+DjVu document. Printing is enabled by default.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;save</b>=<b>yes</b>|<b>no</b></p>
+
+<p style="margin-left:17%;">Enable or disable saving the
+DjVu document. Saving is enabled by default.</p>
+
+<p style="margin-top: 1em"><b>&minus;passive</b></p>
+
+<p style="margin-left:17%;">Cause the DjVu image to be
+displayed in a manner similar to an ordinary web image. The
+default zoom factor is changed to <b>page</b>. The toolbar,
+the status bar, the scrollbars, the menus, and the keyboard
+shortcuts are disabled.</p>
+
+
+<p style="margin-top: 1em"><b>&minus;passivestretch</b></p>
+
+<p style="margin-left:17%;">Cause the DjVu image to be
+displayed in a manner similar to an ordinary web image. The
+default zoom factor is changed to <b>stretch</b>. The
+toolbar, the status bar, the scrollbars, the menus, and the
+keyboard shortcuts are disabled.</p>
+
+<p style="margin-top: 1em"><b>&minus;nomenu</b>,
+<b>&minus;notoolbar</b>, <b>&minus;noscrollbars</b></p>
+
+<p style="margin-left:17%;">These options were recognized
+by some versions of the DjVu viewers and are honored for the
+sake of backward compatibility. A warning message is printed
+when <b>&minus;verbose</b> is active.</p>
+
+<p style="margin-top: 1em"><b>&minus;logo</b>,
+<b>&minus;textsel</b>, <b>&minus;search</b></p>
+
+<p style="margin-left:17%;">These options were recognized
+by some versions of the DjVu viewers but are currently not
+implemented by <b>djview4</b>. A warning message is printed
+when <b>&minus;verbose</b> is active.</p>
+
+<p style="margin-left:6%; margin-top: 1em"><b>Usage</b>
+<br>
+Most features can be accessed using the menus, the toolbar,
+the side bar or the pop-up menu shown when the right mouse
+button is pressed over a DjVu image. Detailled help can be
+accessed by clicking the contextual help icon from the
+toolbar and then clicking on various section of the djview
+user interface. The following table lists some useful key
+combinations recognized when the djvu document is
+active:</p>
+
+<p style="margin-top: 1em"><b>SHIFT+F1</b></p>
+
+<p style="margin-left:36%;">Activate the contextual
+help.</p>
+
+<p><b>1</b>, <b>2</b>, <b>3</b></p>
+
+<p style="margin-left:36%;">Change zoom to 100%, 200% and
+300%.</p>
+
+<p><b>Up</b>, <b>Down</b>, <b>Left</b>, <b>Right</b></p>
+
+<p style="margin-left:36%;">Scroll the image in the given
+direction.</p>
+
+<p><b>Home</b></p>
+
+<p style="margin-left:36%;">Display top left corner of the
+image.</p>
+
+<p><b>End</b></p>
+
+<p style="margin-left:36%;">Display bottom right corner of
+the image.</p>
+
+<p><b>Control+Home</b></p>
+
+<p style="margin-left:36%;">Go to the beginning of the
+document.</p>
+
+<p><b>Control+End</b></p>
+
+<p style="margin-left:36%;">Go to the end of the
+document.</p>
+
+<p><b>Space</b>, <b>Return</b></p>
+
+<p style="margin-left:36%;">Scroll down or go to next
+page.</p>
+
+<p><b>Backspace</b></p>
+
+<p style="margin-left:36%;">Scroll up or go to previous
+page.</p>
+
+<p><b>Page Down</b></p>
+
+<p style="margin-left:36%;">Go to the next page.</p>
+
+<p><b>Page Up</b></p>
+
+<p style="margin-left:36%;">Go to the previous page.</p>
+
+<p><b>+</b>, <b>-</b></p>
+
+<p style="margin-left:36%;">Zoom in and out.</p>
+
+<p><b>,</b></p>
+
+<p style="margin-left:36%;">Rotate image.</p>
+
+<p><b>W</b></p>
+
+<p style="margin-left:36%;">Select the &lsquo;&lsquo;fit
+width&rsquo;&rsquo; zooming mode.</p>
+
+<p><b>P</b></p>
+
+<p style="margin-left:36%;">Select the &lsquo;&lsquo;fit
+page&rsquo;&rsquo; zooming mode.</p>
+
+<p><b>CTRL+F</b>, <b>F3</b></p>
+
+<p style="margin-left:36%;">Search the hidden text
+layer.</p>
+
+<p><b>CTRL+G</b></p>
+
+<p style="margin-left:36%;">Go to a specific page by name
+or by number.</p>
+
+<p style="margin-left:6%; margin-top: 1em">Handy effects
+can be achieved by holding modifier keys. The following
+table lists the default assignments; these keys are
+configurable from the preference dialog.</p>
+
+<p style="margin-top: 1em"><b>CTRL+SHIFT</b></p>
+
+<p style="margin-left:22%;">Hold these keys to show the
+magnification lens.</p>
+
+<p><b>CTRL</b></p>
+
+<p style="margin-left:22%;">Hold this key to select an area
+with the mouse.</p>
+
+<p><b>SHIFT</b></p>
+
+<p style="margin-left:22%;">Hold this key to display all
+hyperlinks.</p>
+
+<p style="margin-top: 1em"><b>ENVIRONMENT</b></p>
+
+<p style="margin-left:6%;">Setting DJVIEW_VERBOSE to a
+nonzero value is equivalent to calling <b>djview4</b> with
+<b>&minus;verbose</b>. Setting DJVIEW_OPENGL to values 0 or
+1 overrides the preference settings regarding OpenGL
+rendering.</p>
+
+<p style="margin-left:6%; margin-top: 1em">When the user
+clicks on a djvu hyperlink pointing to a web page,
+<b>djview4</b> first tries to execute the web browser
+programs whose names are listed in the colon separated
+environment variable BROWSER, then tries sensible platform
+dependent defaults.</p>
+
+<p style="margin-left:6%; margin-top: 1em">The user
+interface language is determined by first trying to find a
+complete set of translation files for the language specified
+in the preference dialog, then for the ISO 639 languages
+specified in the colon separated environment variable
+LANGUAGE, and finally the language specified by the system
+locale. If all these searches fail, the user interface
+language reverts to the english default.</p>
+
+<p style="margin-top: 1em"><b>SEE ALSO</b></p>
+
+<p style="margin-left:6%;">ddjvu(1), djview3(1), djvu(1),
+nsdejavu(1), tiff2pdf(1)</p>
+
+<p style="margin-top: 1em"><b>AUTHORS</b></p>
+
+<p style="margin-left:6%;">Leon Bottou
+&lt;<i>leonb@users.sf.net</i>&gt;, using code written for
+tiff2pdf(1) by <br>
+Ross Finlayson.</p>
+
+
+<p style="margin-left:6%; margin-top: 1em">OpenBSD&nbsp;ports
+September&nbsp;24, 2015 OpenBSD&nbsp;ports</p>
+<hr>
+</body>
+</html>

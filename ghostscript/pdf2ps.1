@@ -1,0 +1,32 @@
+.Dd September 18, 2015
+.Dt PDF2PS 1
+.Os
+.Sh NAME
+.Nm pdf2ps
+.Nd Ghostscript PDF to PostScript translator
+.Sh SYNOPSIS
+.Nm
+.Op Fl FIXME
+.Ar input.pdf
+.Op Ar output.ps
+.Sh DESCRIPTION
+.Nm
+uses
+.Xr gs 1
+to convert the PDF file
+.Ar input.pdf
+to a PostScript file
+.Ar output.ps .
+Normally the output is allowed to use PostScript Level 2
+(but not PostScript LanguageLevel 3) constructs; the
+.Fl dLanguageLevel=1
+option restricts the output to Level 1, while
+.Fl dLanguageLevel=3
+allows using LanguageLevel 3 in the output.
+.Sh FILES
+Run
+.Dq gs -h
+to find the location of Ghostscript documentation on your system,
+from which you can get more details.
+.SH AUTHORS
+.An Artifex Software, Inc.

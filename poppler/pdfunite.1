@@ -1,0 +1,31 @@
+.Dd November 10, 2014
+.Dt PDFUNITE 1
+.Os
+.Sh NAME
+.Nm pdfunite
+.Nd merge PDF files
+.Sh SYNOPSIS
+.Nm pdfunite
+.Op Fl h
+.Op Fl v
+.Ar input1.pdf
+.Ar ...
+.Ar inputN.pdf
+.Ar oputput.pdf
+.Sh DESCRIPTION
+.Nm
+merges several PDF (Portable Document Format) files
+in order of their occurence on command line into one PDF output file.
+The input files must not be encrypted.
+.Pp
+The options are as follows.
+.Bl -tag -width Ds -compact
+.It Fl h
+Print usage information.
+.It Fl v
+Print copyright and version information.
+.El
+.Sh SEE ALSO
+.Xr pdfseparate 1
+.Pp
+.Lk http://poppler.freedesktop.org

@@ -1,0 +1,44 @@
+Dear authors of XXX,
+
+currently, the manpages that come with XXX
+are written in the traditional man(7) markup language.
+I am proposing to rewrite them into the semantic markup
+of the mdoc(7) language. I am willing to do the work.
+
+Both the man(7) and mdoc(7) languages have been around for decades,
+and are supported by the prevalent formatters: groff(1) on most Linuxes
+and mandoc(1) on the *BSDs and some others. In particular,
+there is nothing to install or reconfigure on most systems
+- both formats can be rendered with man(1)
+or processed into plaintext, html, pdf, or ps
+(or even into markdown, with mandoc(1)).
+
+The main point is that mdoc(7) allows for constructs like
+
+	.Op Fl f Ar arg
+
+meaning
+
+	there is an optional 'f' flag
+	which takes an 'arg' argument
+
+as opposed to
+
+	switch to italics, type a bracket, a dash, "f",
+	then switch to boldface and type "arg"
+
+in the physical roff markup of man(7).
+Similarly for other constructs like cross-referenes,
+filenames, author emails, env variables, etc.
+
+See http://mdocml.bsd.lv for a thorough discussion
+of the many benefits of such a markup - most important
+of which is better readability and writability.
+
+See below for a rewrite of XXX
+as an example of what I have in mind.
+
+Please let me know if you are interested.
+
+	Jan
+

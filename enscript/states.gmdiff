@@ -1,0 +1,21 @@
+ ========== states.man ========== 
+mandoc: states.man:321:2: ERROR: skipping end of block that is not open: RE
+mandoc: states.man:352:2: ERROR: skipping end of block that is not open: RE
+mandoc: states.man:356:1: UNSUPP: unsupported roff request: ta
+--- /tmp/groff.out	Tue Sep 22 12:32:58 2015
++++ /tmp/mandoc.out	Tue Sep 22 12:32:58 2015
+@@ -292,7 +292,7 @@
+ 
+ 
+ FFIILLEESS
+-       @DATADIR@/enscript/hl/*.st              enscript's states definitions
++       @DATADIR@/enscript/hl/*.st    enscript's states definitions
+ 
+ 
+ SSEEEE AALLSSOO
+@@ -306,4 +306,4 @@
+ 
+ 
+ 
+-STATES                           Oct 23, 1998                        STATES(1)
++STATES                         October 23, 1998                      STATES(1)

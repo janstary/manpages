@@ -1,0 +1,408 @@
+PDFTK(1)                    General Commands Manual                   PDFTK(1)
+
+NNAAMMEE
+     ppddffttkk - manipulate PDF files
+
+SSYYNNOOPPSSIISS
+     ppddffttkk --hh | ----hheellpp
+     ppddffttkk [_h_a_n_d_l_e=]_p_d_f___i_n_p_u_t___f_i_l_e _._._. | -- | PPRROOMMPPTT
+           [iinnppuutt__ppww [_h_a_n_d_l_e=]_p_a_s_s_w_o_r_d _._._. | PPRROOMMPPTT]
+           [ccaatt | sshhuuffffllee | bbuurrsstt | ggeenneerraattee__ffddff | ffiillll__ffoorrmm | bbaacckkggrroouunndd |
+           mmuullttiibbaacckkggrroouunndd | ssttaammpp | mmuullttiissttaammpp | dduummpp__ddaattaa | dduummpp__ddaattaa__uuttff88 |
+           dduummpp__ddaattaa__ffiieellddss | dduummpp__ddaattaa__ffiieellddss__uuttff88 | uuppddaattee__iinnffoo |
+           uuppddaattee__iinnffoo__uuttff88 | aattttaacchh__ffiilleess | uunnppaacckk__ffiilleess _a_r_g_u_m_e_n_t_s]
+           [oouuttppuutt _f_i_l_e_n_a_m_e | -- | PPRROOMMPPTT] [eennccrryypptt__4400bbiitt | eennccrryypptt__112288bbiitt]
+           [aallllooww _p_e_r_m_i_s_s_i_o_n_s] [oowwnneerr__ppww _p_a_s_s_w_o_r_d | PPRROOMMPPTT]
+           [uusseerr__ppww _p_a_s_s_w_o_r_d | PPRROOMMPPTT] [ffllaatttteenn] [ccoommpprreessss | uunnccoommpprreessss]
+           [kkeeeepp__ffiirrsstt__iidd | kkeeeepp__ffiinnaall__iidd | ddrroopp__xxffaa] [ddoonntt__aasskk | ddoo__aasskk]
+           [vveerrbboossee]
+
+DDEESSCCRRIIPPTTIIOONN
+     If PDF is electronic paper, then ppddffttkk is an electronic staple-remover,
+     hole-punch, binder, secret-decoder-ring, and X-Ray glasses.  It is a
+     simple tool that can be used to
+
+       oo   merge PDF documents or collate PDF page scans
+       oo   split PDF pages into a new document
+       oo   rotate PDF documents or pages
+       oo   decrypt input as necessary (password required)
+       oo   encrypt output as desired
+       oo   fill PDF forms with X/FDF data and/or flatten forms
+       oo   generate FDF data stencils from PDF forms
+       oo   apply a background watermark or a foreground stamp
+       oo   report PDF metrics such as metadata and bookmarks
+       oo   update PDF metadata
+       oo   attach files to PDF pages or the PDF document
+       oo   unpack PDF attachments
+       oo   burst a PDF document into single pages
+       oo   uncompress and re-compress page streams
+       oo   repair corrupted PDF (where possible)
+
+   IInnppuutt AArrgguummeennttss
+     [_h_a_n_d_l_e=]_p_d_f___i_n_p_u_t___f_i_l_e _._._. | -- | PPRROOMMPPTT
+             A list of the PDF input files.  If you plan to combine these PDFs
+             (without using handles) then list the files in the order you want
+             them combined.  Use -- to pass a single PDF into pdftk via stdin.
+             Use PPRROOMMPPTT to make ppddffttkk ask the user interactively for an input
+             file name.
+
+             Every input can be associated with a _h_a_n_d_l_e, a single upper-case
+             letter, e.g.
+
+                   A=input1.pdf B=input2.pdf
+
+             Handles are often omitted.  They are useful when specifying PDF
+             passwords or page ranges (see below).
+
+     iinnppuutt__ppww [_h_a_n_d_l_e=]_p_a_s_s_w_o_r_d _._._. | PPRROOMMPPTT
+             Input PDF owner passwords, if necessary, are associated with
+             files by using their handles, e.g.
+
+                   A=input1.pdf B=input2.pdf input_pw A=foo B=bar
+
+             Without handles, passwords are associated with input files by
+             order.
+
+             Most pdftk features require that encrypted input PDF are
+             accompanied by the _o_w_n_e_r password. If the input PDF has no owner
+             password, then the user password must be given, instead.
+
+             When running in ddoo__aasskk mode (see below), ppddffttkk will prompt you
+             for a password if the supplied password is incorrect or none was
+             given.  Use PPRROOMMPPTT to explicitly make ppddffttkk interactively ask the
+             user for a password.
+
+   OOppeerraattiioonnss
+     Available operations are: ccaatt, sshhuuffffllee, bbuurrsstt, ggeenneerraattee__ffddff, ffiillll__ffoorrmm,
+     bbaacckkggrroouunndd, mmuullttiibbaacckkggrroouunndd, ssttaammpp, mmuullttiissttaammpp, dduummpp__ddaattaa,
+     dduummpp__ddaattaa__uuttff88, dduummpp__ddaattaa__ffiieellddss, dduummpp__ddaattaa__ffiieellddss__uuttff88, uuppddaattee__iinnffoo,
+     uuppddaattee__iinnffoo__uuttff88, aattttaacchh__ffiilleess, uunnppaacckk__ffiilleess.  Some operations take
+     additional arguments, as described below.
+
+     When no operation is specified, then ppddffttkk runs in ``filter'' mode.
+     Filter mode takes only one PDF input and creates a new PDF after applying
+     all of the output options, like encryption and compression.
+
+     ccaatt [_h_a_n_d_l_e][_b_e_g_i_n_-[_e_n_d[_q_u_a_l_i_f_i_e_r]]][_r_o_t_a_t_i_o_n] _._._.
+             Conatenates pages from input PDFs to create a new PDF.  Page
+             order in the new PDF is specified by the order of the given page
+             ranges.
+
+             The _h_a_n_d_l_e identifies one of the input PDF files.  If the handle
+             is omitted from the page range, then the pages are taken from the
+             first input PDF.  The _b_e_g_i_n and _e_n_d page numbers are one-based
+             references to pages in the corresponding input PDF.  A single
+             page can be referenced by specifying a single number as the _b_e_g_i_n
+             argument and omitting the _e_n_d.  The keyword eenndd may be used to
+             reference the final page.  The handle may be used alone to
+             represent the entire document; e.g., ``B'' is the same as
+             ``B1-end''.  The _e_n_d specifier may be less than _b_e_g_i_n, e.g.  11--33
+             yields pages 1, 2 and 3, in that order, and 33--11 yields pages 3, 2
+             and 1, in that order.  The _q_u_a_l_i_f_i_e_r can be eevveenn or oodddd.  The
+             eevveenn qualifier causes ppddffttkk to use only the even-numbered PDF
+             pages, so 66--11eevveenn yields pages 6, 4 and 2.  The oodddd qualifier
+             works similarly.  The _r_o_t_a_t_i_o_n can be NN, SS, EE, WW, LL, RR or DD.  The
+             page rotation setting causes ppddffttkk to rotate pages and documents
+             as follows (in degrees): NN:: 00, EE:: 9900, SS:: 118800, WW:: 227700, LL:: --9900,
+             RR:: ++9900, DD:: ++118800.  The LL, RR, and DD make relative adjustments to a
+             page's rotation.  If no arguments are passed to ccaatt, then ppddffttkk
+             combines all input PDFs in the order they were given to create
+             the output.
+
+             Examples without handles:
+             66--11       reverse pages in range
+             55 11 2200    take single pages
+             11--eennddEE    rotate entire document 90 degrees
+             55--2255ooddddWW  take odd pages in range, rotate 90 degrees
+
+             Examples with handles; say _A_=_P_a _i_n_1_._p_d_f _B_=_P_a _i_n_2_._p_d_f, then:
+             BB                use all of _i_n_2_._p_d_f
+             AAWW               rotate entire _i_n_1_._p_d_f document 90 degrees
+             AA7722              take a single page from _i_n_1_._p_d_f
+             AA AA              concatenate _i_n_1_._p_d_f with _i_n_1_._p_d_f
+             AA11--2211            take a range from _i_n_1_._p_d_f
+             AAWW BBWW BBDD         concatenate rotated documents
+             BBeenndd--11oodddd        take all odd pages from _i_n_2_._p_d_f in reverse order
+             AA22--3300eevveennLL       take even pages from range, rotate 90 degrees
+                              left
+             AAeevveennWW AAooddddEE     rotate even pages of _i_n_1_._p_d_f west and odd pages
+                              east
+             AA11--2211 BBeevveenn AA7722  assemble pages from both _i_n_1_._p_d_f and _i_n_2_._p_d_f
+
+     sshhuuffffllee [_h_a_n_d_l_e][_b_e_g_i_n_-[_e_n_d[_q_u_a_l_i_f_i_e_r]]][_r_o_t_a_t_i_o_n] _._._.
+             Collates pages from input PDFs to create a new PDF.  Works like
+             the ccaatt operation except that it takes one page at a time from
+             each page range to assemble the output PDF.  If one range runs
+             out of pages, it continues with the remaining ranges.  Ranges can
+             use all of the features described above for ccaatt, like reverse
+             page ranges, multiple ranges from a single PDF, and page
+             rotation. This feature was designed to help collate PDF pages
+             after scanning paper documents.
+
+     bbuurrsstt   Splits a single input PDF document into individual pages.  Also
+             creates a report named _d_o_c___d_a_t_a_._t_x_t which is the same as the
+             output from dduummpp__ddaattaa.  If the oouuttppuutt section (see below) is
+             omitted, then the individual pages are named as _p_g___%_0_4_d_._p_d_f, e.g.
+             _p_g___0_0_0_1_._p_d_f, _p_g___0_0_0_2_._p_d_f, etc. To name these pages yourself,
+             supply a printf(3) format string in the oouuttppuutt section. For
+             example, specify oouuttppuutt ppaaggee__%%0022dd..ppddff if you want the pages to be
+             named _p_a_g_e___0_1_._p_d_f, _p_a_g_e___0_2_._p_d_f, etc.
+
+     ggeenneerraattee__ffddff
+             Reads a single input PDF file and generates an FDF file out of
+             it, suitable for ffiillll__ffoorrmm.  If no output file name is specified,
+             ppddffttkk asks for one interactively.
+
+     ffiillll__ffoorrmm _F_D_F___d_a_t_a___f_i_l_e_n_a_m_e | _X_F_D_F___d_a_t_a___f_i_l_e_n_a_m_e | -- | PPRROOMMPPTT
+             Fills the single input PDF's form fields with the data from an
+             FDF file, a XFDF file or stdin.  Enter the data filename after
+             _f_i_l_l___f_o_r_m, or use -- to pass the data via stdin; for example
+
+                   pdftk form.pdf fill_form data.fdf output filled.pdf
+
+             After filling a form, the form fields remain interactive unless
+             you also use the ffllaatttteenn output option, which merges the form
+             fields with the PDF pages.  You can use ffllaatttteenn alone, too, but
+             only on a single PDF, e.g.
+
+                   pdftk form.pdf fill_form data.fdf output out.pdf flatten
+                   pdftk filled.pdf output out.pdf flatten.
+
+             If the input FDF file includes Rich Text formatted data in
+             addition to plain text, then the Rich Text data is packed into
+             the form fields _a_s _w_e_l_l _a_s the plain text.  ppddffttkk also sets a
+             flag that cues Acrobat/Reader to generate new field appearances
+             based on the Rich Text data.  That way, when the user opens the
+             PDF, the viewer will create the Rich Text fields on the spot.  If
+             the user's PDF viewer does not support Rich Text, then the user
+             will see the plain text data instead.  If you flatten this form
+             before Acrobat has a chance to create (and save) new field
+             appearances, then the plain text field data is what you'll see.
+
+     bbaacckkggrroouunndd _b_a_c_k_g_r_o_u_n_d___P_D_F___f_i_l_e_n_a_m_e | -- | PPRROOMMPPTT
+             Applies a PDF watermark to the background of a single input PDF.
+             Pdftk only uses the first page from the background PDF and
+             applies it to every page of the input PDF.  This page is scaled
+             and rotated as needed to fit the input page.  You can use -- to
+             pass a background PDF into pdftk via stdin.  If the input PDF
+             does not have a transparent background (such as a PDF created
+             from page scans) then the resulting background won't be visible.
+             Use the ssttaammpp operation instead.
+
+     mmuullttiibbaacckkggrroouunndd _b_a_c_k_g_r_o_u_n_d | -- | PPRROOMMPPTT
+             Same as the bbaacckkggrroouunndd ooppeerraattiioonn,, bbuutt aapppplliieess eeaacchh ppaaggee ooff tthhee
+             bbaacckkggrroouunndd PPDDFF to the corresponding page of the input PDF. If the
+             input PDF has more pages than the stamp PDF, then the final stamp
+             page is repeated across these remaining pages in the input PDF.
+
+     ssttaammpp _s_t_a_m_p | -- | PPRROOMMPPTT
+             This behaves just like the bbaacckkggrroouunndd operation except it
+             overlays the stamp PDF page _o_n _t_o_p of the input PDF document's
+             pages.  This works best if the stamp PDF page has a transparent
+             background.
+
+     mmuullttiissttaammpp _s_t_a_m_p | -- | PPRROOMMPPTT
+             Same as the ssttaammpp operation, but applies each page of the
+             background PDF to the corresponding page of the input PDF.  If
+             the input PDF has more pages than the stamp PDF, then the final
+             stamp page is repeated across these remaining pages in the input
+             PDF.
+
+     dduummpp__ddaattaa
+             Reads a single input PDF file and reports various statistics,
+             metadata, bookmarks (a.k.a outlines), and page labels to the
+             given output filename or (if no output is given) to stdout.  Non-
+             ASCII characters are encoded as XML numerical entities.  Does not
+             create a new PDF file.
+
+     dduummpp__ddaattaa__uuttff88
+             Same as dduummpp__ddaattaa excepct that the output is encoded as UTF-8.
+
+     dduummpp__ddaattaa__ffiieellddss
+             Reads a single input PDF file and reports form field statistics
+             to the given output filename or (if no output is given) to
+             stdout.  Non-ASCII characters are encoded as XML numerical
+             entities.  Does not create a new PDF file.
+
+     dduummpp__ddaattaa__ffiieellddss__uuttff88
+             Same as dduummpp__ddaattaa__ffiieellddss excepct that the output is encoded as
+             UTF-8.
+
+     uuppddaattee__iinnffoo _i_n_f_o | -- | PPRROOMMPPTT
+             Changes the metadata stored in a single PDF file's Info
+             dictionary to match the input data file. The input data file uses
+             the same syntax as the output from dduummpp__ddaattaa.  Non-ASCII
+             characters should be encoded as XML numerical entities.  This
+             does not change the metadata stored in the PDF's XMP stream, if
+             it has one. For example:
+
+                   pdftk in.pdf update_info in.info output out.pdf
+
+     uuppddaattee__iinnffoo__uuttff88 _i_n_f_o | -- | PPRROOMMPPTT
+             Same as uuppddaattee__iinnffoo except that the input is encoded as UTF-8.
+
+     aattttaacchh__ffiilleess _a_t_t_a_c_h_m_e_n_t_s | PPRROOMMPPTT [_t_o___p_a_g_e___n_u_m_b_e_r | PPRROOMMPPTT]
+             Packs arbitrary files into a PDF using PDF's file attachment
+             features.  More than one attachment may be listed after
+             aattttaacchh__ffiilleess.  Attachments are added at the document level unless
+             the optional ttoo__ppaaggee option is given, in which case the files are
+             attached to the given page number. The first page is 1, the final
+             page is eenndd.  For example:
+
+                   pdftk in.pdf attach_files tab.html img.jpg to_page 6 output
+                   out.pdf
+
+     uunnppaacckk__ffiilleess
+             Copies all of the attachments from the input PDF into the current
+             folder or to an output directory given in oouuttppuutt For example:
+
+                   pdftk report.pdf unpack_files output ~/atts/
+
+   OOuuttppuutt OOppttiioonnss
+     oouuttppuutt _f_i_l_e_n_a_m_e | -- | PPRROOMMPPTT
+             Sets the filename of the output PDF file.  The output filename
+             may not be the same as an input filename.  Use -- to output to
+             stdout. When using the dduummpp__ddaattaa operation, use oouuttppuutt to set the
+             name of the output data file. When using the uunnppaacckk__ffiilleess
+             operation, use oouuttppuutt to set the name of an output directory.
+             When using the bbuurrsstt operation, you can use oouuttppuutt to control the
+             resulting PDF page filenames (see above).
+
+     eennccrryypptt__4400bbiitt | eennccrryypptt__112288bbiitt
+             If an output PDF user or owner password is given, output PDF
+             encryption strength defaults to 128 bits.  This can be overridden
+             by specifying eennccrryypptt__4400bbiitt.
+
+     aallllooww _p_e_r_m_i_s_s_i_o_n_s
+             Permissions are applied to the output PDF file only if an
+             encryption strength is specified or an owner or user password is
+             given.  If permissions are not specified, they default to
+             ``none'', which means all of the following features are disabled.
+             The _p_e_r_m_i_s_s_i_o_n_s section may include one or more of the following
+             features: PPrriinnttiinngg (top quality printing), DDeeggrraaddeeddPPrriinnttiinngg
+             (lower quality printing), MMooddiiffyyCCoonntteennttss (also allows Assembly),
+             AAsssseemmbbllyy CCooppyyCCoonntteennttss (also allows ScreenReaders), SSccrreeeennRReeaaddeerrss
+             MMooddiiffyyAAnnnnoottaattiioonnss (also allows FillIn), FFiillllIInn AAllllFFeeaattuurreess
+             (allows the user to perform all of the above, and top quality
+             printing).
+
+     oowwnneerr__ppww _p_a_s_s_w_o_r_d | PPRROOMMPPTT
+
+     uusseerr__ppww _p_a_s_s_w_o_r_d | PPRROOMMPPTT
+             If an encryption strength is given but no passwords are supplied,
+             then the owner and user passwords remain empty, which means that
+             the resulting PDF may be opened and its security parameters
+             altered by anybody.
+
+     ccoommpprreessss | uunnccoommpprreessss
+             These are only useful when you want to edit PDF code in a text
+             editor.  Remove PDF page stream compression by applying the
+             uunnccoommpprreessss filter. Use the ccoommpprreessss filter to restore
+             compression.
+
+     ffllaatttteenn
+             Use this option to merge an input PDF's interactive form fields
+             (and their data) with the PDF's pages. Only one input PDF may be
+             given.  Sometimes used with the ffiillll__ffoorrmm operation.
+
+     kkeeeepp__ffiirrsstt__iidd | kkeeeepp__ffiinnaall__iidd
+             When combining pages from multiple PDFs, use one of these options
+             to copy the document ID from either the first or final input
+             document into the new output PDF. Otherwise ppddffttkk creates a new
+             document ID for the output PDF.  When no operation is given,
+             ppddffttkk always uses the ID from the (single) input PDF.
+
+     ddrroopp__xxffaa
+             If the input PDF is a form created using Acrobat 7 or Adobe
+             Designer, then it probably has XFA data. Filling such a form
+             using ppddffttkk yields a PDF with data that fails to display in
+             Acrobat 7 (and 6?).  The workaround is to remove the form's XFA
+             data, either before you fill the form using ppddffttkk or at the time
+             you fill the form. Using this option causes ppddffttkk to omit the XFA
+             data from the output PDF form.
+
+             This option is only useful when running ppddffttkk on a single input
+             PDF. When assembling a PDF from multiple inputs, any XFA data in
+             the input is automatically omitted.
+
+     ddoonntt__aasskk | ddoo__aasskk
+             Depending on compile-time settings, ppddffttkk might prompt you for
+             further input when it encounters a problem, such as a bad
+             password. Override this default behavior by adding ddoonntt__aasskk or
+             ddoo__aasskk.  When running in ddoonntt__aasskk mode, ppddffttkk will overwrite
+             output files without notice.
+
+     vveerrbboossee
+             By default, pdftk runs quietly. Append vveerrbboossee to the end and it
+             will speak up.
+
+EEXXAAMMPPLLEESS
+     Collate scanned pages
+           pdftk A=even.pdf B=odd.pdf shuffle A B output collated.pdf
+
+     or if _o_d_d_._p_d_f is in reverse order:
+           pdftk A=even.pdf B=odd.pdf shuffle A Bend-1 output collated.pdf
+
+     Decrypt a PDF:
+           pdftk secured.pdf input_pw foopass output unsecured.pdf
+
+     Encrypt a PDF using 128-bit strength, withhold all permissions:
+           pdftk in.pdf output out.pdf owner_pw foopass
+
+     Same as above, except a user password is also used in the output PDF:
+           pdftk in.pdf output out.pdf owner_pw foo user_pw baz
+
+     Same as above, except printing is allowed (once the PDF is open):
+           pdftk in.pdf output out.pdf owner_pw foo user_pw baz allow Printing
+
+     Join _i_n_1_._p_d_f and _i_n_2_._p_d_f into _o_u_t_._p_d_f:
+           pdftk in1.pdf in2.pdf cat output out.pdf
+     or (using handles):
+           pdftk A=in1.pdf B=in2.pdf cat A B output out.pdf
+     or (using wildcards):
+           pdftk in?.pdf cat output out.pdf
+
+     Remove page 13 from _i_n_._p_d_f to create _o_u_t_._p_d_f:
+           pdftk in.pdf cat 1-12 14-end output out.pdf
+
+     Apply 40-bit encryption to output, revoking all permissions (the
+     default).  Set the owner password to ``foo'':
+           pdftk 1.pdf 2.pdf cat output out.pdf encrypt_40bit owner_pw foo
+
+     Join two files, one of which requires the password ``foopass''.  The
+     output is not encrypted.
+           pdftk A=secured.pdf other.pdf input_pw A=foopass cat output out.pdf
+
+     Uncompress PDF page streams for editing the PDF in a text editor:
+           pdftk doc.pdf output uncompressed.pdf uncompress
+
+     Repair a PDF's corrupted XREF table and stream lengths, if possible:
+           pdf broken.pdf output fixed.pdf
+
+     Burst a single PDF document into pages and dump its data to _d_o_c___d_a_t_a_._t_x_t:
+           pdftk in.pdf burst
+
+     Burst a single PDF document into encrypted pages. Allow low-quality
+     printing:
+           pdftk in.pdf burst owner_pw foopass allow DegradedPrinting
+
+     Write a report on PDF document metadata and bookmarks to _r_e_p_o_r_t_._t_x_t:
+           pdftk in.pdf dump_data output report.txt
+
+     Rotate the first PDF page 90 degrees clockwise
+           pdftk in.pdf cat 1E 2-end output out.pdf
+
+     Rotate an entire PDF document 180 degrees
+           pdftk in.pdf cat 1-endS output out.pdf
+
+SSEEEE AALLSSOO
+     _P_D_F_t_k_'_s _h_o_m_e_p_a_g_e_: hhttttpp::////wwwwww..ppddffttkk..ccoomm
+
+     Sid Steward, _P_D_F _H_a_c_k_s, _O_'_R_e_i_l_l_y, 2004.
+
+AAUUTTHHOORR
+     Sid Steward <_s_i_d_._s_t_e_w_a_r_d_@_p_d_f_l_a_b_s_._c_o_m> maintains ppddffttkk.  Please email him
+     with questions or bug reports.  Include pdftk in the subject line to
+     ensure successful delivery.  Thank you.
+
+OpenBSD 5.6                    October 15, 2014                    OpenBSD 5.6

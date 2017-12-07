@@ -1,0 +1,37 @@
+ ========== enscript.man ========== 
+mandoc: enscript.man:1377:1: UNSUPP: unsupported roff request: ta
+--- /tmp/groff.out	Tue Sep 22 12:27:55 2015
++++ /tmp/mandoc.out	Tue Sep 22 12:27:55 2015
+@@ -1203,16 +1203,16 @@
+ 
+ 
+ FFIILLEESS
+-       @DATADIR@/enscript/*.hdr                header files
+-       @DATADIR@/enscript/*.enc                input encoding vectors
+-       @DATADIR@/enscript/enscript.pro         PostScript prolog
+-       @DATADIR@/enscript/afm/*.afm            AFM files for PostScript fonts
+-       @DATADIR@/enscript/font.map             index for the AFM files
+-       @DATADIR@/enscript/hl/*.st              states definition files
+-       @SYSCONFDIR@/enscript.cfg               system-wide configuration file
+-       @SYSCONFDIR@/enscriptsite.cfg           site configuration file
+-       ~/.enscriptrc                           personal configuration file
+-       ~/.enscript/                            personal resource directory
++       @DATADIR@/enscript/*.hdr      header files
++       @DATADIR@/enscript/*.enc      input encoding vectors
++       @DATADIR@/enscript/enscript.pro    PostScript prolog
++       @DATADIR@/enscript/afm/*.afm       AFM files for PostScript fonts
++       @DATADIR@/enscript/font.map   index for the AFM files
++       @DATADIR@/enscript/hl/*.st    states definition files
++       @SYSCONFDIR@/enscript.cfg          system-wide configuration file
++       @SYSCONFDIR@/enscriptsite.cfg      site configuration file
++       ~/.enscriptrc                 personal configuration file
++       ~/.enscript/                  personal resource directory
+ 
+ 
+ SSEEEE AALLSSOO
+@@ -1226,4 +1226,4 @@
+ 
+ 
+ 
+-ENSCRIPT                         Mar 12, 1999                      ENSCRIPT(1)
++ENSCRIPT                        March 12, 1999                     ENSCRIPT(1)

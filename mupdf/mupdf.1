@@ -1,0 +1,128 @@
+.Dd October 4, 2016
+.Dt MUPDF 1
+.Os
+.Sh NAME
+.Nm mupdf
+.Nd a lightweight PDF viewer
+.Sh SYNOPSIS
+.Nm
+.Op Fl prACHWSU
+.Ar file
+.Sh DESCRIPTION
+.Nm
+is a document viewer that can show PDF, XPS, EPUB, XHTML, CBZ,
+and various image formats such as PNG, JPEG, GIF, and TIFF.
+.Ss Options
+The command-line options are as follows:
+.Bl -tag -width Ds
+.It Fl p Ar password
+Uses the given password to open an encrypted PDF file.
+The password is tried both as user and owner password.
+.It Fl r Ar resolution
+Changes the initial zoom level, specified as the resolution in dpi.
+The default value is 72.
+.It Fl A Ar bits
+Changes the anti-aliasing quality,
+specified as a number of bits between 0 (off) and 8 (best).
+The default value is 8.
+.It Fl C Ar RRGGBB
+Sets the full-page tint using hexadecimal color syntax.
+The default value is FFFAF0.
+.It Fl W Ar width
+Page width in points for EPUB layout.
+.It Fl H Ar height
+Page height in points for EPUB layout.
+.It Fl S Ar size
+Font size in points for EPUB layout.
+.It Fl U Ar file.css
+User style sheet for EPUB layout.
+.El
+.Ss Mouse behaviour
+.Bl -tag -width Ds
+.It Left mouse button click
+A left click on a hyper link follows the link.
+In presentation mode advances to the next page.
+.It Right mouse button click
+In presentation mode goes back to the previous page.
+.It Left mouse button drag
+Pan the page.
+Panning beyond the bottom or top edge will go to the next or previous page.
+.It Right mouse button drag
+Select text in an area.
+On X11, the selected text can be pasted in another application
+with a middle click.
+Press Ctrl+C to copy the selected text to the clipboard.
+On Windows, the selected text will automatically be copied to the clipboard.
+.It Scroll wheel
+Pan page up or down.
+Does not change page when reaching the bottom or top edge.
+.It Shift + Scroll wheel
+Pan page left or right.
+.It Control + Scroll wheel
+Zoom in or out.
+.El
+.Ss Key bindings
+.Bl -tag -width Ds
+.It . pgdn right space
+Go to the next page.
+.It , pgup left b backspace
+Go to the previous page.
+.It <, >
+Skip back/forth 10 pages at a time.
+.It 123g
+Go to page 123.
+.It g, G
+Go to the first or last page.
+.It m
+Mark current page for snap back. Up to 256 pages can be marked.
+.It t
+Pop back to the latest mark.
+.It [0-9]m
+Save the current page number in the numbered register.
+.It [0-9]t
+Go to the page saved in the numbered register.
+.It \+, \-
+Zoom in or out.
+.It W, H
+Zoom page to exactly fit width/height of window.
+.It Z
+Zoom page to fit either to width or height of window.
+.It L, R
+Rotate page left (counter-clockwise) or right (clockwise).
+.It w
+Shrinkwrap window to fit the page.
+.It f
+Toggles fullscreen mode.
+.It h, j, k, l
+Pan page left, down, up, or right.
+.It /, ?
+Search for text forwards or backwards.
+.It n, N
+Find the next/previous search result.
+.It [, ]
+Increase/decrease EPUB/XHTML font size.
+.It r
+Reload file.
+.It p
+Toggle presentation mode.
+.It c
+Toggle between color and grayscale rendering.
+.It C
+Toggle full-page color tinting.
+.It i
+Toggle between normal and inverted color rendering.
+.It S
+Save updated document file.
+.It q
+Quit.
+.El
+.Ss Signals
+Upon receiving a
+.Dv SIGHUP
+signal,
+.Nm
+will reload the viewed file.
+.Sh SEE ALSO
+.Xr mutool 1
+.Sh AUTHORS
+MuPDF is Copyright 2006-2016 Artifex Software, Inc.

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<style>
+table.head, table.foot { width: 100%; }
+td.head-rtitle, td.foot-os { text-align: right; }
+td.head-vol { text-align: center; }
+table.foot td { width: 50%; }
+table.head td { width: 33%; }
+div.spacer { margin: 1em 0; }
+</style>
+<title>
+PDFTK(1)</title>
+</head>
+<body>
+<div class="mandoc">
+<table class="head">
+<tbody>
+<tr>
+<td class="head-ltitle">
+PDFTK(1)</td>
+<td class="head-vol">
+General Commands Manual</td>
+<td class="head-rtitle">
+PDFTK(1)</td>
+</tr>
+</tbody>
+</table>
+<div class="section">
+<h1 id="x4e414d45">NAME</h1> <b class="name">pdftk</b> &#8212; <span class="desc">manipulate PDF files</span></div>
+<div class="section">
+<h1 id="x53594e4f50534953">SYNOPSIS</h1><table class="synopsis">
+<col style="width: 5.00ex;"/>
+<col/>
+<tbody>
+<tr>
+<td>
+pdftk</td>
+<td>
+<b class="flag">&#45;h</b> | <b class="flag">&#45;-help</b></td>
+</tr>
+</tbody>
+</table>
+<br/>
+<table class="synopsis">
+<col style="width: 5.00ex;"/>
+<col/>
+<tbody>
+<tr>
+<td>
+pdftk</td>
+<td>
+&#91;<span class="opt"><i class="arg">handle</i>=</span>&#93;<i class="arg">pdf_input_file ...</i> | <b class="flag">-</b> | <b class="flag">PROMPT</b> &#91;<span class="opt"><b class="cmd">input_pw</b> &#91;<span class="opt"><i class="arg">handle</i>=</span>&#93;<i class="arg">password ...</i> | <b class="flag">PROMPT</b></span>&#93;<div style="height: 0.00em;">
+&#160;</div>
+&#91;<span class="opt"><b class="cmd">cat</b> | <b class="cmd">shuffle</b> | <b class="cmd">burst</b> | <b class="cmd">generate_fdf</b> | <b class="cmd">fill_form</b> | <b class="cmd">background</b> | <b class="cmd">multibackground</b> | <b class="cmd">stamp</b> | <b class="cmd">multistamp</b> | <b class="cmd">dump_data</b> | <b class="cmd">dump_data_utf8</b> | <b class="cmd">dump_data_fields</b> | <b class="cmd">dump_data_fields_utf8</b> | <b class="cmd">update_info</b> | <b class="cmd">update_info_utf8</b> | <b class="cmd">attach_files</b> | <b class="cmd">unpack_files</b> <i class="arg">arguments</i></span>&#93; &#91;<span class="opt"><b class="cmd">output</b> <i class="arg">filename</i> | <b class="flag">-</b> | <b class="flag">PROMPT</b></span>&#93; &#91;<span class="opt"><b class="cmd">encrypt_40bit</b> | <b class="cmd">encrypt_128bit</b></span>&#93; &#91;<span class="opt"><b class="cmd">allow</b> <i class="arg">permissions</i></span>&#93; &#91;<span class="opt"><b class="cmd">owner_pw</b> <i class="arg">password</i> | <b class="flag">PROMPT</b></span>&#93; &#91;<span class="opt"><b class="cmd">user_pw</b> <i class="arg">password</i> | <b class="flag">PROMPT</b></span>&#93; &#91;<span class="opt"><b class="cmd">flatten</b></span>&#93; &#91;<span class="opt"><b class="cmd">compress</b> | <b class="cmd">uncompress</b></span>&#93; &#91;<span class="opt"><b class="cmd">keep_first_id</b> | <b class="cmd">keep_final_id</b> | <b class="cmd">drop_xfa</b></span>&#93; &#91;<span class="opt"><b class="cmd">dont_ask</b> | <b class="cmd">do_ask</b></span>&#93; &#91;<span class="opt"><b class="cmd">verbose</b></span>&#93;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section">
+<h1 id="x4445534352495054494f4e">DESCRIPTION</h1> If PDF is electronic paper, then <b class="name">pdftk</b> is an electronic staple-remover, hole-punch, binder, secret-decoder-ring, and X-Ray glasses. It is a simple tool that can be used to<div class="spacer">
+</div>
+<ul style="margin-top: 0.00em;margin-bottom: 0.00em;margin-left: 2.00ex;" class="list list-bul">
+<li class="list-bul" style="margin-top: 0.00em;">
+merge PDF documents or collate PDF page scans</li>
+<li class="list-bul" style="margin-top: 0.00em;">
+split PDF pages into a new document</li>
+<li class="list-bul" style="margin-top: 0.00em;">
+rotate PDF documents or pages</li>
+<li class="list-bul" style="margin-top: 0.00em;">
+decrypt input as necessary (password required)</li>
+<li class="list-bul" style="margin-top: 0.00em;">
+encrypt output as desired</li>
+<li class="list-bul" style="margin-top: 0.00em;">
+fill PDF forms with X/FDF data and/or flatten forms</li>
+<li class="list-bul" style="margin-top: 0.00em;">
+generate FDF data stencils from PDF forms</li>
+<li class="list-bul" style="margin-top: 0.00em;">
+apply a background watermark or a foreground stamp</li>
+<li class="list-bul" style="margin-top: 0.00em;">
+report PDF metrics such as metadata and bookmarks</li>
+<li class="list-bul" style="margin-top: 0.00em;">
+update PDF metadata</li>
+<li class="list-bul" style="margin-top: 0.00em;">
+attach files to PDF pages or the PDF document</li>
+<li class="list-bul" style="margin-top: 0.00em;">
+unpack PDF attachments</li>
+<li class="list-bul" style="margin-top: 0.00em;">
+burst a PDF document into single pages</li>
+<li class="list-bul" style="margin-top: 0.00em;">
+uncompress and re-compress page streams</li>
+<li class="list-bul" style="margin-top: 0.00em;">
+repair corrupted PDF (where possible)</li>
+</ul>
+<div class="subsection">
+<h2 id="x496e70757420417267756d656e7473">Input Arguments</h2><dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-tag">
+<dt class="list-tag" style="margin-top: 1.00em;">
+&#91;<span class="opt"><i class="arg">handle</i>=</span>&#93;<i class="arg">pdf_input_file ...</i> | <b class="flag">-</b> | <b class="flag">PROMPT</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+A list of the PDF input files. If you plan to combine these PDFs (without using handles) then list the files in the order you want them combined. Use <b class="flag">-</b> to pass a single PDF into pdftk via stdin. Use <b class="flag">PROMPT</b> to make <b class="name">pdftk</b> ask the user interactively for an input file name.<div class="spacer">
+</div>
+Every input can be associated with a <span class="emph">handle</span>, a single upper-case letter, e.g.<div class="spacer">
+</div>
+<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">A=input1.pdf B=input2.pdf</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Handles are often omitted. They are useful when specifying PDF passwords or page ranges (see below).</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">input_pw</b> &#91;<span class="opt"><i class="arg">handle</i>=</span>&#93;<i class="arg">password ...</i> | <b class="flag">PROMPT</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Input PDF owner passwords, if necessary, are associated with files by using their handles, e.g.<div class="spacer">
+</div>
+<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">A=input1.pdf B=input2.pdf input_pw A=foo B=bar</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Without handles, passwords are associated with input files by order.<div class="spacer">
+</div>
+Most pdftk features require that encrypted input PDF are accompanied by the <span class="emph">owner</span> password. If the input PDF has no owner password, then the user password must be given, instead.<div class="spacer">
+</div>
+When running in <b class="cmd">do_ask</b> mode (see below), <b class="name">pdftk</b> will prompt you for a password if the supplied password is incorrect or none was given. Use <b class="flag">PROMPT</b> to explicitly make <b class="name">pdftk</b> interactively ask the user for a password.</dd>
+</dl>
+</div>
+<div class="subsection">
+<h2 id="x4f7065726174696f6e73">Operations</h2> Available operations are: <b class="cmd">cat</b>, <b class="cmd">shuffle</b>, <b class="cmd">burst</b>, <b class="cmd">generate_fdf</b>, <b class="cmd">fill_form</b>, <b class="cmd">background</b>, <b class="cmd">multibackground</b>, <b class="cmd">stamp</b>, <b class="cmd">multistamp</b>, <b class="cmd">dump_data</b>, <b class="cmd">dump_data_utf8</b>, <b class="cmd">dump_data_fields</b>, <b class="cmd">dump_data_fields_utf8</b>, <b class="cmd">update_info</b>, <b class="cmd">update_info_utf8</b>, <b class="cmd">attach_files</b>, <b class="cmd">unpack_files</b>. Some operations take additional arguments, as described below.<div class="spacer">
+</div>
+When no operation is specified, then <b class="name">pdftk</b> runs in &#8220;filter&#8221; mode. Filter mode takes only one PDF input and creates a new PDF after applying all of the output options, like encryption and compression.<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-tag">
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">cat</b> &#91;<span class="opt"><i class="arg">handle</i></span>&#93;&#91;<span class="opt"><i class="arg">begin-</i>&#91;<span class="opt"><i class="arg">end</i>&#91;<span class="opt"><i class="arg">qualifier</i></span>&#93;</span>&#93;</span>&#93;&#91;<span class="opt"><i class="arg">rotation</i></span>&#93; <i class="arg">...</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Conatenates pages from input PDFs to create a new PDF. Page order in the new PDF is specified by the order of the given page ranges.<div class="spacer">
+</div>
+The <i class="arg">handle</i> identifies one of the input PDF files. If the handle is omitted from the page range, then the pages are taken from the first input PDF. The <i class="arg">begin</i> and <i class="arg">end</i> page numbers are one-based references to pages in the corresponding input PDF. A single page can be referenced by specifying a single number as the <i class="arg">begin</i> argument and omitting the <i class="arg">end</i>. The keyword <b class="flag">end</b> may be used to reference the final page. The handle may be used alone to represent the entire document; e.g., &#8220;B&#8221; is the same as &#8220;B1-end&#8221;. The <i class="arg">end</i> specifier may be less than <i class="arg">begin</i>, e.g. <b class="flag">1-3</b> yields pages 1, 2 and 3, in that order, and <b class="flag">3-1</b> yields pages 3, 2 and 1, in that order. The <i class="arg">qualifier</i> can be <b class="flag">even</b> or <b class="flag">odd</b>. The <b class="flag">even</b> qualifier causes <b class="name">pdftk</b> to use only the even-numbered PDF pages, so <b class="flag">6-1even</b> yields pages 6, 4 and 2. The <b class="flag">odd</b> qualifier works similarly. The <i class="arg">rotation</i> can be <b class="flag">N</b>, <b class="flag">S</b>, <b class="flag">E</b>, <b class="flag">W</b>, <b class="flag">L</b>, <b class="flag">R</b> or <b class="flag">D</b>. The page rotation setting causes <b class="name">pdftk</b> to rotate pages and documents as follows (in degrees): <b class="flag">N: 0</b>,&#160;<b class="flag">E: 90</b>,&#160;<b class="flag">S: 180</b>,&#160;<b class="flag">W: 270</b>,&#160;<b class="flag">L: -90</b>,&#160;<b class="flag">R: +90</b>,&#160;<b class="flag">D: +180</b>. The <b class="flag">L</b>, <b class="flag">R</b>, and <b class="flag">D</b> make relative adjustments to a page's rotation. If no arguments are passed to <b class="cmd">cat</b>, then <b class="name">pdftk</b> combines all input PDFs in the order they were given to create the output.<div class="spacer">
+</div>
+Examples without handles:<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-tag">
+<dt class="list-tag" style="margin-top: 0.00em;">
+<b class="flag">6-1</b></dt>
+<dd class="list-tag" style="margin-left: 0.33ex;">
+reverse pages in range</dd>
+<dt class="list-tag" style="margin-top: 0.00em;">
+<b class="flag">5 1 20</b></dt>
+<dd class="list-tag" style="margin-left: 0.33ex;">
+take single pages</dd>
+<dt class="list-tag" style="margin-top: 0.00em;">
+<b class="flag">1-endE</b></dt>
+<dd class="list-tag" style="margin-left: 0.33ex;">
+rotate entire document 90 degrees</dd>
+<dt class="list-tag" style="margin-top: 0.00em;">
+<b class="flag">5-25oddW</b></dt>
+<dd class="list-tag" style="margin-left: 0.33ex;">
+take odd pages in range, rotate 90 degrees</dd>
+</dl>
+<div class="spacer">
+</div>
+Examples with handles; say <i class="arg">A=Pa in1.pdf</i> <i class="arg">B=Pa in2.pdf</i>, then:<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-tag">
+<dt class="list-tag" style="margin-top: 0.00em;">
+<b class="flag">B</b></dt>
+<dd class="list-tag" style="margin-left: 0.62ex;">
+use all of <i class="file">in2.pdf</i></dd>
+<dt class="list-tag" style="margin-top: 0.00em;">
+<b class="flag">AW</b></dt>
+<dd class="list-tag" style="margin-left: 0.62ex;">
+rotate entire <i class="file">in1.pdf</i> document 90 degrees</dd>
+<dt class="list-tag" style="margin-top: 0.00em;">
+<b class="flag">A72</b></dt>
+<dd class="list-tag" style="margin-left: 0.62ex;">
+take a single page from <i class="file">in1.pdf</i></dd>
+<dt class="list-tag" style="margin-top: 0.00em;">
+<b class="flag">A A</b></dt>
+<dd class="list-tag" style="margin-left: 0.62ex;">
+concatenate <i class="file">in1.pdf</i> with <i class="file">in1.pdf</i></dd>
+<dt class="list-tag" style="margin-top: 0.00em;">
+<b class="flag">A1-21</b></dt>
+<dd class="list-tag" style="margin-left: 0.62ex;">
+take a range from <i class="file">in1.pdf</i></dd>
+<dt class="list-tag" style="margin-top: 0.00em;">
+<b class="flag">AW BW BD</b></dt>
+<dd class="list-tag" style="margin-left: 0.62ex;">
+concatenate rotated documents</dd>
+<dt class="list-tag" style="margin-top: 0.00em;">
+<b class="flag">Bend-1odd</b></dt>
+<dd class="list-tag" style="margin-left: 0.62ex;">
+take all odd pages from <i class="file">in2.pdf</i> in reverse order</dd>
+<dt class="list-tag" style="margin-top: 0.00em;">
+<b class="flag">A2-30evenL</b></dt>
+<dd class="list-tag" style="margin-left: 0.62ex;">
+take even pages from range, rotate 90 degrees left</dd>
+<dt class="list-tag" style="margin-top: 0.00em;">
+<b class="flag">AevenW AoddE</b></dt>
+<dd class="list-tag" style="margin-left: 0.62ex;">
+rotate even pages of <i class="file">in1.pdf</i> west and odd pages east</dd>
+<dt class="list-tag" style="margin-top: 0.00em;">
+<b class="flag">A1-21 Beven A72</b></dt>
+<dd class="list-tag" style="margin-left: 0.62ex;">
+assemble pages from both <i class="file">in1.pdf</i> and <i class="file">in2.pdf</i></dd>
+</dl>
+</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">shuffle</b> &#91;<span class="opt"><i class="arg">handle</i></span>&#93;&#91;<span class="opt"><i class="arg">begin-</i>&#91;<span class="opt"><i class="arg">end</i>&#91;<span class="opt"><i class="arg">qualifier</i></span>&#93;</span>&#93;</span>&#93;&#91;<span class="opt"><i class="arg">rotation</i></span>&#93; <i class="arg">...</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Collates pages from input PDFs to create a new PDF. Works like the <b class="cmd">cat</b> operation except that it takes one page at a time from each page range to assemble the output PDF. If one range runs out of pages, it continues with the remaining ranges. Ranges can use all of the features described above for <b class="cmd">cat</b>, like reverse page ranges, multiple ranges from a single PDF, and page rotation. This feature was designed to help collate PDF pages after scanning paper documents.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">burst</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Splits a single input PDF document into individual pages. Also creates a report named <i class="file">doc_data.txt</i> which is the same as the output from <b class="cmd">dump_data</b>. If the <b class="cmd">output</b> section (see below) is omitted, then the individual pages are named as <i class="file">pg_%04d.pdf</i>, e.g. <i class="file">pg_0001.pdf</i>, <i class="file">pg_0002.pdf</i>, etc. To name these pages yourself, supply a <a class="link-man">printf(3)</a> format string in the <b class="cmd">output</b> section. For example, specify <b class="cmd">output</b> <b class="flag">page_%02d.pdf</b> if you want the pages to be named <i class="file">page_01.pdf</i>, <i class="file">page_02.pdf</i>, etc.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">generate_fdf</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Reads a single input PDF file and generates an FDF file out of it, suitable for <b class="cmd">fill_form</b>. If no output file name is specified, <b class="name">pdftk</b> asks for one interactively.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">fill_form</b> <i class="arg">FDF_data_filename</i> | <i class="arg">XFDF_data_filename</i> | <b class="flag">-</b> | <b class="flag">PROMPT</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Fills the single input PDF's form fields with the data from an FDF file, a XFDF file or stdin. Enter the data filename after <i class="arg">fill_form</i>, or use <b class="flag">-</b> to pass the data via stdin; for example<div class="spacer">
+</div>
+<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk form.pdf fill_form data.fdf output filled.pdf</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+After filling a form, the form fields remain interactive unless you also use the <b class="cmd">flatten</b> output option, which merges the form fields with the PDF pages. You can use <b class="cmd">flatten</b> alone, too, but only on a single PDF, e.g.<div class="spacer">
+</div>
+<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk form.pdf fill_form data.fdf output out.pdf flatten</code></div>
+</blockquote>
+<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk filled.pdf output out.pdf flatten.</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+If the input FDF file includes Rich Text formatted data in addition to plain text, then the Rich Text data is packed into the form fields <span class="emph">as well as</span> the plain text. <b class="name">pdftk</b> also sets a flag that cues Acrobat/Reader to generate new field appearances based on the Rich Text data. That way, when the user opens the PDF, the viewer will create the Rich Text fields on the spot. If the user's PDF viewer does not support Rich Text, then the user will see the plain text data instead. If you flatten this form before Acrobat has a chance to create (and save) new field appearances, then the plain text field data is what you'll see.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">background</b> <i class="arg">background_PDF_filename</i> | <b class="flag">-</b> | <b class="flag">PROMPT</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Applies a PDF watermark to the background of a single input PDF. Pdftk only uses the first page from the background PDF and applies it to every page of the input PDF. This page is scaled and rotated as needed to fit the input page. You can use <b class="flag">-</b> to pass a background PDF into pdftk via stdin. If the input PDF does not have a transparent background (such as a PDF created from page scans) then the resulting background won't be visible. Use the <b class="cmd">stamp</b> operation instead.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">multibackground</b> <i class="arg">background</i> | <b class="flag">-</b> | <b class="flag">PROMPT</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Same as the <b class="cmd">background operation, but applies each page of the background PDF</b> to the corresponding page of the input PDF. If the input PDF has more pages than the stamp PDF, then the final stamp page is repeated across these remaining pages in the input PDF.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">stamp</b> <i class="arg">stamp</i> | <b class="flag">-</b> | <b class="flag">PROMPT</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+This behaves just like the <b class="cmd">background</b> operation except it overlays the stamp PDF page <span class="emph">on top</span> of the input PDF document's pages. This works best if the stamp PDF page has a transparent background.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">multistamp</b> <i class="arg">stamp</i> | <b class="flag">-</b> | <b class="flag">PROMPT</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Same as the <b class="cmd">stamp</b> operation, but applies each page of the background PDF to the corresponding page of the input PDF. If the input PDF has more pages than the stamp PDF, then the final stamp page is repeated across these remaining pages in the input PDF.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">dump_data</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Reads a single input PDF file and reports various statistics, metadata, bookmarks (a.k.a outlines), and page labels to the given output filename or (if no output is given) to stdout. Non-ASCII characters are encoded as XML numerical entities. Does not create a new PDF file.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">dump_data_utf8</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Same as <b class="cmd">dump_data</b> excepct that the output is encoded as UTF-8.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">dump_data_fields</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Reads a single input PDF file and reports form field statistics to the given output filename or (if no output is given) to stdout. Non-ASCII characters are encoded as XML numerical entities. Does not create a new PDF file.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">dump_data_fields_utf8</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Same as <b class="cmd">dump_data_fields</b> excepct that the output is encoded as UTF-8.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">update_info</b> <i class="arg">info</i> | <b class="flag">-</b> | <b class="flag">PROMPT</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Changes the metadata stored in a single PDF file's Info dictionary to match the input data file. The input data file uses the same syntax as the output from <b class="cmd">dump_data</b>. Non-ASCII characters should be encoded as XML numerical entities. This does not change the metadata stored in the PDF's XMP stream, if it has one. For example:<div class="spacer">
+</div>
+<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk in.pdf update_info in.info output out.pdf</code></div>
+</blockquote>
+</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">update_info_utf8</b> <i class="arg">info</i> | <b class="flag">-</b> | <b class="flag">PROMPT</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Same as <b class="cmd">update_info</b> except that the input is encoded as UTF-8.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">attach_files</b> <i class="arg">attachments</i> | <b class="flag">PROMPT</b> &#91;<span class="opt"><i class="arg">to_page_number</i> | <b class="flag">PROMPT</b></span>&#93;</dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Packs arbitrary files into a PDF using PDF's file attachment features. More than one attachment may be listed after <b class="cmd">attach_files</b>. Attachments are added at the document level unless the optional <b class="flag">to_page</b> option is given, in which case the files are attached to the given page number. The first page is 1, the final page is <b class="flag">end</b>. For example:<div class="spacer">
+</div>
+<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk in.pdf attach_files tab.html img.jpg to_page 6 output out.pdf</code></div>
+</blockquote>
+</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">unpack_files</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Copies all of the attachments from the input PDF into the current folder or to an output directory given in <b class="cmd">output</b> For example:<div class="spacer">
+</div>
+<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk report.pdf unpack_files output ~/atts/</code></div>
+</blockquote>
+</dd>
+</dl>
+</div>
+<div class="subsection">
+<h2 id="x4f7574707574204f7074696f6e73">Output Options</h2><dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-tag">
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">output</b> <i class="arg">filename</i> | <b class="flag">-</b> | <b class="flag">PROMPT</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Sets the filename of the output PDF file. The output filename may not be the same as an input filename. Use <b class="flag">-</b> to output to stdout. When using the <b class="cmd">dump_data</b> operation, use <b class="cmd">output</b> to set the name of the output data file. When using the <b class="cmd">unpack_files</b> operation, use <b class="cmd">output</b> to set the name of an output directory. When using the <b class="cmd">burst</b> operation, you can use <b class="cmd">output</b> to control the resulting PDF page filenames (see above).</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">encrypt_40bit</b> | <b class="cmd">encrypt_128bit</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+If an output PDF user or owner password is given, output PDF encryption strength defaults to 128 bits. This can be overridden by specifying <b class="cmd">encrypt_40bit</b>.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">allow</b> <i class="arg">permissions</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Permissions are applied to the output PDF file only if an encryption strength is specified or an owner or user password is given. If permissions are not specified, they default to &#8220;none&#8221;, which means all of the following features are disabled. The <i class="arg">permissions</i> section may include one or more of the following features: <b class="flag">Printing</b> (top quality printing), <b class="flag">DegradedPrinting</b> (lower quality printing), <b class="flag">ModifyContents</b> (also allows Assembly), <b class="flag">Assembly</b> <b class="flag">CopyContents</b> (also allows ScreenReaders), <b class="flag">ScreenReaders</b> <b class="flag">ModifyAnnotations</b> (also allows FillIn), <b class="flag">FillIn</b> <b class="flag">AllFeatures</b> (allows the user to perform all of the above, and top quality printing).</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">owner_pw</b> <i class="arg">password</i> | <b class="flag">PROMPT</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">user_pw</b> <i class="arg">password</i> | <b class="flag">PROMPT</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+If an encryption strength is given but no passwords are supplied, then the owner and user passwords remain empty, which means that the resulting PDF may be opened and its security parameters altered by anybody.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">compress</b> | <b class="cmd">uncompress</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+These are only useful when you want to edit PDF code in a text editor. Remove PDF page stream compression by applying the <b class="cmd">uncompress</b> filter. Use the <b class="cmd">compress</b> filter to restore compression.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">flatten</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Use this option to merge an input PDF's interactive form fields (and their data) with the PDF's pages. Only one input PDF may be given. Sometimes used with the <b class="cmd">fill_form</b> operation.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">keep_first_id</b> | <b class="cmd">keep_final_id</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+When combining pages from multiple PDFs, use one of these options to copy the document ID from either the first or final input document into the new output PDF. Otherwise <b class="name">pdftk</b> creates a new document ID for the output PDF. When no operation is given, <b class="name">pdftk</b> always uses the ID from the (single) input PDF.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">drop_xfa</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+If the input PDF is a form created using Acrobat 7 or Adobe Designer, then it probably has XFA data. Filling such a form using <b class="name">pdftk</b> yields a PDF with data that fails to display in Acrobat 7 (and 6?). The workaround is to remove the form's XFA data, either before you fill the form using <b class="name">pdftk</b> or at the time you fill the form. Using this option causes <b class="name">pdftk</b> to omit the XFA data from the output PDF form.<div class="spacer">
+</div>
+This option is only useful when running <b class="name">pdftk</b> on a single input PDF. When assembling a PDF from multiple inputs, any XFA data in the input is automatically omitted.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">dont_ask</b> | <b class="cmd">do_ask</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Depending on compile-time settings, <b class="name">pdftk</b> might prompt you for further input when it encounters a problem, such as a bad password. Override this default behavior by adding <b class="cmd">dont_ask</b> or <b class="cmd">do_ask</b>. When running in <b class="cmd">dont_ask</b> mode, <b class="name">pdftk</b> will overwrite output files without notice.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="cmd">verbose</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+By default, pdftk runs quietly. Append <b class="cmd">verbose</b> to the end and it will speak up.</dd>
+</dl>
+</div>
+</div>
+<div class="section">
+<h1 id="x4558414d504c4553">EXAMPLES</h1> Collate scanned pages<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk A=even.pdf B=odd.pdf shuffle A B output collated.pdf</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+or if <i class="file">odd.pdf</i> is in reverse order:<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk A=even.pdf B=odd.pdf shuffle A Bend-1 output collated.pdf</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Decrypt a PDF:<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk secured.pdf input_pw foopass output unsecured.pdf</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Encrypt a PDF using 128-bit strength, withhold all permissions:<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk in.pdf output out.pdf owner_pw foopass</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Same as above, except a user password is also used in the output PDF:<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk in.pdf output out.pdf owner_pw foo user_pw baz</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Same as above, except printing is allowed (once the PDF is open):<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk in.pdf output out.pdf owner_pw foo user_pw baz allow Printing</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Join <i class="file">in1.pdf</i> and <i class="file">in2.pdf</i> into <i class="file">out.pdf</i>:<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk in1.pdf in2.pdf cat output out.pdf</code></div>
+</blockquote>
+or (using handles):<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk A=in1.pdf B=in2.pdf cat A B output out.pdf</code></div>
+</blockquote>
+or (using wildcards):<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk in?.pdf cat output out.pdf</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Remove page 13 from <i class="file">in.pdf</i> to create <i class="file">out.pdf</i>:<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk in.pdf cat 1-12 14-end output out.pdf</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Apply 40-bit encryption to output, revoking all permissions (the default). Set the owner password to &#8220;foo&#8221;:<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk 1.pdf 2.pdf cat output out.pdf encrypt_40bit owner_pw foo</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Join two files, one of which requires the password &#8220;foopass&#8221;. The output is not encrypted.<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk A=secured.pdf other.pdf input_pw A=foopass cat output out.pdf</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Uncompress PDF page streams for editing the PDF in a text editor:<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk doc.pdf output uncompressed.pdf uncompress</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Repair a PDF's corrupted XREF table and stream lengths, if possible:<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdf broken.pdf output fixed.pdf</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Burst a single PDF document into pages and dump its data to <i class="file">doc_data.txt</i>:<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk in.pdf burst</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Burst a single PDF document into encrypted pages. Allow low-quality printing:<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk in.pdf burst owner_pw foopass allow DegradedPrinting</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Write a report on PDF document metadata and bookmarks to <i class="file">report.txt</i>:<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk in.pdf dump_data output report.txt</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Rotate the first PDF page 90 degrees clockwise<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk in.pdf cat 1E 2-end output out.pdf</code></div>
+</blockquote>
+<div class="spacer">
+</div>
+Rotate an entire PDF document 180 degrees<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit">pdftk in.pdf cat 1-endS output out.pdf</code></div>
+</blockquote>
+</div>
+<div class="section">
+<h1 id="x53454520414c534f">SEE ALSO</h1> <a class="link-ext" href="http://www.pdftk.com">PDFtk's homepage</a><div class="spacer">
+</div>
+<span class="ref"><span class="ref-auth">Sid Steward</span>, <i class="ref-book">PDF Hacks</i>, <i class="ref-issue">O'Reilly</i>, <span class="ref-date">2004</span>.</span></div>
+<div class="section">
+<h1 id="x415554484f52">AUTHOR</h1> <span class="author">Sid Steward</span> &#60;<a class="link-mail" href="mailto:sid.steward@pdflabs.com">sid.steward@pdflabs.com</a>&#62; maintains <b class="name">pdftk</b>. Please email him with questions or bug reports. Include pdftk in the subject line to ensure successful delivery. Thank you.</div>
+<table class="foot">
+<tbody>
+<tr>
+<td class="foot-date">
+October 15, 2014</td>
+<td class="foot-os">
+OpenBSD 5.6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
+

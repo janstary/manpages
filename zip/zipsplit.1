@@ -1,0 +1,57 @@
+.Dd September 19, 2015
+.Dt ZIPSPLIT 1
+.Os
+.Sh NAME
+.Nm zipsplit
+.Nd split a zipfile into smaller zipfiles
+.Sh SYNOPSIS
+.Nm
+.Op Fl hiLpstv
+.Op Fl b Ar path
+.Op Fl n Ar size
+.Op Fl r Ar room
+.Ar zipfile
+.Sh DESCRIPTION
+The
+.Nm
+utility splits a given
+.Ar zipfile
+into a set of smaller zipfiles.
+The options are as follows.
+.Bl -tag -width "-b path"
+.It Fl h
+Show a short help message and exit.
+.It Fl i
+Create and index named
+.Pa zipsplit.idx
+and count its size against the first zip file.
+.It Fl L
+Show software license and exit.
+.It Fl p
+Pause between output zip files.
+.It Fl s
+Do a sequential split even if it takes more zip files.
+.It Fl t
+Report how many files would be created, but don't create them.
+.It Fl v
+Show version information and exit.
+.It Fl b Ar path
+Use
+.Pa path
+for the output zip files.
+.It Fl n Ar size
+Create zip files no larger than
+.Ar size
+(36000 by default).
+.It Fl r Ar room
+Leave room for
+.Ar room
+bytes on the first disk (0 by default).
+.El
+.\".Sh EXAMPLES
+.\"FIXME
+.Sh SEE ALSO
+.Xr zip 1
+.Sh CAVEATS
+.Nm
+does not support files larger than 2 GB or split archives.

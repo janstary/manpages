@@ -1,0 +1,60 @@
+.Dd November 10, 2014
+.Dt PDFSEPARATE 1
+.Os
+.Sh NAME
+.Nm pdfseparate
+.Nd extract pages from a PDF document
+.Sh SYNOPSIS
+.Nm pdfseparate
+.Op Fl h
+.Op Fl v
+.Op Fl f Ar first
+.Op Fl l Ar last
+.Ar input
+.Ar name-pattern
+.Sh DESCRIPTION
+.Nm
+extracts individual pages from a PDF document.
+The input document must not be encrypted.
+.Pp
+The pages extracted from
+.Ar input
+are saved in individual output files named like
+.Ar name-pattern .
+The
+.Ar name-pattern
+must contain a
+.Dq %d
+placeholder if more than one page is to be be extracted.
+The
+.Dq %d
+will be replaced by the original page number.
+.Pp
+The options are as follows:
+.Pp
+.Bl -tag -width 8n -compact
+.It Fl f Ar first
+The first page to extract (start of input by default).
+.It Fl l Ar last
+The last page to extract (end of input by default).
+.It Fl h
+Print usage information.
+.It Fl v
+Print copyright and version information.
+.El
+.Sh EXAMPLES
+.Dl $ pdfseparate file.pdf file-%d.pdf
+.Pp
+extracts all pages from
+.Pa file.pdf .
+If
+.Pa file.pdf
+has 3 pages, the resulting files will be named
+.Pa sample-1.pdf ,
+.Pa sample-2.pdf
+and
+.Pa sample-3.pdf .
+.Sh SEE ALSO
+.Xr pdfunite 1
+.Pp
+.Lk http://poppler.freedesktop.org

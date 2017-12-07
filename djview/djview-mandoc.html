@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<style>
+table.head, table.foot { width: 100%; }
+td.head-rtitle, td.foot-os { text-align: right; }
+td.head-vol { text-align: center; }
+table.foot td { width: 50%; }
+table.head td { width: 33%; }
+div.spacer { margin: 1em 0; }
+</style>
+<title>
+DJVIEW4(1)</title>
+</head>
+<body>
+<div class="mandoc">
+<table class="head">
+<tbody>
+<tr>
+<td class="head-ltitle">
+DJVIEW4(1)</td>
+<td class="head-vol">
+General Commands Manual</td>
+<td class="head-rtitle">
+DJVIEW4(1)</td>
+</tr>
+</tbody>
+</table>
+<div class="section">
+<h1 id="x4e414d45">NAME</h1> <b class="name">djview4</b> &#8212; <span class="desc">standalone DjVu viewer</span></div>
+<div class="section">
+<h1 id="x53594e4f50534953">SYNOPSIS</h1><table class="synopsis">
+<col style="width: 7.00ex;"/>
+<col/>
+<tbody>
+<tr>
+<td>
+<b class="name">djview4</b></td>
+<td>
+[<span class="opt">options</span>] [<span class="opt"><i class="arg">file ...</i></span>]</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section">
+<h1 id="x4445534352495054494f4e">DESCRIPTION</h1> <b class="name">djview4</b> is a standalone viewer for DjVu files. Features include navigating documents, zooming and panning page images, producing and displaying thumbnails, displaying document outlines, searching documents for particular words in the hidden text layer, copying hidden text to the clipboard, saving pages and documents as bundled or indirect multi-page files, and printing pages and documents. The viewer can simultaneously display several pages using a side-by-side or a continuous layout.<div class="spacer">
+</div>
+This program can run as a standalone program or as a slave process for the DjVu browser plugin <a class="link-man">nsdejavu(1)</a>. When running as a standalone program, the command line argument can be:<ul style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-bul">
+<li class="list-bul" style="margin-top: 1.00em;">
+a filename of a valid DjVu document</li>
+<li class="list-bul" style="margin-top: 1.00em;">
+a URL of a local or remote DjVu document of the form<blockquote style="margin-top: 0.00em;margin-bottom: 0.00em;">
+<div class="display">
+<code class="lit"><a class="link-ext" href="http://.../file.djvu?djvuopts&amp;keyword=value">http://.../file.djvu?djvuopts&amp;keyword=value</a></code></div>
+</blockquote>
+The optional &#8220;djvuopts&#8221; can specify various options using a syntax similar to that of CGI arguments. This is useful for a browser plugin as there are no command line arguments. In the case of a standalone viewer, the options can be specified as command line arguments. Browsing remote DjVu documents with the standalone viewer is less efficient than using the browser plugin: the standalone viewer does not benefit from the browser caching strategies and proxy settings. Proxy settings for the standalone viewer can be set independently with the preferences dialog.</li>
+</ul>
+<div class="spacer">
+</div>
+An extensive list of options are recognized and described in <a class="link-man">nsdejavu(1)</a>. Most options can be specified as command line arguments to the standalone viewer, starting with the customary dash character, or using the syntax of CGI arguments in the document URL. Some options however are only meaningful as command line arguments; other options are only recognized when running the X11 version of <b class="name">djview4</b>.<div class="spacer">
+</div>
+The command line options are as follows:<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-tag">
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-help</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Display a brief help message and exit.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-verbose</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Prints informational messages on the console. This option is very useful because it displays messages about unrecognized constructs in the DjVu annotation and hyperlink layers.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-fs</b>, <b class="flag">-fullscreen</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Start <b class="name">djview4</b> in full screen mode. Use the ESC key to exit the full screen mode.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-slideshow</b>[<span class="opt">=<i class="arg">arg</i></span>]</dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Start <b class="name">djview4</b> in slide show mode. The optional numerical argument <i class="arg">arg</i> specifies the number of seconds before turning each page. Use the ESC key to exit the slide show mode.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-style</b>=<i class="arg">stylename</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify the graphical user interface style. The recognized values of <i class="arg">stylename</i> depend on the installed version of the Qt toolkit. Common style names include <b class="flag">cde</b>, <b class="flag">motif</b>, <b class="flag">plastique</b>, <b class="flag">platinum</b>, and <b class="flag">windows</b>.</dd>
+</dl>
+<div class="spacer">
+</div>
+The following command line options are recognized by the X11 version of <b class="name">djview4</b>. Unlike most <b class="name">djview4</b> options, the X11 options that demand an argument do not use the &#8216;=&#8217; character to introduce their argument.<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-tag">
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-display</b> <i class="arg">displayname</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Let <b class="name">djview4</b> windows appear on the X11 display <i class="arg">displayname</i>.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-geometry</b> <i class="arg">W</i>x<i class="arg">H</i>+<i class="arg">X</i>+<i class="arg">Y</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify the initial size and position of the first window using the traditional X11 geometry specification syntax. The integer arguments <i class="arg">W</i> and <i class="arg">H</i> represent the initial window width and height. The numerical arguments <i class="arg">X</i> and <i class="arg">Y</i> indicate the window position relative to the top left corner of the screen.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-name</b> <i class="arg">name</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Set the application name.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-title</b> <i class="arg">title</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Set the title of the first window.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-fn</b> <i class="arg">fontname</i>, <b class="flag">-font</b> <i class="arg">fontname</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify the default font used for buttons and menus. The font should be specified using a X logical font description string.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-bg</b> <i class="arg">color</i>, <b class="flag">-background</b> <i class="arg">color</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify the default background color used for interface elements. The color should be given as a standard X11 color name.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-fg</b> <i class="arg">color</i>, <b class="flag">-foreground</b> <i class="arg">color</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify the default foreground color used for interface elements. The color should be given as a standard X11 color name.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-btn</b> <i class="arg">color</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify the default button color. The color should be given as a standard X11 color name.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-ncols</b> <i class="arg">count</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Limit the number of colors allocated on a 8 bit display. The default color cube contains 216 distinct colors.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-cmap</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Force the allocation of a private color map on a 8-bit display. This might increase the color quality but cause flashing when the viewer window gets activated.</dd>
+</dl>
+<div class="spacer">
+</div>
+The following options can be specified as command line options or can be passed by augmenting the document URL as described above. The keywords are derived from the option names by removing the initial dashes.<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-tag">
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-page</b> <i class="arg">pagename</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Display a specific document page. The viewer first searches a page whose identifier matches the argument <i class="arg">pagename</i>. Otherwise, if <i class="arg">pagename</i> is a number preceded by either &#8216;+&#8217; or &#8216;-&#8217;, the viewer performs a displacement relative to the current page. Otherwise, starting from the current page and wrapping around it searches for a page whose title matches <i class="arg">pagename</i>. Otherwise, if <i class="arg">pagename</i> is numerical, it is interpreted as an ordinal page number. Otherwise, and finally, the viewer searches a page whose name matches <i class="arg">pagename</i>.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-pageno</b> <i class="arg">pagenumber</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+The page searching algorithm for <b class="flag">-page</b> can cause ambiguities when page titles can be interpreted as numbers. The <i class="arg">pagenumber</i> argument is always interpreted as an ordinal page number. This option is less portable than <b class="flag">-page</b>, because it is not recognized by earlier versions of the djvu plugin. When using this option is necessary, it is advisable to use both the <b class="flag">-page</b> and <b class="flag">-pageno</b> options.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-zoom</b> <i class="arg">zoomfactor</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify the initial zoom factor. Unless the toolbar, pop-up menu and keyboard are disabled, the user will be able to change the zoom factor. Legal values of <i class="arg">zoomfactor</i> are:<div class="spacer">
+</div>
+<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-hang">
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">number</b></dt>
+<dd class="list-hang" style="margin-left: 7.00ex;">
+Magnification factor in the range from 10% to 999%.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">one2one</b></dt>
+<dd class="list-hang" style="margin-left: 7.00ex;">
+Select the &#8220;one-to-one&#8221; mode.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">width</b></dt>
+<dd class="list-hang" style="margin-left: 7.00ex;">
+Select the &#8220;fit width&#8221; mode.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">page</b></dt>
+<dd class="list-hang" style="margin-left: 7.00ex;">
+Select the &#8220;fit page&#8221; mode.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">stretch</b></dt>
+<dd class="list-hang" style="margin-left: 7.00ex;">
+Stretch the image to the plugin window size.</dd>
+</dl>
+</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-showposition</b>=<i class="arg">px</i>,<i class="arg">py</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify a point in the current page that should be as close as possible to the center of the window. The horizontal and vertical positions <i class="arg">px</i> and <i class="arg">py</i> in the current page are given as fractions in the range from 0 to 1. For instance, &#8220;0,0&#8221; designates the upper left corner of the page, &#8220;0.5,0.5&#8221; is the center, and &#8220;1,1&#8221; is the lower right corner.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-mode</b>=<i class="arg">modespec</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify the initial display mode. Unless the toolbar and pop-up menu are disabled, the user will be able to change it. Legal values of <i class="arg">modespec</i> are:<div class="spacer">
+</div>
+<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-hang">
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">color</b></dt>
+<dd class="list-hang" style="margin-left: 5.00ex;">
+Display the color image.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">bw</b></dt>
+<dd class="list-hang" style="margin-left: 5.00ex;">
+Display the foreground mask only.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">fore</b></dt>
+<dd class="list-hang" style="margin-left: 5.00ex;">
+Display the foreground only.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">back</b></dt>
+<dd class="list-hang" style="margin-left: 5.00ex;">
+Display the background only.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">text</b></dt>
+<dd class="list-hang" style="margin-left: 5.00ex;">
+Overlay the hidden text over the color image.</dd>
+</dl>
+</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-hor_align</b>=<i class="arg">keyword</i>, <b class="flag">-halign</b>=<i class="arg">keyword</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify the horizontal position of the page in the viewer window. This does not specify what part of the page will be shown, but rather how margins will be laid out around the page in the plugin window. Legal values of <i class="arg">keyword</i> are <b class="flag">left</b>, <b class="flag">center</b>, and <b class="flag">right</b>.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-ver_align</b>=<i class="arg">keyword</i>, <b class="flag">-valign</b>=<i class="arg">keyword</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify the vertical position of the page in the viewer window. This does not specify what part of the page will be shown, but rather how margins will be laid out around the page in the plugin window. Legal values of <i class="arg">keyword</i> are <b class="flag">top</b>, <b class="flag">center</b>, and <b class="flag">bottom</b>.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-cache</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Enable or disable the caching of fully decoded pages of the document. Caching is on by default for documents whose URL contains a <i class="file">djvu</i> or <i class="file">djv</i> extension.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-continuous</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Enable or disable the continuous layout of multipage documents.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-sidebyside</b>=<b class="flag">yes</b>|<b class="flag">no</b>, <b class="flag">-side_by_side</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Enable or disable the side-by-side layout of multipage documents.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-coverpage</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify whether the cover page must be displayed alone when multipage documents are shown in side-by-side layout.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-righttoleft</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify whether pages should be arranged right-to-left when multipage documents are shown in side-by-side layout.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-layout</b>=<i class="arg">keyword</i>[<span class="opt">,<i class="arg">keyword</i>[<span class="opt">,...</span>]</span>]</dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify the layout settings using a single list of comma-separated keywords. The following keywords are recognized:<div class="spacer">
+</div>
+<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-hang">
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">single</b></dt>
+<dd class="list-hang" style="margin-left: 15.00ex;">
+Disable the side-by-side and continuous modes.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">double</b></dt>
+<dd class="list-hang" style="margin-left: 15.00ex;">
+Enable the side-by-side mode.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">continuous</b></dt>
+<dd class="list-hang" style="margin-left: 15.00ex;">
+Enable the continuous mode.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">cover</b>, <b class="flag">nocover</b></dt>
+<dd class="list-hang" style="margin-left: 15.00ex;">
+First page treatment in side-by-side mode.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">ltor</b>, <b class="flag">rtol</b></dt>
+<dd class="list-hang" style="margin-left: 15.00ex;">
+Layout direction for side-by-side mode.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">gap</b>, <b class="flag">nogap</b></dt>
+<dd class="list-hang" style="margin-left: 15.00ex;">
+Specify whether there is a gap between pages.</dd>
+</dl>
+</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-scrollbars</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Enable or disable the presence of scroll bars when the full image size exceeds the plugin window size. The default is yes.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-frame</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Enable or disable the display of a thin frame and shadow around the DjVu images. Frames are enabled by default.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-background</b>=<i class="arg">color</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Specify the <i class="arg">color</i> of the background border displayed around the document in hexadecimal as either <i class="arg">RRGGBB</i> or #<i class="arg">RRGGBB</i>.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-toolbar</b>=<i class="arg">keyword</i>[<span class="opt">(,|+|-)<i class="arg">keyword</i>[<span class="opt">...</span>]</span>]</dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Controls the appearance and the contents of the toolbar. The argument is composed of a number of keywords separated by characters comma, plus or minus. The appearance of the toolbar is controlled by keywords placed before the first plus or minus. The following keywords are recognized in this context:<div class="spacer">
+</div>
+<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-hang">
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">no</b></dt>
+<dd class="list-hang" style="margin-left: 6.00ex;">
+Disable toolbar.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">always</b></dt>
+<dd class="list-hang" style="margin-left: 6.00ex;">
+Displays the toolbar.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">auto</b></dt>
+<dd class="list-hang" style="margin-left: 6.00ex;">
+Enable toolbar autohide mode (not implemented).</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">top</b></dt>
+<dd class="list-hang" style="margin-left: 6.00ex;">
+Place toolbar along the top edge.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">bottom</b></dt>
+<dd class="list-hang" style="margin-left: 6.00ex;">
+Place toolbar along the bottom edge.</dd>
+</dl>
+<div class="spacer">
+</div>
+The content of the toolbar is controlled by keywords placed after the first plus or minus. Each keyword adds (after a plus) or removes (after a minus) a particular toolbar button or group of buttons. The initial content of the toolbar is determined by the first plus or minus. When this is a plus, the toolbar is initially empty. When this is a minus, the toolbar initially contains the default selection of buttons. The following keywords are recognized:<div class="spacer">
+</div>
+<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-hang">
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">modecombo</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the display mode selection tool.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">zoomcombo</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the zoom selection tool.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">zoom</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the zoom buttons.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">select</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the selection button.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">rotate</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the image rotation buttons.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">find</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the text search button.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">new</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the new window button.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">open</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the open new document button.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">save</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the save button.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">print</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the print button.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">layout</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the page layout buttons.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">pagecombo</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the page selection tool.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">firstlast</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the first-page and last-page buttons.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">prevnext</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the previous- and next-page buttons.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">backforw</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the back and forward buttons.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">help</b></dt>
+<dd class="list-hang" style="margin-left: 9.00ex;">
+the contextual help button.</dd>
+</dl>
+<div class="spacer">
+</div>
+For the sake of backward compatibility, the keywords <b class="flag">fore</b>, <b class="flag">fore_button</b>, <b class="flag">back</b>, <b class="flag">back_button</b>, <b class="flag">bw</b>, <b class="flag">bw_button</b>, <b class="flag">color</b>, and <b class="flag">color_button</b> are interpreted as <b class="flag">modecombo</b>; the keyword <b class="flag">rescombo</b> is a synonym of <b class="flag">zoomcombo</b>; the keywords <b class="flag">pan</b>, <b class="flag">zoomsel</b>, and <b class="flag">textsel</b> are interpreted as <b class="flag">select</b>; and the keyword <b class="flag">doublepage</b> is interpreted as <b class="flag">layout</b>. All other keywords are ignored.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-menubar</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Enable or disable the presence of the menu bar located on top of the window.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-statusbar</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Enable or disable the presence of the status bar located at the bottom of the window.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-sidebar</b>=<i class="arg">keyword</i>[<span class="opt">,<i class="arg">keyword</i>[<span class="opt">,<i class="arg">...</i></span>]</span>]</dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Control the dockable panels. The argument is a comma separated list of keywords. A first group of keywords selects which panels are affected. Omitting these keywords selects all panels.<div class="spacer">
+</div>
+<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-hang">
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">thumbnails</b></dt>
+<dd class="list-hang" style="margin-left: 18.00ex;">
+the thumbnail panel.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">outline</b>, <b class="flag">bookmarks</b></dt>
+<dd class="list-hang" style="margin-left: 18.00ex;">
+the outline panel.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">search</b>, <b class="flag">find</b></dt>
+<dd class="list-hang" style="margin-left: 18.00ex;">
+the search panel.</dd>
+</dl>
+<div class="spacer">
+</div>
+A second group of keywords then controls the visibility and the position of the selected panels.<div class="spacer">
+</div>
+<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-hang">
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">yes</b>, <b class="flag">true</b></dt>
+<dd class="list-hang" style="margin-left: 18.00ex;">
+Show the specified panels (default).</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">no</b>, <b class="flag">false</b></dt>
+<dd class="list-hang" style="margin-left: 18.00ex;">
+Hide the specified panels.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">left</b></dt>
+<dd class="list-hang" style="margin-left: 18.00ex;">
+Dock specified panels on the left side.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">right</b></dt>
+<dd class="list-hang" style="margin-left: 18.00ex;">
+Dock specified panels on the right side.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">top</b></dt>
+<dd class="list-hang" style="margin-left: 18.00ex;">
+Dock specified panels on the top side.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">bottom</b></dt>
+<dd class="list-hang" style="margin-left: 18.00ex;">
+Dock specified panels on the bottom side.</dd>
+</dl>
+</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-thumbnails</b>=<i class="arg">keyword</i>[<span class="opt">,<i class="arg">keyword</i>[<span class="opt">,...</span>]</span>]</dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Compatibility alias for <b class="flag">-sidebar</b>=<b class="flag">thumbnails</b></dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-outline</b>=<i class="arg">keyword</i>[<span class="opt">,<i class="arg">keyword</i>[<span class="opt">,...</span>]</span>]</dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Compatibility alias for <b class="flag">-sidebar</b>=<b class="flag">outline</b></dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-menu</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Enable or disable the pop-up menu.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-keyboard</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Enable or disable the DjVu plugin keyboard shortcuts. The default is <b class="flag">yes</b> (enabled). Note that disabling the keyboard handling does not disable the shortcuts associated with active menus, visible toolbars and sidebars; see <b class="flag">-menu</b>, <b class="flag">-menubar</b>, <b class="flag">-toolbar</b>, and <b class="flag">-sidebar</b>.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-mouse</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Enable or disable mouse interaction for panning and selecting. The default is <b class="flag">yes</b> (enabled).</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-links</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Enable or disable hyper-links in the DjVu image. Hyper-links are enabled by default.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-highlight</b><code class="none">=</code><i class="arg">x</i>,<i class="arg">y</i>,<i class="arg">w</i>,<i class="arg">h</i>[<span class="opt">,<i class="arg">color</i></span>]</dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Display a highlighted rectangle at the specified coordinates in the current page and with the specified color. The coordinates <i class="arg">x</i>, <i class="arg">y</i>, <i class="arg">w</i> and <i class="arg">h</i> are measured in document image coordinates (not screen coordinates). The origin is set at the bottom left corner of the image. Specify the <i class="arg">color</i> in hexadecimal as either <i class="arg">RRGGBB</i> or #<i class="arg">RRGGBB</i>. Multiple highlighted zones can be specified and can be interspersed with multiple <b class="flag">-page</b> options.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-find</b>=<i class="arg">string</i></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Highlight occurrences of the given <i class="arg">string</i>. This option works when the document contains a hidden text layer. It can be used in conjunction with <b class="flag">-sidebar</b>=<b class="flag">find</b> to display the text searching interface. The <i class="arg">string</i> can be terminated by a slash (&#8216;/&#8217;) followed by letters specifying search options. The following letters are recognized:<div class="spacer">
+</div>
+<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-hang">
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">c</b></dt>
+<dd class="list-hang" style="margin-left: 2.00ex;">
+Case-sensitive search.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">C</b></dt>
+<dd class="list-hang" style="margin-left: 2.00ex;">
+Case-insensitive search (default).</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">w</b></dt>
+<dd class="list-hang" style="margin-left: 2.00ex;">
+Search hits start on word boundaries (default).</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">W</b></dt>
+<dd class="list-hang" style="margin-left: 2.00ex;">
+Ignore word boundaries.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">r</b></dt>
+<dd class="list-hang" style="margin-left: 2.00ex;">
+Regular expression search.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">R</b></dt>
+<dd class="list-hang" style="margin-left: 2.00ex;">
+String search (default).</dd>
+</dl>
+</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-rotate</b>=<b class="flag">0</b>|<b class="flag">90</b>|<b class="flag">180</b>|<b class="flag">270</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Rotate the image counter-clockwise by the specified angle.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-print</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Enable or disable printing the DjVu document. Printing is enabled by default.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-save</b>=<b class="flag">yes</b>|<b class="flag">no</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Enable or disable saving the DjVu document. Saving is enabled by default.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-passive</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Cause the DjVu image to be displayed in a manner similar to an ordinary web image. The default zoom factor is changed to <b class="flag">page</b>. The toolbar, the status bar, the scrollbars, the menus, and the keyboard shortcuts are disabled.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-passivestretch</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+Cause the DjVu image to be displayed in a manner similar to an ordinary web image. The default zoom factor is changed to <b class="flag">stretch</b>. The toolbar, the status bar, the scrollbars, the menus, and the keyboard shortcuts are disabled.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-nomenu</b>, <b class="flag">-notoolbar</b>, <b class="flag">-noscrollbars</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+These options were recognized by some versions of the DjVu viewers and are honored for the sake of backward compatibility. A warning message is printed when <b class="flag">-verbose</b> is active.</dd>
+<dt class="list-tag" style="margin-top: 1.00em;">
+<b class="flag">-logo</b>, <b class="flag">-textsel</b>, <b class="flag">-search</b></dt>
+<dd class="list-tag" style="margin-left: 6.00ex;">
+These options were recognized by some versions of the DjVu viewers but are currently not implemented by <b class="name">djview4</b>. A warning message is printed when <b class="flag">-verbose</b> is active.</dd>
+</dl>
+<div class="subsection">
+<h2 id="x5573616765">Usage</h2> Most features can be accessed using the menus, the toolbar, the side bar or the pop-up menu shown when the right mouse button is pressed over a DjVu image. Detailled help can be accessed by clicking the contextual help icon from the toolbar and then clicking on various section of the djview user interface. The following table lists some useful key combinations recognized when the djvu document is active:<div class="spacer">
+</div>
+<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-hang">
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">SHIFT+F1</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Activate the contextual help.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">1</b>, <b class="flag">2</b>, <b class="flag">3</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Change zoom to 100%, 200% and 300%.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">Up</b>, <b class="flag">Down</b>, <b class="flag">Left</b>, <b class="flag">Right</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Scroll the image in the given direction.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">Home</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Display top left corner of the image.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">End</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Display bottom right corner of the image.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">Control+Home</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Go to the beginning of the document.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">Control+End</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Go to the end of the document.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">Space</b>, <b class="flag">Return</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Scroll down or go to next page.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">Backspace</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Scroll up or go to previous page.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">Page Down</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Go to the next page.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">Page Up</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Go to the previous page.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">+</b>, <b class="flag">-</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Zoom in and out.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">,</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Rotate image.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">W</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Select the &#8220;fit width&#8221; zooming mode.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">P</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Select the &#8220;fit page&#8221; zooming mode.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">CTRL+F</b>, <b class="flag">F3</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Search the hidden text layer.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">CTRL+G</b></dt>
+<dd class="list-hang" style="margin-left: 21.00ex;">
+Go to a specific page by name or by number.</dd>
+</dl>
+<div class="spacer">
+</div>
+Handy effects can be achieved by holding modifier keys. The following table lists the default assignments; these keys are configurable from the preference dialog.<div class="spacer">
+</div>
+<dl style="margin-top: 0.00em;margin-bottom: 0.00em;" class="list list-hang">
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">CTRL+SHIFT</b></dt>
+<dd class="list-hang" style="margin-left: 10.00ex;">
+Hold these keys to show the magnification lens.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">CTRL</b></dt>
+<dd class="list-hang" style="margin-left: 10.00ex;">
+Hold this key to select an area with the mouse.</dd>
+<dt class="list-hang" style="margin-top: 0.00em;">
+<b class="flag">SHIFT</b></dt>
+<dd class="list-hang" style="margin-left: 10.00ex;">
+Hold this key to display all hyperlinks.</dd>
+</dl>
+</div>
+</div>
+<div class="section">
+<h1 id="x454e5649524f4e4d454e54">ENVIRONMENT</h1> Setting <span class="env">DJVIEW_VERBOSE</span> to a nonzero value is equivalent to calling <b class="name">djview4</b> with <b class="flag">-verbose</b>. Setting <span class="env">DJVIEW_OPENGL</span> to values 0 or 1 overrides the preference settings regarding OpenGL rendering.<div class="spacer">
+</div>
+When the user clicks on a djvu hyperlink pointing to a web page, <b class="name">djview4</b> first tries to execute the web browser programs whose names are listed in the colon separated environment variable <span class="env">BROWSER</span>, then tries sensible platform dependent defaults.<div class="spacer">
+</div>
+The user interface language is determined by first trying to find a complete set of translation files for the language specified in the preference dialog, then for the ISO 639 languages specified in the colon separated environment variable <span class="env">LANGUAGE</span>, and finally the language specified by the system locale. If all these searches fail, the user interface language reverts to the english default.</div>
+<div class="section">
+<h1 id="x53454520414c534f">SEE ALSO</h1> <a class="link-man">ddjvu(1)</a>, <a class="link-man">djview3(1)</a>, <a class="link-man">djvu(1)</a>, <a class="link-man">nsdejavu(1)</a>, <a class="link-man">tiff2pdf(1)</a></div>
+<div class="section">
+<h1 id="x415554484f5253">AUTHORS</h1> <span class="author">Leon Bottou</span> &lt;<a class="link-mail" href="mailto:leonb@users.sf.net">leonb@users.sf.net</a>&gt;, using code written for <a class="link-man">tiff2pdf(1)</a> by<br/>
+<span class="author">Ross Finlayson</span>.</div>
+<table class="foot">
+<tbody>
+<tr>
+<td class="foot-date">
+September 24, 2015</td>
+<td class="foot-os">
+OpenBSD 5.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,709 @@
+.\" for a password.
+.\" FIXME License goes here
+.\" TODO examples of PROMPT use
+.\" generovane PDF je hnusne: treb Bl -tag nezarezava!
+.\" generovane HTML je tae hnusne: treba uz to zahlavi
+.\" TODO: example use of relative rotation
+.\" FIXME: what happens if we use W as a handle for rotation?
+.\" FIXME: should we explicitly forbid W/E/N/S as handles?
+.\" FIXME: what if there is more than one FDF/XFDF input
+.\" 		Is it silently ignored?
+.\" TODO: should we have ENVIRONMENT, FILES, EXIT STATUS, HISTORY?
+.Dd Oct 15, 2014
+.Dt PDFTK 1
+.Os
+.Sh NAME
+.Nm pdftk
+.Nd manipulate PDF files
+.Sh SYNOPSIS
+.Nm pdftk
+.Fl h | -help
+.Nm pdftk
+.Oo Ar handle Ns = Oc Ns Ar pdf_input_file ... | Cm - | Cm PROMPT
+.Op Ic input_pw Oo Ar handle Ns = Oc Ns Ar password ... | Cm PROMPT
+.br
+.Oo
+.Ic cat |
+.Ic shuffle |
+.Ic burst |
+.Ic generate_fdf |
+.Ic fill_form |
+.Ic background |
+.Ic multibackground |
+.Ic stamp |
+.Ic multistamp |
+.Ic dump_data |
+.Ic dump_data_utf8 |
+.Ic dump_data_fields |
+.Ic dump_data_fields_utf8 |
+.Ic update_info |
+.Ic update_info_utf8 |
+.Ic attach_files |
+.Ic unpack_files
+.Ar arguments
+.Oc
+.Op Ic output Ar filename | Cm - | Cm PROMPT
+.Op Ic encrypt_40bit | encrypt_128bit
+.Op Ic allow Ar permissions
+.Op Ic owner_pw Ar password | Cm PROMPT
+.Op Ic user_pw Ar password | Cm PROMPT
+.Op Ic flatten
+.Op Ic compress | uncompress
+.Op Ic keep_first_id | keep_final_id | drop_xfa
+.Op Ic dont_ask | do_ask
+.Op Ic verbose
+.Sh DESCRIPTION
+If PDF is electronic paper, then
+.Nm
+is an electronic staple-remover, hole-punch, binder,
+secret-decoder-ring, and X-Ray glasses.
+It is a simple tool that can be used to
+.Pp
+.Bl -bullet -compact -offset 2n
+.It
+merge PDF documents or collate PDF page scans
+.It
+split PDF pages into a new document
+.It
+rotate PDF documents or pages
+.It
+decrypt input as necessary (password required)
+.It
+encrypt output as desired
+.It
+fill PDF forms with X/FDF data and/or flatten forms
+.It
+generate FDF data stencils from PDF forms
+.It
+apply a background watermark or a foreground stamp
+.It
+report PDF metrics such as metadata and bookmarks
+.It
+update PDF metadata
+.It
+attach files to PDF pages or the PDF document
+.It
+unpack PDF attachments
+.It
+burst a PDF document into single pages
+.It
+uncompress and re-compress page streams
+.It
+repair corrupted PDF (where possible)
+.El
+.Ss Input Arguments
+.Bl -tag -width Ds
+.It Oo Ar handle Ns = Oc Ns Ar pdf_input_file ... | Cm - | Cm PROMPT
+A list of the PDF input files.
+If you plan to combine these PDFs (without using handles)
+then list the files in the order you want them combined.
+Use
+.Cm -
+to pass a single PDF into pdftk via stdin.
+Use
+.Cm PROMPT
+to make
+.Nm
+ask the user interactively for an input file name.
+.Pp
+Every input can be associated with a
+.Em handle ,
+a single upper-case letter, e.g.
+.Pp
+.Dl A=input1.pdf B=input2.pdf
+.Pp
+Handles are often omitted.
+They are useful when specifying PDF passwords
+or page ranges (see below).
+.It Ic input_pw Oo Ar handle Ns = Oc Ns Ar password ... | Cm PROMPT
+Input PDF owner passwords, if necessary,
+are associated with files by using their handles, e.g.
+.Pp
+.Dl A=input1.pdf B=input2.pdf input_pw A=foo B=bar
+.Pp
+Without handles, passwords are associated
+with input files by order.
+.Pp
+Most pdftk features require that
+encrypted input PDF are accompanied by the
+.Em owner
+password. If the input PDF has no owner password,
+then the user password must be given, instead.
+.Pp
+When running in
+.Ic do_ask
+mode (see below),
+.Nm
+will prompt you for a password
+if the supplied password is incorrect or none was given.
+Use
+.Cm PROMPT
+to explicitly make
+.Nm
+interactively ask the user for a password.
+.El
+.Ss Operations
+Available operations are:
+.Ic cat ,
+.Ic shuffle ,
+.Ic burst ,
+.Ic generate_fdf ,
+.Ic fill_form ,
+.Ic background ,
+.Ic multibackground ,
+.Ic stamp ,
+.Ic multistamp ,
+.Ic dump_data ,
+.Ic dump_data_utf8 ,
+.Ic dump_data_fields ,
+.Ic dump_data_fields_utf8 ,
+.Ic update_info ,
+.Ic update_info_utf8 ,
+.Ic attach_files ,
+.Ic unpack_files .
+Some operations take additional arguments, as described below.
+.Pp
+When no operation is specified, then
+.Nm
+runs in
+.Dq filter
+mode. Filter mode takes only one PDF input and creates a new PDF after
+applying all of the output options, like encryption and compression.
+.Bl -tag -width Ds
+.It Ic cat Xo
+.Sm off
+.Op Ar handle
+.Op Ar begin - Op Ar end Op Ar qualifier
+.Op Ar rotation
+.Sm on
+.Ar ...
+.Xc
+Conatenates pages from input PDFs to create a new PDF.
+Page order in the new PDF is specified
+by the order of the given page ranges.
+.Pp
+The
+.Ar handle
+identifies one of the input PDF files.
+If the handle is omitted from the page range,
+then the pages are taken from the first input PDF.
+The
+.Ar begin
+and
+.Ar end
+page numbers are one-based references
+to pages in the corresponding input PDF.
+A single page can be referenced
+by specifying a single number as the
+.Ar begin
+argument and omitting the
+.Ar end .
+The keyword
+.Cm end
+may be used to reference the final page.
+The handle may be used alone to represent the entire document; e.g.,
+.Dq B
+is the same as
+.Dq B1-end .
+The
+.Ar end
+specifier may be less than
+.Ar begin ,
+e.g.
+.Cm 1-3
+yields pages 1, 2 and 3, in that order, and
+.Cm 3-1
+yields pages 3, 2 and 1, in that order.
+The
+.Ar qualifier
+can be
+.Cm even
+or
+.Cm odd .
+The
+.Cm even
+qualifier causes
+.Nm
+to use only the even-numbered PDF pages, so
+.Cm 6-1even
+yields pages 6, 4 and 2.
+The
+.Cm odd
+qualifier works similarly.
+The
+.Ar rotation
+can be
+.Cm N ,
+.Cm S ,
+.Cm E ,
+.Cm W ,
+.Cm L ,
+.Cm R
+or
+.Cm D .
+The page rotation setting causes
+.Nm
+to rotate pages and documents as follows (in degrees):
+.Bk
+.Cm N: 0 ,
+.Cm E: 90 ,
+.Cm S: 180 ,
+.Cm W: 270 ,
+.Cm L: -90 ,
+.Cm R: +90 ,
+.Cm D: +180 .
+.Ek
+The
+.Cm L ,
+.Cm R ,
+and
+.Cm D
+make relative adjustments to a page's rotation.
+If no arguments are passed to
+.Ic cat ,
+then
+.Nm
+combines all input PDFs in the order
+they were given to create the output.
+.Pp
+Examples without handles:
+.Bl -tag -width 5-25oddW -compact
+.It Cm 6-1
+reverse pages in range
+.It Cm 5 1 20
+take single pages
+.It Cm 1-endE
+rotate entire document 90 degrees
+.It Cm 5-25oddW
+take odd pages in range, rotate 90 degrees
+.El
+.Pp
+Examples with handles; say
+.Ar A=Pa in1.pdf Ar B=Pa in2.pdf ,
+then:
+.Bl -tag -width "A1-21 Beven A72" -compact
+.It Cm B
+use all of
+.Pa in2.pdf
+.It Cm AW
+rotate entire
+.Pa in1.pdf
+document 90 degrees
+.It Cm A72
+take a single page from
+.Pa in1.pdf
+.It Cm A A
+concatenate
+.Pa in1.pdf
+with
+.Pa in1.pdf
+.It Cm A1-21
+take a range from
+.Pa in1.pdf
+.It Cm AW BW BD
+concatenate rotated documents
+.It Cm Bend-1odd
+take all odd pages from
+.Pa in2.pdf
+in reverse order
+.It Cm A2-30evenL
+take even pages from range, rotate 90 degrees left
+.It Cm AevenW AoddE
+rotate even pages of
+.Pa in1.pdf
+west and odd pages east
+.It Cm A1-21 Beven A72
+assemble pages from both
+.Pa in1.pdf
+and
+.Pa in2.pdf
+.El
+.It Ic shuffle Xo
+.Sm off
+.Op Ar handle
+.Op Ar begin - Op Ar end Op Ar qualifier
+.Op Ar rotation
+.Sm on
+.Ar ...
+.Xc
+Collates pages from input PDFs to create a new PDF.
+Works like the
+.Ic cat
+operation except that it takes one page at a time
+from each page range to assemble the output PDF.
+If one range runs out of pages,
+it continues with the remaining ranges.
+Ranges can use all of the features described above for
+.Ic cat ,
+like reverse page ranges, multiple ranges from a single PDF,
+and page rotation. This feature was designed to help
+collate PDF pages after scanning paper documents.
+.It Ic burst
+Splits a single input PDF document into individual pages.
+Also creates a report named
+.Pa doc_data.txt
+which is the same as the output from
+.Ic dump_data .
+If the
+.Ic output
+section (see below) is omitted, then the individual pages are named as
+.Pa pg_%04d.pdf ,
+e.g.
+.Pa pg_0001.pdf ,
+.Pa pg_0002.pdf ,
+etc. To name these pages yourself,
+supply a
+.Xr printf 3
+format string in the
+.Ic output
+section. For example, specify
+.Ic output Cm page_%02d.pdf
+if you want the pages to be named
+.Pa page_01.pdf ,
+.Pa page_02.pdf ,
+etc.
+.It Ic generate_fdf
+Reads a single input PDF file and generates an FDF file
+out of it, suitable for
+.Ic fill_form .
+If no output file name is specified,
+.Nm
+asks for one interactively.
+.It Ic fill_form Ar FDF_data_filename | XFDF_data_filename | Cm - | Cm PROMPT
+Fills the single input PDF's form fields
+with the data from an FDF file, a XFDF file or stdin.
+Enter the data filename after
+.Ar fill_form ,
+or use
+.Cm -
+to pass the data via stdin; for example
+.Pp
+.Dl pdftk form.pdf fill_form data.fdf output filled.pdf
+.Pp
+After filling a form, the form fields remain interactive
+unless you also use the
+.Ic flatten
+output option, which merges the form fields with the PDF pages.
+You can use
+.Ic flatten
+alone, too, but only on a single PDF, e.g.
+.Pp
+.Dl pdftk form.pdf fill_form data.fdf output out.pdf flatten
+.Dl pdftk filled.pdf output out.pdf flatten .
+.Pp
+If the input FDF file includes Rich Text formatted data
+in addition to plain text, then the Rich Text data
+is packed into the form fields
+.Em as well as
+the plain text.
+.Nm
+also sets a flag that cues Acrobat/Reader to generate
+new field appearances based on the Rich Text data.
+That way, when the user opens the PDF,
+the viewer will create the Rich Text fields on the spot.
+If the user's PDF viewer does not support Rich Text,
+then the user will see the plain text data instead.
+If you flatten this form before Acrobat has a chance
+to create (and save) new field appearances,
+then the plain text field data is what you'll see.
+.It Ic background Ar background_PDF_filename | Cm - | Cm PROMPT
+Applies a PDF watermark to the background of a single input PDF.
+.\" EXAMPLE
+.\"Pass the background PDF's filename like so:
+.\"pdftk in.pdf background back.pdf output out.pdf
+Pdftk only uses the first page from the background PDF
+and applies it to every page of the input PDF.
+This page is scaled and rotated as needed to fit the input page.
+You can use
+.Cm -
+to pass a background PDF into pdftk via stdin.
+If the input PDF does not have a transparent background
+(such as a PDF created from page scans)
+then the resulting background won't be visible.
+Use the
+.Ic stamp
+operation instead.
+.It Ic multibackground Ar background | Cm - | Cm PROMPT
+Same as the
+.Ic background operation, but applies each page of the background PDF
+to the corresponding page of the input PDF. If the input PDF has more pages
+than the stamp PDF, then the final stamp page is repeated
+across these remaining pages in the input PDF.
+.It Ic stamp Ar stamp | Cm - | Cm PROMPT
+This behaves just like the
+.Ic background
+operation except it overlays the stamp PDF page
+.Em on top
+of the input PDF document's pages.
+This works best if the stamp PDF page has a transparent background.
+.It Ic multistamp Ar stamp | Cm - | Cm PROMPT
+Same as the
+.Ic stamp
+operation, but applies each page of the background PDF
+to the corresponding page of the input PDF.
+If the input PDF has more pages than the stamp PDF,
+then the final stamp page is repeated
+across these remaining pages in the input PDF.
+.It Ic dump_data
+Reads a single input PDF file and reports various statistics,
+metadata, bookmarks (a.k.a outlines), and page labels
+to the given output filename or (if no output is given) to stdout.
+Non-ASCII characters are encoded as XML numerical entities.
+Does not create a new PDF file.
+.It Ic dump_data_utf8
+Same as
+.Ic dump_data
+excepct that the output is encoded as UTF-8.
+.It Ic dump_data_fields
+Reads a single input PDF file and reports form field statistics
+to the given output filename or (if no output is given) to stdout.
+Non-ASCII characters are encoded as XML numerical entities.
+Does not create a new PDF file.
+.It Ic dump_data_fields_utf8
+Same as
+.Ic dump_data_fields
+excepct that the output is encoded as UTF-8.
+.It Ic update_info Ar info | Cm - | Cm PROMPT
+Changes the metadata stored in a single PDF file's Info dictionary
+to match the input data file. The input data file uses the same syntax
+as the output from
+.Ic dump_data .
+Non-ASCII characters should be encoded as XML numerical entities.
+This does not change the metadata stored in the PDF's XMP stream,
+if it has one. For example:
+.Pp
+.Dl pdftk in.pdf update_info in.info output out.pdf
+.It Ic update_info_utf8 Ar info | Cm - | Cm PROMPT
+Same as
+.Ic update_info
+except that the input is encoded as UTF-8.
+.It Ic attach_files Ar attachments | Cm PROMPT Op Ar to_page_number | Cm PROMPT
+Packs arbitrary files into a PDF using PDF's file attachment features.
+More than one attachment may be listed after
+.Ic attach_files .
+Attachments are added at the document level unless the optional
+.Cm to_page
+option is given, in which case the files are attached to
+the given page number. The first page is 1, the final page is
+.Cm end .
+For example:
+.Pp
+.Dl pdftk in.pdf attach_files tab.html img.jpg to_page 6 output out.pdf
+.It Ic unpack_files
+Copies all of the attachments from the input PDF into the current folder
+or to an output directory given in
+.Ic output
+For example:
+.Pp
+.Dl pdftk report.pdf unpack_files output ~/atts/
+.\".Dl pdftk report.pdf unpack_files output Cm PROMPT
+.El
+.Ss Output Options
+.Bl -tag -width Ds
+.It Ic output Ar filename | Cm - | Cm PROMPT
+Sets the filename of the output PDF file.
+The output filename may not be the same as an input filename.
+Use
+.Cm -
+to output to stdout. When using the
+.Ic dump_data
+operation, use
+.Ic output
+to set the name of the output data file. When using the
+.Ic unpack_files
+operation, use
+.Ic output
+to set the name of an output directory. When using the
+.Ic burst
+operation, you can use
+.Ic output
+to control the resulting PDF page filenames (see above).
+.It Ic encrypt_40bit | encrypt_128bit
+If an output PDF user or owner password is given,
+output PDF encryption strength defaults to 128 bits.
+This can be overridden by specifying
+.Ic encrypt_40bit .
+.It Ic allow Ar permissions
+Permissions are applied to the output PDF file
+only if an encryption strength is specified
+or an owner or user password is given.
+If permissions are not specified, they default to
+.Dq none ,
+which means all of the following features are disabled.
+The
+.Ar permissions
+section may include one or more of the following features:
+.Cm Printing
+(top quality printing),
+.Cm DegradedPrinting
+(lower quality printing),
+.Cm ModifyContents
+(also allows Assembly),
+.Cm Assembly
+.Cm CopyContents
+(also allows ScreenReaders),
+.Cm ScreenReaders
+.Cm ModifyAnnotations
+(also allows FillIn),
+.Cm FillIn
+.Cm AllFeatures
+(allows the user to perform all of the above, and top quality printing).
+.It Ic owner_pw Ar password | Cm PROMPT
+.It Ic user_pw Ar password | Cm PROMPT
+If an encryption strength is given but no passwords are supplied, then
+the owner and user passwords remain empty, which means that the resulting
+PDF may be opened and its security parameters altered by anybody.
+.It Ic compress | Ic uncompress
+These are only useful when you want to edit PDF code in a text editor.
+Remove PDF page stream compression by applying the
+.Ic uncompress
+filter. Use the
+.Ic compress
+filter to restore compression.
+.It Ic flatten
+Use this option to merge an input PDF's interactive form fields
+(and their data) with the PDF's pages. Only one input PDF may be given.
+Sometimes used with the
+.Ic fill_form
+operation.
+.It Ic keep_first_id | keep_final_id
+When combining pages from multiple PDFs, use one of these options
+to copy the document ID from either the first or final input document
+into the new output PDF. Otherwise
+.Nm
+creates a new document ID for the output PDF.
+When no operation is given,
+.Nm
+always uses the ID from the (single) input PDF.
+.It Ic drop_xfa
+If the input PDF is a form created using Acrobat 7 or Adobe Designer,
+then it probably has XFA data. Filling such a form using
+.Nm
+yields a PDF with data that fails to display in Acrobat 7 (and 6?). \"FIXME
+The workaround is to remove the form's XFA data,
+either before you fill the form using
+.Nm
+or at the time you fill the form. Using this option causes
+.Nm
+to omit the XFA data from the output PDF form.
+.Pp
+This option is only useful when running
+.Nm
+on a single input PDF. When assembling a PDF from multiple inputs,
+any XFA data in the input is automatically omitted.
+.It Ic dont_ask | do_ask
+Depending on compile-time settings,
+.\".Po
+.\"see
+.\".Dv ASK_ABOUT_WARNINGS
+.\"FIXME: this doesn't appear anywhere
+.\" Is this a compile-time macro?
+.\".Pc ,
+.Nm
+might prompt you for further input when it encounters a problem,
+such as a bad password. Override this default behavior by adding
+.Ic dont_ask
+or
+.Ic do_ask .
+When running in
+.Ic dont_ask
+mode,
+.Nm
+will overwrite output files without notice.
+.It Ic verbose
+By default, pdftk runs quietly. Append
+.Ic verbose
+to the end and it will speak up.
+.El
+.\".Sh ENVIRONMENT
+.\".Sh FILES
+.\".Sh EXIT STATUS
+.Sh EXAMPLES
+Collate scanned pages
+.Dl pdftk A=even.pdf B=odd.pdf shuffle A B output collated.pdf
+.Pp
+or if
+.Pa odd.pdf
+is in reverse order:
+.Dl pdftk A=even.pdf B=odd.pdf shuffle A Bend-1 output collated.pdf
+.Pp
+Decrypt a PDF:
+.Dl pdftk secured.pdf input_pw foopass output unsecured.pdf
+.Pp
+Encrypt a PDF using 128-bit strength, withhold all permissions:
+.Dl pdftk in.pdf output out.pdf owner_pw foopass
+.Pp
+Same as above, except a user password
+is also used in the output PDF:
+.Dl pdftk in.pdf output out.pdf owner_pw foo user_pw baz
+.Pp
+Same as above, except printing is allowed (once the PDF is open):
+.Dl pdftk in.pdf output out.pdf owner_pw foo user_pw baz allow Printing
+.\"FIXME: so the "allow" permissions are case insensitive?
+.Pp
+Join
+.Pa in1.pdf
+and
+.Pa in2.pdf
+into
+.Pa out.pdf :
+.Dl pdftk in1.pdf in2.pdf cat output out.pdf
+or (using handles):
+.Dl pdftk A=in1.pdf B=in2.pdf cat A B output out.pdf
+or (using wildcards):
+.Dl pdftk in?.pdf cat output out.pdf
+.Pp
+Remove page 13 from
+.Pa in.pdf
+to create
+.Pa out.pdf :
+.Dl pdftk in.pdf cat 1-12 14-end output out.pdf
+.Pp
+Apply 40-bit encryption to output, revoking all permissions (the default).
+Set the owner password to
+.Dq foo Ns :
+.Dl pdftk 1.pdf 2.pdf cat output out.pdf encrypt_40bit owner_pw foo
+.Pp
+Join two files, one of which requires the password
+.Dq foopass .
+The output is not encrypted.
+.Dl pdftk A=secured.pdf other.pdf input_pw A=foopass cat output out.pdf
+.Pp
+Uncompress PDF page streams for editing the PDF in a text editor:
+.Dl pdftk doc.pdf output uncompressed.pdf uncompress
+.Pp
+Repair a PDF's corrupted XREF table and stream lengths, if possible:
+.Dl pdf broken.pdf output fixed.pdf
+.Pp
+Burst a single PDF document into pages and dump its data to
+.Pa doc_data.txt :
+.Dl pdftk in.pdf burst
+.Pp
+Burst a single PDF document into encrypted pages. Allow low-quality printing:
+.Dl pdftk in.pdf burst owner_pw foopass allow DegradedPrinting
+.Pp
+Write a report on PDF document metadata and bookmarks to
+.Pa report.txt :
+.Dl pdftk in.pdf dump_data output report.txt
+.Pp
+Rotate the first PDF page 90 degrees clockwise
+.Dl pdftk in.pdf cat 1E 2-end output out.pdf
+.Pp
+Rotate an entire PDF document 180 degrees
+.Dl pdftk in.pdf cat 1-endS output out.pdf
+.Sh SEE ALSO
+.Lk http://www.pdftk.com "PDFtk's homepage"
+.Rs
+.%A Sid Steward
+.%B PDF Hacks
+.%I O'Reilly
+.%D 2004
+.Re
+.\".Sh HISTORY
+.Sh AUTHOR
+.An Sid Steward Aq Mt sid.steward@pdflabs.com
+maintains
+.Nm pdftk .
+Please email him with questions or bug reports.
+Include pdftk in the subject line to ensure successful delivery.
+Thank you.
