@@ -117,9 +117,6 @@ People use all kind of stuff.
 	* /usr/share/man/man8/nsd-checkzone.8
 	* /usr/share/man/man8/nsd-control.8
 
-* **oggtag**
-	accepted, released
-
 * **opus**
 	api in html
 
@@ -155,10 +152,6 @@ People use all kind of stuff.
 
 * **rtorrent, libtorrent**
 	docbook
-
-* **rtptools**
-	* written from scratch, with much help from Ingo and JMC
-	* merged into https://github.com/columbia-irt/rtptools
 
 * **sox**
 	huge; libsox.3 is short but obsolete
