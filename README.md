@@ -5,7 +5,16 @@ or being written from scratch, before I push them upstream.
 This is software I use and/or like, but has documentation
 that could be improved (or does not have documentation).
 
-Most often, upstream doesn't care, because Linux uses man(7) and `-h` runs `usage()`, end of story.
+Most often, upstream just doesn't care, because
+
+* in the GNU/Linux world, [manpages are secondary](https://www.gnu.org/prep/standards/html_node/Man-Pages.html#Man-Pages)
+* regarding content, `-h` runs `usage()`, end of story
+* regarding markup, GNU/Linux uses man(7)
+
+Where I come from, the manpage is the ultimate documentation.
+Not having a manpage means you can't just `man util` and learn all about it.
+And a bug in the documentation is a bug.
+
 The three success stories so far are `libsndfile` and `oggtag` who have accepted our complete rewrite to mdoc(7),
 and `rtptools` which didn't have any manpages and accepted ours.
 
@@ -149,8 +158,7 @@ People use all kind of stuff.
 
 * **rtptools**
 	* written from scratch, with much help from Ingo and JMC
-	* upstream is https://github.com/columbia-irt/rtptools now
-	* removed from here
+	* merged into https://github.com/columbia-irt/rtptools
 
 * **sox**
 	huge; libsox.3 is short but obsolete
