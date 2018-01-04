@@ -134,8 +134,9 @@ People use all kind of stuff.
 	huge
 
 * **poppler**, **poppler-utils**
-	* offered pdfunite.1 and pdfseparate.1
 	* api in html
+	* offered pdfunite.1 and pdfseparate.1, upstream not interested
+	https://lists.freedesktop.org/archives/poppler/2018-January/012756.html
 
 * **pstree**
 	upstream uses uses the old one with
