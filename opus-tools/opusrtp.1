@@ -1,58 +1,43 @@
-.\" Process this file with
-.\" groff -man -Tascii opusrtp.1
-.\"
-.TH opusrtp 1 2012-08-31 "Xiph.Org Foundation" "opus-tools"
-
-.SH NAME
-opusrtp \- encapsulate Opus audio in RTP
-
-.SH SYNOPSIS
-.B opusrtp
-[
-.B -hV
-]
-[
-.B --sniff
-]
-.B file.opus
-[
-.B file2.opus ...
-]
-
-.SH DESCRIPTION
-
-.B opusrtp
-Demonstration tool for sending and receiving Opus audio data in RTP,
+.Dd January 29, 2018
+.Dt OPUSRTP 1
+.Os
+.Sh NAME
+.Nm opusrtp
+.Nd Opus audio in RTP
+.Sh SYNOPSIS
+.Nm
+.Op Fl hV
+.Op Fl -sniff
+.Ar file.opus
+.Op Ar ...
+.Sh DESCRIPTION
+.Nm
+sends and receives Opus audio data in RTP,
 used for interactive applications on the internet.
-
 By default, Opus audio from each given file is sent as an RTP stream.
-
-.SH "OPTIONS"
-.IP "-h, --help"
-Print help message
-.IP "-V, --version"
-Display version information
-.IP "--quiet"
-Suppresses program output
-.IP "--sniff"
-Sniff the network for active RTP sessions and save them to .opus
-files. This can be useful for debugging other Opus RTP implementations.
-For this function to work, the program must be run with superuser
-privileges.
-
-.SH AUTHORS
-.br
-Ralph Giles <giles@thaumas.net>
-
-.SH BUGS
-
-Only the sniff mode is implemented; the tool should do normal unicast
-and multicast send/receive.
-
-The sniff mode should allow specifying device/host/port/payload type
-to limit capture. All that is hard-coded.
-
-.SH SEE ALSO
-.BR opusdec (1),
-.BR opusenc (1),
-.BR opusinfo (1)
+.Pp
+The options are as follows:
+.Pp
+.Bl -tag -compact -width versionxxxxx
+.It Fl h Fl -help
+Print a help message and exit.
+.It Fl V Fl -version
+Display version information and exit.
+.It Fl -quiet
+Suppresses program output.
+.It Fl -sniff
+Sniff the network for active RTP sessions and save them to Opus files.
+This can be useful for debugging other Opus RTP implementations.
+For this function to work, the program must be run with superuser privileges.
+.El
+.Sh SEE ALSO
+.Xr opusdec 1 ,
+.Xr opusenc 1 ,
+.Xr opusinfo 1
+.Sh AUTHORS
+.An Ralph Giles Aq Mt giles@thaumas.net
+.Sh BUGS
+Only the sniff mode is implemented;
+the tool should do normal unicast and multicast send/receive.
+The sniff mode should allow specifying the device, host, port
+and payload type to limit capture; all that is hard-coded.
