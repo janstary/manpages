@@ -103,6 +103,10 @@ People use all kind of stuff.
 * **lynx**
 	long html
 
+* **macports**
+	offered, no interest; manpages in asciidoc,
+	converted by docbook xlst into man(7).
+
 * **mupdf**
 	* offered in http://bugs.ghostscript.com/show_bug.cgi?id=695656 , no response
 	* should probably go to https://bugs.ghostscript.com/buglist.cgi?component=documentation&product=MuPDF&resolution=---
@@ -191,7 +195,6 @@ People use all kind of stuff.
 
 ### MacOS
 
-* is the macport of mandoc current enough?
 * how well does it format the base manpages `-Wfatal -Werror -Tlint`
 * can we completely replace the system `man(1)`?
 
