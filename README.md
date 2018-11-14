@@ -108,8 +108,7 @@ People use all kind of stuff.
 	converted by docbook xlst into man(7).
 
 * **mupdf**
-	* offered in http://bugs.ghostscript.com/show_bug.cgi?id=695656 , no response
-	* should probably go to https://bugs.ghostscript.com/buglist.cgi?component=documentation&product=MuPDF&resolution=---
+	* no interest: https://bugs.ghostscript.com/show_bug.cgi?id=695656
 
 * **mutt**
 	huge
