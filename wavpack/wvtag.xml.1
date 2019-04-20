@@ -1,4 +1,4 @@
-.Dd 2017-01-13
+.Dd April 20, 2019
 .Dt WVTAG 1
 .Os
 .Sh NAME
@@ -10,10 +10,14 @@
 .Ar INFILE ...
 .Sh DESCRIPTION
 .Nm wvtag
-applies the specified metadata operation(s) to each of the specified WavPack source file(s) in this order:
-clean, import, delete, write, extract, list. Note that WavPack metadata is stored in APEv2 tags, and this tool will automatically
-import from an ID3v1 tag if it is the only tag present on the source file, and that ID3v1 tag will be deleted and replaced with an
-APEv2 tag if an edit is requested.
+applies the specified metadata operation(s)
+to each of the specified WavPack source file(s) in this order:
+clean, import, delete, write, extract, list.
+Note that WavPack metadata is stored in APEv2 tags,
+and this tool will automatically import from an ID3v1 tag
+if it is the only tag present on the source file,
+and that ID3v1 tag will be deleted and replaced
+with an APEv2 tag if an edit is requested.
 .Sh OPTIONS
 .Bl -tag -width Ds
 .It Fl -allow-huge-tags
@@ -32,23 +36,23 @@ file in same directory as source file
 (equivalent to
 .Fl xx
 .Dq cuesheet=%a.cue )
-.It Fl -clean, Fl -clear
+.It Fl -clean , Fl -clear
 clean all items from tag (done first)
 .It Fl d Do Ar Field Dc
 delete specified metadata item (text or binary)
-.It Fl h, Fl -help
+.It Fl h , Fl -help
 this help display
 .It Fl -import-id3
 import applicable tag items from ID3v2.3 tag present in DSF files into APEv2 tag (if there are > 1 MB cover images present add
 .Fl -allow-huge-tags
 to include them)
-.It Fl l, Fl -list
+.It Fl l , Fl -list
 list all tag items (done last)
 .It Fl -no-utf8-convert
 don't recode passed tags from local encoding to UTF-8, assume they are in UTF-8 already
 .It Fl q
 quiet (keep console output to a minimum)
-.It Fl v, Fl -version
+.It Fl v , Fl -version
 write program version to
 .Pa stdout
 .It Fl w Do Ar Field Ns = Dc
@@ -82,23 +86,9 @@ yes to all warnings (use with caution!)
 .El
 .Sh SEE ALSO
 .Xr wavpack 1 ,
+.Xr wvgain 1 ,
 .Xr wvunpack 1 ,
-.Xr wvgain 1
-.Pp
-Please visit www.wavpack.com for more information
-.Sh COPYRIGHT
-This manual page was written by David Bryant
-.Aq Mt david@wavpack.com .
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the BSD
-License.
+.Lk www.wavpack.com
 .Sh AUTHORS
 .An -nosplit
-Author:
 .An David Bryant Aq Mt david@wavpack.com
-Copyright \(co
-2017
-David Bryant
-WavPack
-WavPack Executable Programs
-5.1.0
