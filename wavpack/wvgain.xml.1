@@ -1,4 +1,4 @@
-.Dd 2017-01-13
+.Dd April 20, 2019
 .Dt WVGAIN 1
 .Os
 .Sh NAME
@@ -10,10 +10,15 @@
 .Ar INFILE ...
 .Sh DESCRIPTION
 .Nm wvgain
-perceptually analyzes WavPack audio files for volume, calculates ReplayGain information based on this,
-and adds the appropriate APEv2 tag fields. ReplayGain-enabled players will use this information to produce the same perceived loudness
-on all tracks. Both individual track and whole album ReplayGain information can be calculated.
-.Sh OPTIONS
+perceptually analyzes WavPack audio files for volume,
+calculates ReplayGain information based on this,
+and adds the appropriate APEv2 tag fields.
+ReplayGain-enabled players will use this information
+to produce the same perceived loudness on all tracks.
+Both individual track and whole album ReplayGain information
+can be calculated.
+.Pp
+The options are as follows:
 .Bl -tag -width Ds
 .It Fl a
 album mode (all files scanned are considered an album)
@@ -24,7 +29,8 @@ display calculated values only (no files are modified)
 .It Fl i
 ignore .wvc file (forces hybrid lossy)
 .It Fl n
-new files only (skip files with track info, or album info if album mode specified)
+new files only (skip files with track info,
+or album info if album mode specified)
 .It Fl q
 quiet (keep console output to a minimum)
 .It Fl s
@@ -33,33 +39,15 @@ show stored values only (no analysis)
 write program version to
 .Pa stdout
 .It Fl z[ Ns Ar n ]
-don't set (n = 0 or omitted) or set (n = 1) console title to indicate progress (leaves "WvGain Completed")
+don't set (n = 0 or omitted) or set (n = 1)
+console title to indicate progress (leaves "WvGain Completed")
 .El
 .Sh SEE ALSO
 .Xr wavpack 1 ,
-.Xr wvunpack 1 ,
-.Xr wvtag 1
-.Pp
-Please visit www.wavpack.com for more information
-.Sh COPYRIGHT
-This manual page was written by Sebastian Dröge
-.Aq Mt slomo@debian.org
-and David Bryant
-.Aq Mt david@wavpack.com .
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the BSD
-License.
+.Xr wvtag 1 ,
+.Xr wvunpack 1
+.Lk www.wavpack.com
 .Sh AUTHORS
 .An -nosplit
-Original author:
-.An Sebastian Dröge Aq Mt slomo@debian.org
-Updates:
+.An Sebastian Dröge Aq Mt slomo@debian.org ,
 .An David Bryant Aq Mt david@wavpack.com
-Copyright \(co
-2005
-Sebastian Dröge Copyright \(co
-2017
-David Bryant
-WavPack
-WavPack Executable Programs
-5.1.0
