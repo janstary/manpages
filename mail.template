@@ -28,7 +28,7 @@ as opposed to
 	then switch to boldface and type "arg"
 
 in the physical roff markup of man(7).
-Similarly for other constructs like cross-referenes,
+Similarly for other constructs like cross-references,
 filenames, author emails, env variables, etc.
 
 See http://mdocml.bsd.lv for a thorough discussion

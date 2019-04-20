@@ -1,72 +1,58 @@
-.\" Process this file with
-.\" groff -man -Tascii opusinfo.1
-.\"
-.TH opusinfo 1 2012-08-31 "Xiph.Org Foundation" "opus-tools"
-
-.SH NAME
-opusinfo \- gives information about Opus files and does extensive validity checking
-
-.SH SYNOPSIS
-.B opusinfo
-[
-.B -q
-|
-.B -v
-] [
-.B -h
-] [
-.B -V
-]
-.I file1.opus
-.B ...
-.I fileN.opus
-
-.SH DESCRIPTION
-.B opusinfo
+.Dd January 29, 2018
+.Dt OPUSINFO 1
+.Os
+.Sh NAME
+.Nm opusinfo
+.Nd information about Opus files and extensive validity checking
+.Sh SYNOPSIS
+.Nm
+.Op Fl hqvV
+.Ar file.opus
+.Op Ar ...
+.Sh DESCRIPTION
+.Nm
 reads one or more Opus files and prints information about stream contents
-(including chained and/or multiplexed streams) to standard output. It will
-detect (but not correct) a wide range of common defects, with many
-additional checks specifically for Opus streams.
-
-For all stream types
-.B opusinfo
-will print the filename being processed, the stream serial numbers, and various
-common error conditions.
-
-For
-.B Opus
-streams, information including the version used for encoding, number of channels
-and other header information, the bitrate and playback length, the contents of the
-comment header, and general statistics about the stream are printed.
-
-Opusinfo is a fork of \fBogginfo\fR(1) with the non-opus parts largely removed.
-
-.SH OPTIONS
-.IP -h
-Show a help and usage message.
-.IP -q
-Quiet mode. This may be specified multiple times. Doing so once will remove
-the detailed informative messages; twice will remove warnings as well.
-.IP -v
-Verbose mode. At the current time, this does not do anything.
-.IP -V
-Show program version info and exit.
-
-.SH NOTES
-
-There are many kinds of errored, invalid, non-normative, or otherwise
-unwise stream constructions which opusinfo will not produce warnings
-on. Passing opusinfo with flying colors is not certification of the
-correctness of a stream. Future versions may detect more error
-conditions.
-
-.SH AUTHORS
-.br
-Michael Smith <msmith@xiph.org>
-.br
-Gregory Maxwell <greg@xiph.org>
-
-.SH SEE ALSO
-
-.BR opusdec (1),
-.BR opusenc (1)
+(including chained and/or multiplexed streams) to standard output.
+It will detect (but not correct) a wide range of common defects,
+with many additional checks specifically for Opus streams.
+.Pp
+For all stream types,
+.Nm
+will print the filename being processed, the stream serial numbers,
+and various common error conditions.
+For Opus streams, information including the version used for encoding,
+number of channels and other header information, the bitrate
+and playback length, the contents of the comment header,
+and general statistics about the stream are printed.
+.Pp
+There are many kinds of errored, invalid, non-normative,
+or otherwise unwise stream constructions which
+.Nm
+will not produce warnings on.
+Passing
+.Nm
+with flying colors is not certification of the correctness of a stream.
+Future versions may detect more error conditions.
+.Pp
+The options are as follows:
+.Pp
+.Bl -tag -compact -width Ds
+.It Fl h
+Show a help message and exit.
+.It Fl q
+Quiet mode.
+This may be specified multiple times.
+Doing so once will remove the detailed informative messages;
+twice will remove warnings as well.
+.It Fl v
+Verbose mode.
+At the current time, this does not do anything.
+.It Fl V
+Show version info and exit.
+.El
+.Sh SEE ALSO
+.Xr opusdec 1 ,
+.Xr opusenc 1
+.Sh AUTHORS
+.An Michael Smith Aq Mt msmith@xiph.org
+.An Gregory Maxwell Aq Mt greg@xiph.org

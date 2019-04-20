@@ -5,7 +5,16 @@ or being written from scratch, before I push them upstream.
 This is software I use and/or like, but has documentation
 that could be improved (or does not have documentation).
 
-Most often, upstream doesn't care, because Linux uses man(7) and `-h` runs `usage()`, end of story.
+Most often, upstream just doesn't care, because
+
+* in the GNU/Linux world, [manpages are secondary](https://www.gnu.org/prep/standards/html_node/Man-Pages.html#Man-Pages)
+* regarding content, `-h` runs `usage()`, end of story
+* regarding markup, GNU/Linux uses man(7)
+
+Where I come from, the manpage is the ultimate documentation.
+Not having a manpage means you can't just `man util` and learn all about it.
+And a bug in the documentation is a bug.
+
 The three success stories so far are `libsndfile` and `oggtag` who have accepted our complete rewrite to mdoc(7),
 and `rtptools` which didn't have any manpages and accepted ours.
 
@@ -94,9 +103,12 @@ People use all kind of stuff.
 * **lynx**
 	long html
 
+* **macports**
+	offered, no interest; manpages in asciidoc,
+	converted by docbook xlst into man(7).
+
 * **mupdf**
-	* offered in http://bugs.ghostscript.com/show_bug.cgi?id=695656 , no response
-	* should probably go to https://bugs.ghostscript.com/buglist.cgi?component=documentation&product=MuPDF&resolution=---
+	* no interest: https://bugs.ghostscript.com/show_bug.cgi?id=695656
 
 * **mutt**
 	huge
@@ -107,9 +119,6 @@ People use all kind of stuff.
 	* /usr/share/man/man8/nsd-checkconf.8
 	* /usr/share/man/man8/nsd-checkzone.8
 	* /usr/share/man/man8/nsd-control.8
-
-* **oggtag**
-	accepted, released
 
 * **opus**
 	api in html
@@ -128,8 +137,9 @@ People use all kind of stuff.
 	huge
 
 * **poppler**, **poppler-utils**
-	api in html
-	REWRITE, SEND
+	* api in html
+	* offered pdfunite.1 and pdfseparate.1, upstream not interested
+	https://lists.freedesktop.org/archives/poppler/2018-January/012756.html
 
 * **pstree**
 	upstream uses uses the old one with
@@ -146,11 +156,6 @@ People use all kind of stuff.
 
 * **rtorrent, libtorrent**
 	docbook
-
-* **rtptools**
-	* written from scratch, with much help from Ingo and JMC
-	* upstream is https://github.com/columbia-irt/rtptools now
-	* removed from here
 
 * **sox**
 	huge; libsox.3 is short but obsolete
@@ -189,7 +194,6 @@ People use all kind of stuff.
 
 ### MacOS
 
-* is the macport of mandoc current enough?
 * how well does it format the base manpages `-Wfatal -Werror -Tlint`
 * can we completely replace the system `man(1)`?
 
