@@ -21,8 +21,9 @@ with an APEv2 tag if an edit is requested.
 .Sh OPTIONS
 .Bl -tag -width Ds
 .It Fl -allow-huge-tags
-allow tag data up to 16 MB (embedding > 1 MB is not recommended for portable devices and may not work with some programs
-including WavPack pre-4.70)
+allow tag data up to 16 MB
+(embedding > 1 MB is not recommended for portable devices
+and may not work with some programs including WavPack pre-4.70)
 .It Fl c
 extract cuesheet only to
 .Pa stdout
@@ -43,13 +44,15 @@ delete specified metadata item (text or binary)
 .It Fl h , Fl -help
 this help display
 .It Fl -import-id3
-import applicable tag items from ID3v2.3 tag present in DSF files into APEv2 tag (if there are > 1 MB cover images present add
+import applicable tag items from ID3v2.3 tag present in DSF files
+into APEv2 tag (if there are > 1 MB cover images present add
 .Fl -allow-huge-tags
 to include them)
 .It Fl l , Fl -list
 list all tag items (done last)
 .It Fl -no-utf8-convert
-don't recode passed tags from local encoding to UTF-8, assume they are in UTF-8 already
+don't recode passed tags from local encoding to UTF-8,
+assume they are in UTF-8 already
 .It Fl q
 quiet (keep console output to a minimum)
 .It Fl v , Fl -version
@@ -60,19 +63,22 @@ delete specified metadata item (text or binary)
 .It Fl w Do Ar Field Ns = Ns Ar Value Dc
 write specified text metadata to APEv2 tag
 .It Fl w Do Ar Field Ns =@ Ns Ar file.ext Dc
-write specified text metadata from file to APEv2 tag, normally used for embedded cuesheets and logs
+write specified text metadata from file to APEv2 tag,
+normally used for embedded cuesheets and logs
 (field names
 .Dq Cuesheet
 and
 .Dq Log )
 .It Fl -write-binary-tag Do Ar Field Ns =@ Ns Ar file.ext Dc
-write the specified binary metadata file to APEv2 tag, normally used for cover art with the specified field name
+write the specified binary metadata file to APEv2 tag,
+normally used for cover art with the specified field name
 .Dq Cover Art (Front)
 .It Fl x Do Ar Field Dc
 extract the specified tag field only to
 .Pa stdout
 .It Fl xx Do Ar Field Ns [= Ns Ar file ] Dc
-extract the specified tag field to named file in same directory as source file; optional filename specification may contain
+extract the specified tag field to named file in same directory
+as source file; optional filename specification may contain
 .Fl %a
 which is replaced with the audio file base name,
 .Fl %t
