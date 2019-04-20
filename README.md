@@ -23,11 +23,11 @@ and `rtptools` which didn't have any manpages and accepted ours.
 When porting software, check that
 [mandoc](http://www.openbsd.org/faq/ports/specialtopics.html#Mandoc)
 can be used to format the manpages.
-Kristaps also has
+There is also
 [pod2mdoc](http://mdocml.bsd.lv/pod2mdoc/),
 [texi2mdoc](http://mdocml.bsd.lv/texi2mdoc/) and
-[docbook2mdoc](http://mdocml.bsd.lv/docbook2mdoc/),
-should we feel masochistic.
+[docbook2mdoc](http://mdocml.bsd.lv/docbook2mdoc/)
+to tackle the untouchables.
 
 ### TODO
 
@@ -186,7 +186,7 @@ People use all kind of stuff.
 * **webalizer**
 
 * **wavpack**
-	docbook
+	docbook; work started with docbook2mdoc
 
 * **zip**
 	where do we send this?
