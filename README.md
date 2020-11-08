@@ -15,7 +15,8 @@ Where I come from, the manpage is the ultimate documentation.
 Not having a manpage means you can't just `man util` and learn all about it.
 And a bug in the documentation is a bug.
 
-The three success stories so far are `libsndfile` and `oggtag` who have accepted our complete rewrite to mdoc(7),
+The three success stories so far are `libsndfile` and `oggtag`
+who have accepted our complete rewrite to mdoc(7),
 and `rtptools` which didn't have any manpages and accepted ours.
 
 ### manpages in OpenBSD ports
@@ -42,7 +43,7 @@ People use all kind of stuff.
 	base64.1 sent, but none of the authors' emails work
 
 * **bmf**
-	bmfconv.1 offered upstream
+	bmfconv.1 offered upstream; no response
 
 * **bzip2**
 	docbook
@@ -102,10 +103,6 @@ People use all kind of stuff.
 
 * **lynx**
 	long html
-
-* **macports**
-	offered, no interest; manpages in asciidoc,
-	converted by docbook xlst into man(7).
 
 * **mupdf**
 	* no interest: https://bugs.ghostscript.com/show_bug.cgi?id=695656
@@ -168,6 +165,9 @@ People use all kind of stuff.
 	* /usr/share/man/man8/unbound-checkconf.8
 	* /usr/share/man/man8/unbound-control.8
 
+* **uniutils**
+	unireverse.1 offered as an example
+
 * **urlview**
 	offered
 
@@ -182,8 +182,6 @@ People use all kind of stuff.
 	/usr/local/man/man1/ogginfo.1
 	/usr/local/man/man1/vcut.1
 	/usr/local/man/man1/vorbiscomment.1
-
-* **webalizer**
 
 * **wavpack**
 	docbook; work started with docbook2mdoc
