@@ -1,30 +1,28 @@
-.TH unireverse 1 "October, 2007"
-.SH NAME
-unireverse \- Reverse each line of UTF-8 input character-by-character
-.SH SYNOPSIS
-.B unireverse ([option flags])
-.SH DESCRIPTION
-.I unireverse
-reads its input line-by-line and  reverses it character-by-character
-on the assumption that the input is UTF-8 Unicode. (Since ASCII is a subset of UTF-8,
-it also reverses ASCII strings correctly.)
-.br
-.SH COMMAND LINE FLAGS
-.br
-.IP "-h"
-Print usage information.
-.IP "-v"
-Print version information.
-.sp
-.SH REFERENCES
+.Dd November 8, 2020
+.Dt UNIREVERSE 1
+.Os
+.Sh NAME
+.Nm unireverse
+.Nd reverse each line of UTF-8 input character-by-character
+.Sh SYNOPSIS
+.Nm
+.Op Fl hv
+.Sh DESCRIPTION
+.Nm
+reads its input line-by-line and reverses it character-by-character
+on the assumption that the input is UTF-8 Unicode.
+Since ASCII is a subset of UTF-8,
+it also reverses ASCII strings correctly.
+.Pp
+The options are as follows:
+.Pp
+.Bl -tag -compact -width Ds
+.It Fl h
+Print usage information and exit.
+.It Fl v
+Print version information and exit.
+.El
+.Sh SEE ALSO
 Unicode Standard, version 5.0
-.SH AUTHOR
-Bill Poser
-.br
-billposer@alum.mit.edu
-.SH LICENSE
-GNU General Public License
-
-
-
-
+.Sh AUTHORS
+.An Bill Poser Aq Mt billposer@alum.mit.edu
