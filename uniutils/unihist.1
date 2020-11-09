@@ -1,55 +1,54 @@
-.TH unihist 1 "May, 2008"
-.SH NAME
-unihist \- Generate a histogram of the characters in a Unicode file
-.SH SYNOPSIS
-.B unihist ([option flags])
-.SH DESCRIPTION
-.I unihist
-generates a histogram of the characters in its input, which must be encoded
-in UTF-8 Unicode. By default, for each character it prints the frequency of the
-character as a percentage of the total, the absolute number of tokens in the input,
-the UTF-32 code in  hexadecimal, and, if the character is displayable, the glyph itself
-as UTF-8 Unicode. Command line flags allow unwanted information to be suppressed.
-In particular, note that by suppressing the percentages and counts it is possible
-to generate a list of the unique characters in the input.
-.PP
-Output is produced ordered by character code. To sort it in descending order of frequency,
-pipe the output into the command:
-.br
-.sp
-.RS
-sort -k1 -n -r
-.RE
-.PP
+.Dd November 9, 2020
+.Dt UNIHIST 1
+.Os
+.Sh NAME
+.Nm unihist
+.Nd generate a histogram of characters in a Unicode file
+.Sh SYNOPSIS
+.Nm
+.Op Fl cghuv
+.Sh DESCRIPTION
+.Nm
+generates a histogram of the characters in its input,
+which must be encoded in UTF-8 Unicode.
+By default, for each character, it prints the frequency
+of the character as a percentage of the total,
+the absolute number of tokens in the input,
+the UTF-32 code in hexadecimal, and,
+if the character is displayable, the glyph itself as UTF-8 Unicode.
+Command line flags allow some of this information to be suppressed.
+In particular, by suppressing the percentages and counts
+it is possible to generate a list of the unique characters in the input.
+.Pp
+The output is ordered by character code.
+To sort it in descending order of frequency,
+pipe the output into
+.Xr sort 1 .
+.Pp
 By default,
-.I unihist
-handles all of Unicode. To reduce memory usage and increase speed, it may be compiled
-so as to handle only the Basic Multilingual Plane (plane 0) by defining BMPONLY.
-.br
-.SH COMMAND LINE FLAGS
-.br
-.IP "-c"
+.Nm
+handles all of Unicode.
+To reduce memory usage and increase speed, it may be compiled
+so as to handle only the Basic Multilingual Plane (plane 0)
+by defining BMPONLY.
+.Pp
+The options are as follows:
+.Pp
+.Bl -tag -width Ds -compact
+.It Fl c
 Suppress printing of counts and percentages.
-.IP "-g"
+.It Fl g
 Suppress printing of glyphs.
-.IP "-h"
-Print usage information.
-.IP "-u"
+.It Fl h
+Print usage information and exit.
+.It Fl u
 Suppress printing of the Unicode code as text.
-.IP "-v"
-Print version information.
-.sp
-.SH SEE ALSO
-uniname (1)
-.SH REFERENCES
+.It Fl v
+Print version information and exit.
+.El
+.Sh SEE ALSO
+.Xr uniname 1
+.Sh STANDARDS
 Unicode Standard, version 5.0
-.SH AUTHOR
-Bill Poser
-.br
-billposer@alum.mit.edu
-.SH LICENSE
-GNU General Public License
-
-
-
-
+.Sh AUTHORS
+.An Bill Poser Aq Mt billposer@alum.mit.edu
