@@ -1,98 +1,104 @@
-.TH unidesc 1 "June, 2007"
-.SH NAME
-unidesc \- Describe the contents of a Unicode text file
-.SH SYNOPSIS
-.B unidesc ([option flags]) (<file name>)
-.PP
-If no input file name is supplied,
-.I unidesc
-reads from the standard input.
-.SH DESCRIPTION
-.I unidesc
-describes the content of a Unicode text file by reporting
-the character ranges to which different portions of the text belong.
-The ranges reported include both official Unicode ranges and the
-constructed language ranges within the Private Use Areas
-registered with the Conscript Unicode Registry (http://www.evertype.com/standards/csur/).
+.Dd November 9, 2020
+.Dt UNIDESC 1
+.Os
+.Sh NAME
+.Nm unidesc
+.Nd describe the contents of a Unicode text file
+.Sh SYNOPSIS
+.Nm
+.Op Fl
+.Ar file
+.Sh DESCRIPTION
+.Nm
+reads the given
+.Ar file
+(or standard input if no file is given)
+and describes its Unicode content by reporting the character ranges
+to which different portions of the text belong.
+The ranges reported include both official Unicode ranges
+and the constructed language ranges within the Private Use Areas
+registered with the Conscript Unicode Registry
+(see http://www.evertype.com/standards/csur/).
 For each range of characters,
-.I unidesc
+.Nm
 prints the character or byte offset of the beginning of the range,
 the character or byte offset of the end of the range,
-and the name of the range. Offsets start from 0.
-.PP
-Since the ASCII digits, punctuation, and whitespace characters are frequently
-used by other writing systems, by default these characters are treated as neutral,
-that is, as not belonging exclusively to any particular character range.
-These characters are treated as belonging to the range of whatever characters
-precede them.
-.PP
-If the input begins with neutral characters, they are treated as belonging to
-the range of whatever characters follow them. If the file consists entirely
-of neutral characters, the range is identified as
-.I Neutral
-followed by
-.I Basic Latin
-in square brackets.
-.PP
-A magic number identifying the Unicode encoding is not part of the Unicode
-standard, so pure Unicode files do not contain a magic number.
+and the name of the range.
+Offsets start from 0.
+.Pp
+Since the ASCII digits, punctuation, and whitespace characters
+are frequently used by other writing systems,
+these characters are by default treated as neutral, that is,
+as not belonging exclusively to any particular character range.
+These characters are treated as belonging to
+the range of whatever characters precede them.
+If the input begins with neutral characters, they are treated
+as belonging to the range of whatever characters follow them.
+If the file consists entirely of neutral characters,
+the range is identified as
+.Dq Neutral [Basic Latin] .
+.Pp
+A magic number identifying the Unicode encoding
+is not part of the Unicode standard,
+so pure Unicode files do not contain a magic number.
 However, informal conventions have arisen for this purpose.
-If the command line flag 
-.I -m
-is given,
-.I unidesc
-will attempt to identify the Unicode subtype by examining the first few bytes
-of the input. If the input is identified as one of the two acceptable
-types, UTF-8 or native order UTF-32, it will then proceed to describe
-the contents of the input. Otherwise, it will report what it has learned
-and exit. Note that if the file does contain a magic number, you must
-use the
-.I -m
-flag. Without this flag
-.I unidesc
-assumes that the input consists of pure Unicode with the character data beginning immediately.
-It will therefore be thrown off by the magic number.
-.PP
-By default, input is expected to be UTF-8. Native order UTF-32 is also acceptable.
-UTF-32 may be specified via the command line flag
-.I -u
-or, if the command line flag
-.I -m
-is given, via the magic number.
-
-.SH COMMAND LINE FLAGS
-.br
-.IP "-b"
+If the
+.Fl m
+option is given,
+.Nm
+will attempt to identify the Unicode subtype
+by examining the first few bytes of the input.
+If the input is identified as one of the two acceptable types,
+UTF-8 or native order UTF-32, it will then proceed
+to describe the contents of the input.
+Otherwise, it will report what it has learned and exit.
+Note that if the file does contain a magic number,
+you must use the
+.Fl m
+option.
+Without this flag,
+.Nm
+assumes that the input consists of pure Unicode
+with the character data beginning immediately,
+and will therefore be thrown off by the magic number.
+.Nm
+By default, input is expected to be UTF-8.
+Native order UTF-32 is also acceptable,
+and may be specified via the
+.Fl u
+option, or the
+.Fl m
+option via the magic number.
+.Pp
+The options are as follows:
+.Bl -tag -width Ds
+.It Fl b
 Give file offsets in bytes rather than characters.
-.IP "-d"
+.It Fl d
 Treat the ASCII digits as belonging exclusively to the Basic Latin range.
-.IP "-h"
-Print usage information.
-.IP "-L"
+.It Fl h
+Print usage information and exit.
+.It Fl L
 List the Unicode ranges alphabetically.
-.IP "-l"
+.It Fl l
 List the Unicode ranges by codepoint.
-.IP "-m"
+.It Fl m
 Check the file's magic number to determine the Unicode subtype.
-.IP "-p"
+.It Fl p
 Treat ASCII punctuation as belonging exclusively to the Basic Latin range.
-.IP "-r"
-Instead of listing ranges as they are encountered, just list the ranges detected
-after all input has been read.
-.IP "-u"
+.It Fl r
+Instead of listing ranges as they are encountered,
+just list the ranges detected after all input has been read.
+.It Fl u
 Input is native order UTF-32.
-.IP "-v"
+.It Fl v
 Print version information.
-.IP "-w"
+.It Fl w
 Treat ASCII whitespace as belonging exclusively to the Basic Latin range.
-.sp
-.SH SEE ALSO
-uniname
-.SH REFERENCES
+.El
+.Sh SEE ALSO
+.Xr uniname 1
+.Sh STANDARDS
 Unicode Standard, version 5.0
-.SH AUTHOR
-Bill Poser
-.br
-billposer@alum.mit.edu
-.SH LICENSE
-GNU General Public License
+.Sh AUTHORS
+.An Bill Poser Aq Mt billposer@alum.mit.edu
