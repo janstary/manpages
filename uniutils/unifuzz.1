@@ -1,4 +1,4 @@
-.Dd November 9, 2020
+.Dd November 13, 2020
 .Dt UNIFUZZ 1
 .Os
 .Sh NAME
@@ -22,10 +22,10 @@ and long sequences of combining characters.
 It can also generate very long lines,
 strings containing embedded nulls, and ill-formed UTF-8.
 .Pp
-The sequence of random characters is determined
-by a pseudorandom number generator,
-so the same sequence can be obtained
-by setting the
+.Nm
+also emits a sequence of random characters (1 million by default)
+determined by a pseudorandom number generator.
+The same sequence can be obtained by setting the
 .Ar seed
 to the same value using the
 .Fl s
@@ -64,7 +64,7 @@ Scan ranges: emit a character from each range.
 .It Fl s Ar seed
 Set the seed for the random number generator.
 .It Fl u
-Emit ill-formed UTF-8.
+Emit ill-formed UTF-8 as well.
 .It Fl v
 Print version information and exit.
 .El
