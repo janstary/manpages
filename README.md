@@ -42,9 +42,6 @@ People use all kind of stuff.
 * **base64**
 	base64.1 sent, but none of the authors' emails work
 
-* **bmf**
-	bmfconv.1 offered upstream; no response
-
 * **bzip2**
 	docbook
 
@@ -137,13 +134,6 @@ People use all kind of stuff.
 	* api in html
 	* offered pdfunite.1 and pdfseparate.1, upstream not interested
 	https://lists.freedesktop.org/archives/poppler/2018-January/012756.html
-
-* **pstree**
-	upstream uses uses the old one with
-	```
-	mandoc: /usr/local/man/man1/pstree.1:73:18:
-	WARNING: whitespace at end of input line
-	```
 
 * **psutils**
 	REWRITE
