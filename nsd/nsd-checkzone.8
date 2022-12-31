@@ -1,0 +1,83 @@
+.Dd December 31, 2022
+.Dt NSD-CHECKZONE 8
+.Os
+.Sh NAME
+.Nm nsd-checkzone
+.Nd check NSD zone file syntax
+.Sh SYNOPSIS
+.Nm
+.Op Fl hp
+.Op Fl i Ar oldfile
+.Op Fl n Ar number
+.Op Fl s Ar size
+.Ar zonename
+.Ar zonefile
+.Sh DESCRIPTION
+.Nm
+reads a DNS zone file and checks it for errors.
+It prints errors to stderr.
+On failure it exits with nonzero exit status.
+This is used to check files before feeding them to the
+.Xr nsd 8
+daemon.
+The
+.Ar zonename
+is the zone to check,
+the
+.Ar zonefile
+is the file to read.
+.Pp
+The options are as follows:
+.Bl -tag -width Ds
+.It Fl h
+Print usage help information and exit.
+.It Fl p
+Print the zone contents to stdout if the zone is ok.
+This prints the contents as it has been parsed,
+not literally a copy of the input,
+but as printed by the formatting routines in NSD,
+much like the
+.Xr nsd-control 8
+command write does.
+.It Fl i Ar oldfile
+Create an IXFR from the differences between the old zone file
+and the new zone file.
+The
+.Ar oldfile
+argument to the
+.Fl i
+option is the old zonefile, the
+.Ar zonefile
+argument passed to
+.Nm
+is the new zonefile.
+The difference is computed between the two zonefiles
+by keeping one version of the zone in memory,
+and another version in a temporary file.
+The temporary file is located in the zonefile directory.
+This is also where the result is written
+in a file with the zonefile name, ending with
+.Sq .ixfr .
+This is also where NSD reads it when IXFRs are configured for the zone.
+If other ixfr files exist for the zone,
+they are renamed to become older IXFR contents for the zone.
+If the output file already exists with the correct contents,
+as determined by checking its header,
+no new file is created.
+.It Fl n Ar number
+The number of IXFR versions to store at the most, 5 by default.
+This is the number of ixfr files that get created for the zone.
+Older ixfr files are deleted when the number is exceeded.
+.It Fl s Ar size
+The number of bytes of storage to use for IXFRs for the zone;
+1048576 by default.
+If an IXFR is bigger it is not created.
+If the sum of IXFR file sizes exceeds this number,
+older versions are deleted.
+.El
+.Sh SEE ALSO
+.Xr nsd 8 ,
+.Xr nsd-checkconf 8
+.Sh AUTHORS
+NSD was written by NLnet Labs and RIPE NCC joint team.
+Please see CREDITS file in the distribution for further details.
