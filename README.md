@@ -113,6 +113,7 @@ People use all kind of stuff.
 	* /usr/share/man/man8/nsd-checkconf.8
 	* /usr/share/man/man8/nsd-checkzone.8
 	* /usr/share/man/man8/nsd-control.8
+	nsd-checkzone offered as an example
 
 * **opus**
 	api in html
