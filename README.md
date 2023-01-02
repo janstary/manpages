@@ -36,18 +36,6 @@ This is an alphabetical list of further software to work on,
 with comments on how difficult it would be to have a proper manpage.
 People use all kind of stuff.
 
-* **a2ps**
-	texinfo
-
-* **base64**
-	base64.1 sent, but none of the authors' emails work
-
-* **bmf**
-	bmfconv.1 offered upstream; no response
-
-* **bzip2**
-	docbook
-
 * **djview4**, **djvulibre**
 	* /usr/local/man/cat1/djview.0
 	* /usr/local/man/cat1/djview4.0 (symlink)
@@ -75,14 +63,8 @@ People use all kind of stuff.
 * **ghostscript**
 	long html manual
 
-* **git**
-	huge
-
 * **gnuplot**
 	texinfo, huge
-
-* **gsm**
-	toast.1 sent, Jutta not interested
 
 * **gv**
 	texinfo
@@ -111,10 +93,11 @@ People use all kind of stuff.
 	huge
 
 * **nsd**
+	no interest, generating *.8 as man(7), considering xml and rst2man
 	* /usr/share/man/man5/nsd.conf.5
 	* /usr/share/man/man8/nsd.8
 	* /usr/share/man/man8/nsd-checkconf.8
-	* /usr/share/man/man8/nsd-checkzone.8
+	* /usr/share/man/man8/nsd-checkzone.8 (offered Jan 01 2023)
 	* /usr/share/man/man8/nsd-control.8
 
 * **opus**
@@ -130,20 +113,10 @@ People use all kind of stuff.
 * **pdftk**
 	offered, no interest
 
-* **png**
-	huge
-
 * **poppler**, **poppler-utils**
 	* api in html
 	* offered pdfunite.1 and pdfseparate.1, upstream not interested
 	https://lists.freedesktop.org/archives/poppler/2018-January/012756.html
-
-* **pstree**
-	upstream uses uses the old one with
-	```
-	mandoc: /usr/local/man/man1/pstree.1:73:18:
-	WARNING: whitespace at end of input line
-	```
 
 * **psutils**
 	REWRITE
@@ -158,6 +131,7 @@ People use all kind of stuff.
 	huge; libsox.3 is short but obsolete
 
 * **unbound**
+	no interest, generating *.8 in man(7), considering xml and rst2man
 	* /usr/share/man/man1/unbound-host.1
 	* /usr/share/man/man5/unbound.conf.5
 	* /usr/share/man/man8/unbound.8
@@ -184,14 +158,9 @@ People use all kind of stuff.
 	/usr/local/man/man1/vorbiscomment.1
 
 * **wavpack**
-	docbook; work started with docbook2mdoc
+	* docbook; work started with docbook2mdoc
+	* wvgain.1 tweaked and offered (Jan 2, 2023)
 
 * **zip**
 	where do we send this?
-
-
-### MacOS
-
-* how well does it format the base manpages `-Wfatal -Werror -Tlint`
-* can we completely replace the system `man(1)`?
 
