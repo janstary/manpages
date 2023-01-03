@@ -159,7 +159,7 @@ People use all kind of stuff.
 
 * **wavpack**
 	* docbook; work started with docbook2mdoc
-	* wvgain.1 tweaked and offered (Jan 2, 2023)
+	* wvgain.1 tweaked and offered (Jan 2, 2023), David says yes
 
 * **zip**
 	where do we send this?
