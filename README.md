@@ -159,7 +159,7 @@ People use all kind of stuff.
 
 * **wavpack**
     * David says yes; initial versions tweaked from docbook2mdoc output
-    * files moved to branch 'manpages' in github.com:janstary/WavPack
+    * files moved to branch 'manpages' in https://github.com/janstary/WavPack
 
 * **zip**
 	where do we send this?
