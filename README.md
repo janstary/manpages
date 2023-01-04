@@ -142,9 +142,6 @@ People use all kind of stuff.
 * **uniutils**
 	unireverse.1 offered as an example
 
-* **urlview**
-	offered
-
 * **vim**
 	big
 
