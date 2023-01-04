@@ -158,8 +158,8 @@ People use all kind of stuff.
 	/usr/local/man/man1/vorbiscomment.1
 
 * **wavpack**
-	* docbook; work started with docbook2mdoc
-	* wvgain.1 tweaked and offered (Jan 2, 2023), David says yes
+    * David says yes; initial versions tweaked from docbook2mdoc output
+    * files moved to branch 'manpages' in github.com:janstary/WavPack
 
 * **zip**
 	where do we send this?
