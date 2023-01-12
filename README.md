@@ -75,6 +75,14 @@ People use all kind of stuff.
 * **gnuplot**
 	texinfo, huge
 
+* **gsm**
+	* bitter.1
+	* gsm.3
+	* gsm_explode.3
+	* gsm_option.3
+	* gsm_print.3
+	* toast.1 offered as an example
+
 * **gv**
 	texinfo
 
@@ -165,4 +173,3 @@ People use all kind of stuff.
 
 * **zip**
 	where do we send this?
-
