@@ -55,10 +55,11 @@ People use all kind of stuff.
 	for which they use KDE's man2html, which doesn't know mdoc(7)
 
 * **enscript**
-	 * {enscript,states}.texi -> *.info and -> *.man
-	 * two perl scripts spit out their own *.1
-	 * do they want to leave that?
-	 * the *.man have commits newer than the *.texi !
+    * makeinfo enscript.texi > enscript.info
+    * sed enscript.man > enscript.1
+    * sed states.man > states.1
+    * sliceprint.1 (rewritten, offered)
+    * difpp.1 (rewritten)
 
 * **flac**
 	docbook
