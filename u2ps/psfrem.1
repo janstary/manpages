@@ -1,0 +1,101 @@
+.Dd June 23, 2023
+.Dt PSFREM 1
+.Os
+.Sh NAME
+.Nm psfrem
+.Nd embed fonts and other resources in postscript files
+.Sh SYNOPSIS
+.Nm
+.Op Fl A
+.Op Fl a Ar font
+.Op Fl d Ar var=val
+.Op Fl I Ar dir
+.Op Fl k
+.Op Fl r
+.Op Fl x Ar font
+.Ar input
+.Op Ar output
+.Sh DESCRIPTION
+.Nm
+runs the supplied
+.Ar input
+postscript file through
+.Xr gs 1 ,
+gathering font usage information,
+and embeds the font data into the file.
+The resulting file is thus self-contained,
+with no external dependencies on fonts being installed
+in a particular postscript device.
+.Nm
+attempts to modify the embedded fonts,
+leaving only the glyphs used in the document,
+thus reducing the file size.
+.Nm
+also attempts to embed non-font resources in place of
+.Sq %%IncludeResource
+directives.
+The result is stored in the named
+.Ar output
+file or written to standard output.
+.Pp
+The options are as follows:
+.Bl -tag -width fontxxxxxxxx -compact
+.It Fl I Ar dir
+Look for resources to embed in
+.Ar dir .
+This option may be specified more than once
+and is also passed to
+.Xr gs 1 .
+.It Fl d Ar var Ns Op =val
+Pass variable
+.Ar var
+(with value
+.Ar val )
+to
+.Xr gs 1 .
+.It Fl r
+Do reduce/embed fonts.
+Without
+.Fl r ,
+just embed resources.
+.It Fl x Ar font
+Do not dump/embed the named
+.Ar font .
+This is expected to be a PostScript font name
+such as
+.Sq Times-Roman
+or
+.Sq FreeMono .
+.It Fl a Ar font
+Embed
+.Ar font
+completely, do not remove unused glyphs.
+.It Fl A
+Do embed Adobe core fonts; see below.
+.It Fl k
+Keep temporary files.
+.El
+.Pp
+.Nm
+is meant to be used with
+.Xr u2ps 1 .
+It relies heavily on the input file being well-formed and well-behaved;
+it may not work with arbitrary PostScript input.
+.Nm
+only looks for resources in directories explicitly specified with
+.Fl I
+and does not know about standard
+.Xr gs 1
+search paths.
+All PostScript interpreters are assumed to have a bunch of
+standard fonts available (Courier, Times-Roman, Helvetica, Symbol etc), so
+.Nm
+psfrem does not try to embed those.
+Glyph coverage beyond basic Latin is not guaranteed for standard fonts however,
+so it may be necessary to use the
+.Fl A
+option.
+.Sh SEE ALSO
+.Xr gs 1 ,
+.Xr includeres 1 ,
+.Xr u2ps 1
