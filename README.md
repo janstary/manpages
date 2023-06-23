@@ -148,6 +148,10 @@ People use all kind of stuff.
 * **sox**
 	huge; libsox.3 is short but obsolete
 
+* [u2ps](https://github.com/arsv/u2ps/)
+    * psfrem.1 offered https://github.com/arsv/u2ps/pull/11
+    * u2ps.1
+
 * **unbound**
 	no interest, generating *.8 in man(7), considering xml and rst2man
 	* /usr/share/man/man1/unbound-host.1
