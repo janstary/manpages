@@ -96,7 +96,6 @@ People use all kind of stuff.
 
 * **libsamplerate**
 	* api in html
-	* provides sndfile-resample, which has .1
 
 * **libvorbis**
 	long html
