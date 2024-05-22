@@ -145,6 +145,9 @@ People use all kind of stuff.
 * **rtorrent, libtorrent**
 	docbook
 
+* **sndfile-tools**
+	man(7), seems straightforward
+
 * **sox**
 	huge; libsox.3 is short but obsolete
 
