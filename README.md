@@ -145,7 +145,7 @@ People use all kind of stuff.
 	docbook
 
 * **sndfile-tools**
-	man(7), seems straightforward
+	https://github.com/libsndfile/sndfile-tools/pull/91
 
 * **sox**
 	huge; libsox.3 is short but obsolete
